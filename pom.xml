@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.symbio.sbtm</groupId>
+	<artifactId>SBTM</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.4-SNAPSHOT</version>
+	<name>SBTM</name>
+	<url>http://www.symbio.com</url>
+	<description>Symbio - SBTM Webserver</description>
+
+	<properties>
+		<struts2.version>2.3.8</struts2.version>
+		<servletapi.version>2.4</servletapi.version>
+		<jspapi.version>2.0</jspapi.version>
+		<java.version>1.6</java.version>
+		<sprint.version>3</sprint.version>
+		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>apache.nexus</id>
+			<name>ASF Nexus Staging</name>
+			<url>https://repository.apache.org/content/groups/staging/</url>
+		</repository>
+
+		<repository>
+			<id>ibiblio mirror</id>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+		</repository>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>people.apache.snapshots</id>
+			<url>http://repository.apache.org/content/groups/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>people.apache.snapshots-group</id>
+			<url>http://repository.apache.org/content/groups/snapshots-group</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>apache.snapshots.public</id>
+			<name>Apache Snapshots</name>
+			<url>http://repository.apache.org/content/groups/public</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>apache.snapshots.snapshots-group</id>
+			<name>Apache Snapshots</name>
+			<url>http://repository.apache.org/content/groups/snapshots-group</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<!-- Junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- <dependency> <groupId>org.easymock</groupId> <artifactId>easymock</artifactId> 
+			<version>2.3</version> <scope>test</scope> </dependency> -->
+
+		<!-- Struts 2 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>${struts2.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-dojo-plugin</artifactId>
+			<version>${struts2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-config-browser-plugin</artifactId>
+			<version>${struts2.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.struts</groupId> <artifactId>struts2-convention-plugin</artifactId> 
+			<version>3.0-SNAPSHOT</version> </dependency> -->
+
+		<!-- Servlet & Jsp -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servletapi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jspapi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Jakarta Commons -->
+		<!-- The FileUpload component provides a simple yet flexible means of adding 
+			support for multipart file upload functionality to servlets and web applications. -->
+		<!-- <dependency> <groupId>commons-fileupload</groupId> <artifactId>commons-fileupload</artifactId> 
+			<version>1.2.2</version> </dependency> -->
+
+		<!-- spring 2.5 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>${struts2.version}</version>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-hibernate3</artifactId> 
+			<version>2.0.8</version> </dependency> -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
+			<version>2.5.5</version> </dependency> -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
+			<version>2.5.5</version> </dependency> -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-test</artifactId> 
+			<version>2.5.5</version> </dependency> -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-context-support</artifactId> 
+			<version>2.5.5</version> </dependency> -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-aspects</artifactId> 
+			<version>2.5.5</version> </dependency> -->
+
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.9</version>
+		</dependency>
+
+
+		<!-- hibernate 4.1.7 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
+			<version>4.1.7-Final</version> </dependency> -->
+
+
+		<!-- Dwr -->
+		<!-- <dependency> <groupId>org.directwebremoting</groupId> <artifactId>dwr</artifactId> 
+			<version>2.0.9</version> </dependency> -->
+		<!-- <dependency> <groupId>org.directwebremoting</groupId> <artifactId>dwr</artifactId> 
+			<version>3.0.0-rc3-SNAPSHOT</version> </dependency> -->
+		<!-- <dependency> <groupId>uk.ltd.getahead</groupId> <artifactId>dwr</artifactId> 
+			<version>1.1.1</version> </dependency> -->
+		<!-- sitemesh -->
+		<!-- <dependency> <groupId>org.apache.struts</groupId> <artifactId>struts2-sitemesh-plugin</artifactId> 
+			<version>${struts2.version}</version> </dependency> -->
+
+
+		<!-- log system -->
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-simple</artifactId> 
+			<version>1.5.6</version> </dependency> -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+
+		<!-- java system -->
+		<dependency>
+			<groupId>com.sun</groupId>
+			<artifactId>tools</artifactId>
+			<version>${java.version}</version>
+			<scope>system</scope>
+			<systemPath>${env.JAVA_HOME}/lib/tools.jar</systemPath>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- jQeury -->
+		<dependency>
+			<groupId>com.jgeppert.struts2.jquery</groupId>
+			<artifactId>struts2-jquery-plugin</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-json-plugin</artifactId>
+			<version>2.3.1.2</version>
+		</dependency>
+
+		<!-- jfreechart -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-jfreechart-plugin</artifactId>
+			<version>2.1.8</version>
+			<scope>compile</scope>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jcommon</artifactId>
+			<version>1.0.12</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>gnujaxp</groupId>
+					<artifactId>gnujaxp</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.9</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>gnujaxp</groupId>
+					<artifactId>gnujaxp</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- embedded mysql -->
+		<!-- <dependency> <groupId>com.mysql</groupId> <artifactId>management</artifactId> 
+			<version>5.0.2-beta</version> <scope>compile</scope> <type>jar</type> </dependency> -->
+
+	</dependencies>
+
+	<build>
+		<finalName>SBTM</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7-SNAPSHOT</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.mortbay.jetty</groupId> <artifactId>maven-jetty-plugin</artifactId> 
+				<version>6.1.21</version> <configuration> <scanIntervalSeconds>10</scanIntervalSeconds> 
+				</configuration> </plugin> -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat6-maven-plugin</artifactId>
+				<version>2.1-SNAPSHOT</version>
+				<configuration>
+					<!-- default url is http://localhost:8080/${project.name}, below setting 
+						will be： http://localhost:8080 -->
+					<!-- <path>/</path> -->
+					<port>8080</port>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-compiler-plugin
+										</artifactId>
+										<versionRange>
+											[3.1-SNAPSHOT,)
+										</versionRange>
+										<goals>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

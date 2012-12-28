@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="basicstruts2" extends="struts-default">
+		<!-- setup the default-stack exception mapping interceptor so that any 
+			exceptions not caught by this application will be logged and then handled 
+			by the global exception mapping -->
+		<interceptors>
+			<interceptor name="Login"
+				class="com.symbio.sbtm.ui.action.login.LoginInterceptor" />
+			<interceptor-stack name="appDefaultStack">
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+
+				<interceptor-ref name="Login">
+					<!-- <param name="includeMethods">list,del</param> -->
+					<param name="excludeMethods">log</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="appDefaultStack" />
+
+
+
+		<global-results>
+			<result name="securityerror">/example/securityerror.jsp</result>
+			<result name="error">/example/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping
+				exception="com.symbio.sbtm.exceptions.SecurityBreachException"
+				result="securityerror" />
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+
+		<action name="causesecurityexception" class="throwException"
+			method="throwSecurityException">
+			<result>/example/register.jsp</result>
+		</action>
+
+		<action name="causeexception" class="throwException" method="throwException">
+			<result>/example/register.jsp</result>
+		</action>
+
+		<action name="causenullpointerexception" class="throwException"
+			method="throwNullPointerException">
+			<result>/example/register.jsp</result>
+		</action>
+
+		<action name="actionspecificexception" class="throwException"
+			method="throwSecurityException">
+			<exception-mapping exception="throwException"
+				result="login" />
+			<result>/example/register.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<!-- If the URL is hello.action the call the execute method of class HelloWorldAction. 
+			If the result returned by the execute method is success render the HelloWorld.jsp -->
+		<action name="hello" class="hello">
+			<result name="success">/example/test.jsp</result>
+			<result name="input">/example/test.jsp</result>
+		</action>
+	</package>
+</struts>
