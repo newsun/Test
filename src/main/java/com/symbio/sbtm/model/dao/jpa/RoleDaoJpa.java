@@ -1,4 +1,4 @@
-package com.symbio.sbtm.dao.jpa;
+package com.symbio.sbtm.model.dao.jpa;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import javax.persistence.TypedQuery;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
-import com.symbio.sbtm.dao.RoleDao;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
+import com.symbio.sbtm.model.dao.RoleDao;
 
 /**
  * Implements IRole behaviors using JPA to interact with a data repository.

@@ -3,15 +3,6 @@ package com.symbio.sbtm.ui.action.charter;
 import java.util.ArrayList;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.symbio.sbtm.dao.impl.proxy.AreaProxy;
-import com.symbio.sbtm.dao.impl.proxy.AreasProxy;
-import com.symbio.sbtm.dao.impl.proxy.BugProxy;
-import com.symbio.sbtm.dao.impl.proxy.CharterProxy;
-import com.symbio.sbtm.dao.impl.proxy.IssueProxy;
-import com.symbio.sbtm.dao.impl.proxy.OSProxy;
-import com.symbio.sbtm.dao.impl.proxy.OSsProxy;
-import com.symbio.sbtm.dao.impl.proxy.StrategiesProxy;
-import com.symbio.sbtm.dao.impl.proxy.StrategyProxy;
 import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.Area;
 import com.symbio.sbtm.model.Bug;
@@ -24,6 +15,15 @@ import com.symbio.sbtm.model.OSs;
 import com.symbio.sbtm.model.Strategies;
 import com.symbio.sbtm.model.Strategy;
 import com.symbio.sbtm.model.User;
+import com.symbio.sbtm.model.dao.impl.proxy.AreaProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.AreasProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.BugProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.CharterProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.IssueProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.OSProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.OSsProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.StrategiesProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.StrategyProxy;
 
 public class CharterAction extends ActionSupport {
 	private Charter charter;

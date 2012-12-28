@@ -1,4 +1,4 @@
-package com.symbio.sbtm.dao;
+package com.symbio.sbtm.model.dao;
 
 import java.util.ArrayList;
 

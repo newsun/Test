@@ -1,14 +1,14 @@
 package com.symbio.sbtm.factory;
 
-import com.symbio.sbtm.dao.impl.proxy.AreaProxy;
-import com.symbio.sbtm.dao.impl.proxy.AreasProxy;
-import com.symbio.sbtm.dao.impl.proxy.BuildProxy;
-import com.symbio.sbtm.dao.impl.proxy.CharterProxy;
-import com.symbio.sbtm.dao.impl.proxy.DurationProxy;
-import com.symbio.sbtm.dao.impl.proxy.ProjectProxy;
-import com.symbio.sbtm.dao.impl.proxy.UserProxy;
 import com.symbio.sbtm.dbo.IDBO;
 import com.symbio.sbtm.dbo.MySqlDBOperator;
+import com.symbio.sbtm.model.dao.impl.proxy.AreaProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.AreasProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.BuildProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.CharterProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.DurationProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.ProjectProxy;
+import com.symbio.sbtm.model.dao.impl.proxy.UserProxy;
 
 public class DAOFactory {
 	private static MySqlDBOperator mysql = null;

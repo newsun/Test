@@ -1,4 +1,4 @@
-package com.symbio.sbtm.service;
+package com.symbio.sbtm.model.service;
 
 import java.util.List;
 

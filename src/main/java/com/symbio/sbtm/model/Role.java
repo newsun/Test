@@ -1,16 +1,14 @@
 package com.symbio.sbtm.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 public class Role {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="increment")
 	@Column(name = "id", length = 20)
 	private long id;
 

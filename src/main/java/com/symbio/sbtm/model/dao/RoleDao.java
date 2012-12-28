@@ -1,11 +1,11 @@
-package com.symbio.sbtm.service;
+package com.symbio.sbtm.model.dao;
 
 import java.util.List;
 
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public interface RoleService {
+public interface RoleDao {
 	public void save(Role role) throws Exception;
 
 	public void delete(Role role) throws Exception;
