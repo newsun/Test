@@ -2,8 +2,8 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Charter;
-import com.symbio.sbtm.vo.Issue;
+import com.symbio.sbtm.model.Charter;
+import com.symbio.sbtm.model.Issue;
 
 public interface IIssue {
 	public void doCreate(Issue issue) throws Exception;

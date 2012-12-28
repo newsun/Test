@@ -13,17 +13,17 @@ import com.symbio.sbtm.dao.impl.proxy.OSsProxy;
 import com.symbio.sbtm.dao.impl.proxy.StrategiesProxy;
 import com.symbio.sbtm.dao.impl.proxy.StrategyProxy;
 import com.symbio.sbtm.factory.DAOFactory;
-import com.symbio.sbtm.vo.Area;
-import com.symbio.sbtm.vo.Charter_Area;
-import com.symbio.sbtm.vo.Bug;
-import com.symbio.sbtm.vo.Charter;
-import com.symbio.sbtm.vo.Duration;
-import com.symbio.sbtm.vo.Issue;
-import com.symbio.sbtm.vo.OS;
-import com.symbio.sbtm.vo.OSs;
-import com.symbio.sbtm.vo.Strategies;
-import com.symbio.sbtm.vo.Strategy;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.Area;
+import com.symbio.sbtm.model.Bug;
+import com.symbio.sbtm.model.Charter;
+import com.symbio.sbtm.model.Charter_Area;
+import com.symbio.sbtm.model.Duration;
+import com.symbio.sbtm.model.Issue;
+import com.symbio.sbtm.model.OS;
+import com.symbio.sbtm.model.OSs;
+import com.symbio.sbtm.model.Strategies;
+import com.symbio.sbtm.model.Strategy;
+import com.symbio.sbtm.model.User;
 
 public class CharterAction extends ActionSupport {
 	private Charter charter;

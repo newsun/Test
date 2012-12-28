@@ -2,10 +2,10 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Area;
-import com.symbio.sbtm.vo.Build;
-import com.symbio.sbtm.vo.Charter;
-import com.symbio.sbtm.vo.Project;
+import com.symbio.sbtm.model.Area;
+import com.symbio.sbtm.model.Build;
+import com.symbio.sbtm.model.Charter;
+import com.symbio.sbtm.model.Project;
 
 public interface ICharter {
 	public void doCreate(Charter charter) throws Exception;

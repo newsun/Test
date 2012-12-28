@@ -2,8 +2,8 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Area;
-import com.symbio.sbtm.vo.Build;
+import com.symbio.sbtm.model.Area;
+import com.symbio.sbtm.model.Build;
 
 public interface IArea {
 

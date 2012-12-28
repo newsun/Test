@@ -2,7 +2,7 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Duration;
+import com.symbio.sbtm.model.Duration;
 
 public interface IDuration {
 	public void doCreate(Duration duration) throws Exception;

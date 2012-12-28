@@ -8,7 +8,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.User;
 
 public class LoginInterceptor_bak extends MethodFilterInterceptor {
 	private static final long serialVersionUID = 1L;

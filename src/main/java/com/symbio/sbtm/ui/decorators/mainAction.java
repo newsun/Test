@@ -10,7 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 import com.symbio.sbtm.factory.DAOFactory;
-import com.symbio.sbtm.vo.Project;
+import com.symbio.sbtm.model.Project;
 
 public class mainAction extends ActionSupport {
 

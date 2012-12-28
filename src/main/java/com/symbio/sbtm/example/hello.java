@@ -3,7 +3,7 @@ package com.symbio.sbtm.example;
 import java.util.ArrayList;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.User;
 
 public class hello extends ActionSupport {
 

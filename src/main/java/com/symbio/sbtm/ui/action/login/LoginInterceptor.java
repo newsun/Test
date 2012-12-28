@@ -3,7 +3,7 @@ package com.symbio.sbtm.ui.action.login;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.User;
 
 public class LoginInterceptor implements Interceptor {
 

@@ -24,7 +24,7 @@ import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.symbio.sbtm.factory.DAOFactory;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.User;
 
 @SuppressWarnings("serial")
 @Conversion()

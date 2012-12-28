@@ -2,8 +2,8 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Build;
-import com.symbio.sbtm.vo.Project;
+import com.symbio.sbtm.model.Build;
+import com.symbio.sbtm.model.Project;
 
 public interface IBuild {
 	public void doCreate(Build build) throws Exception;

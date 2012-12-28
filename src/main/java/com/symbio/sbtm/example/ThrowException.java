@@ -2,7 +2,7 @@ package com.symbio.sbtm.example;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.exceptions.SecurityBreachException;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.User;
 
 public class ThrowException extends ActionSupport {
 

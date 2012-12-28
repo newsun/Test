@@ -2,7 +2,7 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Strategy;
+import com.symbio.sbtm.model.Strategy;
 
 public interface IStrategy {
 	public void doCreate(Strategy strategy) throws Exception;

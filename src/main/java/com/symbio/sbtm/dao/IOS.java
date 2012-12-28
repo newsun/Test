@@ -2,7 +2,7 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.OS;
+import com.symbio.sbtm.model.OS;
 
 public interface IOS {
 	public void doCreate(OS os) throws Exception;

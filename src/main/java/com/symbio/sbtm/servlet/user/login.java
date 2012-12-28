@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.symbio.sbtm.factory.DAOFactory;
-import com.symbio.sbtm.vo.User;
+import com.symbio.sbtm.model.User;
 
 /**
  * Servlet implementation class login

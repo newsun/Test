@@ -2,7 +2,7 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Project;
+import com.symbio.sbtm.model.Project;
 
 public interface IProject {
 	public boolean doCreate(Project project) throws Exception;

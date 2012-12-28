@@ -2,8 +2,8 @@ package com.symbio.sbtm.dao;
 
 import java.util.ArrayList;
 
-import com.symbio.sbtm.vo.Bug;
-import com.symbio.sbtm.vo.Charter;
+import com.symbio.sbtm.model.Bug;
+import com.symbio.sbtm.model.Charter;
 
 public interface IBug {
 	public void doCreate(Bug bug) throws Exception;

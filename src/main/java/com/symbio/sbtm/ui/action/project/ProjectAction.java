@@ -3,7 +3,7 @@ package com.symbio.sbtm.ui.action.project;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.factory.DAOFactory;
-import com.symbio.sbtm.vo.Project;
+import com.symbio.sbtm.model.Project;
 
 public class ProjectAction extends ActionSupport {
 	private Project project;
