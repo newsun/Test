@@ -5,7 +5,7 @@ import java.util.List;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public interface RoleDao {
+public interface IRole {
 	public void save(Role role) throws Exception;
 
 	public void delete(Role role) throws Exception;

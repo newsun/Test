@@ -1,11 +1,11 @@
-package com.symbio.sbtm.model.dao;
+package com.symbio.sbtm.model.service;
 
 import java.util.List;
 
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public interface UserDao {
+public interface IUserService {
 	/*
 	 * Create a user
 	 * 

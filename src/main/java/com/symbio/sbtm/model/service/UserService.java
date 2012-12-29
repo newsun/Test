@@ -2,63 +2,49 @@ package com.symbio.sbtm.model.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public interface UserService {
-	/*
-	 * Create a user
-	 * 
-	 * @param user
-	 * 
-	 * @return whether created successfully
-	 * 
-	 * @throws SQLException
-	 */
-	public void save(User user) throws Exception;
+/**
+ * Implements IUser behaviors using JPA to interact with a data repository.
+ * 
+ * @author Ken Jiang
+ * 
+ */
+@Repository("IUserService")
+public class UserService implements IUserService {
+	@Autowired
+	private IUserService userService;
 
-	/*
-	 * Remove a user
-	 * 
-	 * @param user
-	 * 
-	 * @return whether delete successfully
-	 * 
-	 * @throws Exception
-	 */
-	public void delete(User user) throws Exception;
+	@Override
+	@Transactional
+	public void save(User user) throws Exception {
+		userService.save(user);
+	}
 
-	/*
-	 * Change user inforamtion
-	 * 
-	 * @param user
-	 * 
-	 * @return whether created successfully
-	 * 
-	 * @throws Exception
-	 */
-	public void update(User user) throws Exception;
+	@Override
+	@Transactional
+	public void delete(User user) throws Exception {
+		userService.delete(user);
+	}
 
-	/*
-	 * find current user's roles
-	 * 
-	 * @param user
-	 * 
-	 * @return whether created successfully
-	 * 
-	 * @throws Exception
-	 */
+	@Override
+	@Transactional
+	public void update(User user) throws Exception {
+		userService.update(user);
+	}
 
-	public List<Role> getRoles(String userId) throws Exception;
+	@Override
+	public List<Role> getRoles(String userId) throws Exception {
+		return userService.getRoles(userId);
+	}
 
-	/*
-	 * find a user whether exists
-	 * 
-	 * @param user
-	 * 
-	 * @return whether created successfully
-	 * 
-	 * @throws Exception
-	 */
-	public User getUserByUserId(String userId) throws Exception;
+	@Override
+	public User getUserByUserId(String userId) throws Exception {
+		return userService.getUserByUserId(userId);
+	}
 }

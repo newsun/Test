@@ -14,7 +14,7 @@ import com.symbio.sbtm.factory.HSFactory;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public class NewTest {
+public class UserServiceTest {
 
 	private Session session;
 
@@ -23,14 +23,6 @@ public class NewTest {
 		session = HSFactory.getSessionFactory().openSession();
 	}
 
-	@DataProvider(name = "roleData")
-	public static Object[][] rolesDataProvider() {
-		return new Object[][] {
-				new Object[] { "Administrator", "System Administrator" },
-				new Object[] { "Project Manager", "Project Manager" },
-				new Object[] { "Creator", "Component Creator" },
-				new Object[] { "Tester", "Tester" } };
-	}
 
 	@DataProvider(name = "userData")
 	public static Object[][] usersDataProvider() {
@@ -73,8 +65,8 @@ public class NewTest {
 		Transaction tx = session.beginTransaction();
 		try {
 			User up = new User(name, description);
-			
-			up.getRoles().add(role);
+
+			// up.getRoles().add(role);
 			session.save(up);
 			List users = session.createQuery("FROM User").list();
 

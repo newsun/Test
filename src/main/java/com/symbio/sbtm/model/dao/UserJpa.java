@@ -1,4 +1,4 @@
-package com.symbio.sbtm.model.service.impl;
+package com.symbio.sbtm.model.dao;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
-import com.symbio.sbtm.model.dao.UserDao;
 
 /**
  * Implements IUser behaviors using JPA to interact with a data repository.
@@ -20,8 +19,8 @@ import com.symbio.sbtm.model.dao.UserDao;
  * 
  */
 @Repository("IUser")
-public class UserServiceImpl implements UserDao {
-	private static final Logger logger = Logger.getLogger(UserServiceImpl.class
+public class UserJpa implements IUser {
+	private static final Logger logger = Logger.getLogger(UserJpa.class
 			.getName());
 
 	private EntityManager entityManager;

@@ -1,4 +1,4 @@
-package com.symbio.sbtm.model.dao.jpa;
+package com.symbio.sbtm.model.dao;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
-import com.symbio.sbtm.model.dao.RoleDao;
 
 /**
  * Implements IRole behaviors using JPA to interact with a data repository.
@@ -19,10 +18,10 @@ import com.symbio.sbtm.model.dao.RoleDao;
  * @author Ken Jiang
  * 
  */
-@Repository("RoleDao")
-public class RoleDaoJpa implements RoleDao {
+@Repository("IRole")
+public class RoleJpa implements IRole {
 
-	private static final Logger logger = Logger.getLogger(RoleDaoJpa.class
+	private static final Logger logger = Logger.getLogger(RoleJpa.class
 			.getName());
 
 	private EntityManager entityManager;

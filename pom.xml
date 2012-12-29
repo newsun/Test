@@ -17,7 +17,7 @@
 		<servletapi.version>2.4</servletapi.version>
 		<jspapi.version>2.0</jspapi.version>
 		<java.version>1.6</java.version>
-		<spring.version>3.1.2</spring.version>
+		<spring.version>3.1.2.RELEASE</spring.version>
 		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
 	</properties>
 
@@ -160,19 +160,23 @@
 			<artifactId>struts2-spring-plugin</artifactId>
 			<version>${struts2.version}</version>
 		</dependency>
-
-		<!-- support hibernate??? -->
-		<!-- 
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>3.0.5.RELEASE</version>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
 		</dependency>
-		 -->
+		
+		<!-- support hibernate??? -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
+			<version>3.0.5.RELEASE</version> </dependency> -->
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-hibernate3</artifactId> 
 			<version>2.0.8</version> </dependency> -->
-		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
-			<version>2.5.5</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
 			<version>2.5.5</version> </dependency> -->
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-test</artifactId> 
@@ -196,12 +200,8 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>${hibernate.annotation.version}</version>
-		</dependency>
-
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
+			<version>${hibernate.annotation.version}</version> </dependency> -->
 
 		<!-- Dwr -->
 		<!-- <dependency> <groupId>org.directwebremoting</groupId> <artifactId>dwr</artifactId> 
