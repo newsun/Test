@@ -2,22 +2,25 @@ package com.symbio.sbtm.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.*;
+
+//import javax.validation.constraints.Size;
 
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(generator="increment")
+	@GeneratedValue
 	@Column(name = "id", length = 20)
 	private long id;
 
+	// @Size(min = 5, max = 50, message = "user name must be between 5-50")
 	@Column(name = "userId", length = 50, nullable = false, unique = true)
 	private String userId;
 
 	@Column(name = "password", length = 50, nullable = false)
 	private String password;
 
+	// @Size(min = 5, max = 50, message = "password must be between 5-50")
 	@Column(name = "firstName", length = 50)
 	private String firstName;
 
@@ -30,7 +33,7 @@ public class User {
 	@Column(name = "description", length = 250)
 	private String description;
 
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
 	private List<Role> roles = new ArrayList<Role>();
 
 	public User() {

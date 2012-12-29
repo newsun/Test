@@ -18,7 +18,7 @@ import com.symbio.sbtm.model.User;
  * @author Ken Jiang
  * 
  */
-@Repository("IRoleDao")
+@Repository(value="IRoleDao")
 public class RoleDao implements IRoleDao {
 
 	private static final Logger logger = Logger.getLogger(IRoleDao.class

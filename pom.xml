@@ -19,6 +19,8 @@
 		<java.version>1.6</java.version>
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
+		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
+		<hibernamte.annotations.version>3.5.6-Final</hibernamte.annotations.version>
 	</properties>
 
 	<repositories>
@@ -173,16 +175,15 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- support hibernate??? -->
-		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
-			<version>3.0.5.RELEASE</version> </dependency> -->
-		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-hibernate3</artifactId> 
-			<version>2.0.8</version> </dependency> -->
+		<!-- support hibernate??? includes spring-tx which has @Transactional -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<!-- <dependency> <groupId>proxool</groupId> <artifactId>proxool</artifactId> 
+			<version>0.8.3</version> </dependency> -->
+
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
 			<version>2.5.5</version> </dependency> -->
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-test</artifactId> 
@@ -211,6 +212,10 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
+			<version>${hibernamte.annotations.version}</version> </dependency> -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator</artifactId> 
+			<version>${hibernate.validator.version}</version> </dependency> -->
 		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
 			<version>${hibernate.annotation.version}</version> </dependency> -->
 

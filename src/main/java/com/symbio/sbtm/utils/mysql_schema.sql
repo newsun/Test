@@ -4,12 +4,10 @@ use SBTM;
 create table Role(
 id bigint auto_increment primary key,
 name varchar(50) not null unique,
-description varchar(250) default ""
+description varchar(255) default ""
 );
 /*step2 create a user table*/
-/********************
- * User is able to be created but forbidden to delete, the column 'validate' is used to set its status 
- */
+/* User is able to be created but forbidden to delete, the column 'validate' is used to set its status */
 create table User(
 id bigint auto_increment primary key,
 userId varchar(50) not null unique,
@@ -17,7 +15,7 @@ password varchar(50) not null,
 firstName varchar(50) default null,
 lastName varchar(50) default null,
 valid boolean default true,
-description varchar(250) default ""
+description varchar(255) default ""
 );
 
 /*step3 create Role_User table*/
@@ -31,36 +29,36 @@ foreign key(userId) references User(id) on delete cascade on update cascade
 
 /*step3 Create a os table*/
 create table OS(
-id int(10) auto_increment primary key,
+id bigint auto_increment primary key,
 name varchar(50) unique,
-description varchar(250)
+description varchar(255)
 );
 /*step4 Create a duration table*/
 create table Duration(
 name varchar(50) primary key,
 timespan varchar(50) not null,
-description varchar(250)
+description varchar(255)
 );
 /*Step5 Create a strategy table*/
 create table Strategy(
 name varchar(60) primary key,
-description varchar(250)
+description varchar(255)
 );
 
 /*step6 Create a project table */
 create table Project(
 id bigint auto_increment primary key,
-name varchar(50) not null unique,
-description varchar(200),
-createtime datetime,
-creatorId varchar(50),
-foreign key(creatorId) references User(userId) on delete no action on update cascade
+name varchar(50) unique not null ,
+description varchar(255),
+createtime TIMESTAMP,
+creatorId bigint not null,
+foreign key(creatorId) references User(id) on delete no action on update cascade
 );
 /*step7 Create a build table*/
 create table Build(
 id bigint primary key auto_increment,
 name varchar(50) not null,
-description varchar(250),
+description varchar(255),
 projectId bigint not null,
 foreign key(projectId) references Project(id) on delete cascade on update cascade
 );
@@ -68,7 +66,7 @@ foreign key(projectId) references Project(id) on delete cascade on update cascad
 create table Area(
 id bigint primary key auto_increment,
 name varchar(50) not null unique,
-description varchar(200),
+description varchar(255),
 projectId bigint not null,
 buildId bigint default null,
 parentId bigint default null,
@@ -81,7 +79,7 @@ foreign key(parentId) references Area(id) on delete cascade on update cascade
 create table Charter(
 id bigint primary key auto_increment,
 name varchar(60) not null,
-description varchar(250),
+description varchar(255),
 projectId bigint not null,
 buildId bigint not null,
 /*areasId bigint not null,*/
@@ -94,8 +92,8 @@ designAndExectution bigint,
 bugIvestigationAndReporting bigint,
 sesstionSetup bigint,
 chartervsopp varchar(50),
-datafiles varchar(250),
-notes varchar(250),
+datafiles varchar(255),
+notes varchar(255),
 foreign key(projectId) references Project(id) on delete cascade on update cascade,
 foreign key(buildId) references Build(id) on delete cascade on update cascade,
 /*foreign key(areasId) references areas(id) on delete cascade on update cascade,*/
@@ -109,8 +107,8 @@ foreign key(testerId) references User(userId) on delete no action on update casc
 create table Bug(
 id bigint primary key auto_increment,
 summary varchar(50) not null,
-precedure varchar(250) not null,
-description varchar(250),
+precedure varchar(255) not null,
+description varchar(255),
 charterId bigint not null,
 foreign key(charterId) references Charter(id) on delete cascade on update cascade
 );
@@ -119,8 +117,8 @@ foreign key(charterId) references Charter(id) on delete cascade on update cascad
 create table Issue(
 id bigint primary key auto_increment,
 summary varchar(50) not null,
-precedure varchar(250) not null,
-description varchar(250),
+precedure varchar(255) not null,
+description varchar(255),
 charterId bigint not null,
 foreign key(charterId) references Charter(id) on delete cascade on update cascade
 );

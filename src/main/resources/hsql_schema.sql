@@ -1,8 +1,7 @@
 create table Role(
 id bigint IDENTITY primary key,
-name varchar(50) not null UNIQUE,
-description varchar(250) default "",
-constraint userid_unique unique (1)
+name varchar(50) not null,
+description varchar(250)
 );
 
 create table User(
@@ -11,9 +10,8 @@ userId varchar(50) not null,
 password varchar(50) not null,
 firstName varchar(50) default null,
 lastName varchar(50) default null,
-constraint userid_unique unique (1),
 valid boolean default true,
-description varchar(250) default ""
+description varchar(250)
 );
 
 create table Role_User(
@@ -25,8 +23,8 @@ foreign key(userId) references User(id) on delete cascade on update cascade
 );
 
 create table OS(
-id int(10) IDENTITY primary key,
-name varchar(50) UNIQUE,
+id bigint IDENTITY primary key,
+name varchar(50),
 description varchar(250)
 );
 
@@ -43,10 +41,10 @@ description varchar(250)
 
 create table Project(
 id bigint IDENTITY primary key,
-name varchar(50) not null UNIQUE,
+name varchar(50) not null,
 description varchar(200),
-createtime datetime,
-creatorId varchar(50),
+createtime bigint,
+creatorId bigint not null,
 foreign key(creatorId) references User(userId) on delete no action on update cascade
 );
 
@@ -60,7 +58,7 @@ foreign key(projectId) references Project(id) on delete cascade on update cascad
 
 create table Area(
 id bigint primary key IDENTITY,
-name varchar(50) not null UNIQUE,
+name varchar(50) not null,
 description varchar(200),
 projectId bigint not null,
 buildId bigint default null,

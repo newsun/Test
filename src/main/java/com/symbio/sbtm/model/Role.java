@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Role {
 	@Id
-	@GeneratedValue(generator="increment")
+	@GeneratedValue
 	@Column(name = "id", length = 20)
 	private long id;
 
@@ -18,8 +18,8 @@ public class Role {
 	@Column(name = "description", length = 250)
 	private String description;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "Role_User", joinColumns = { @JoinColumn(name = "roleId") }, inverseJoinColumns = { @JoinColumn(name = "userId") })
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "role_user", joinColumns = @JoinColumn(name = "roleId"), inverseJoinColumns = @JoinColumn(name = "userId"))
 	private List<User> users = new ArrayList<User>();
 
 	public Role() {

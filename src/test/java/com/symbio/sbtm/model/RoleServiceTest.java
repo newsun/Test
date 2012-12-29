@@ -17,15 +17,6 @@ public class RoleServiceTest {
 	@Autowired
 	private IRoleService roleService;
 
-	@DataProvider(name = "roleData")
-	public static Object[][] rolesDataProvider() {
-		return new Object[][] {
-				new Object[] { "Administrator", "System Administrator" },
-				new Object[] { "Project Manager", "Project Manager" },
-				new Object[] { "Creator", "Component Creator" },
-				new Object[] { "Tester", "Tester" } };
-	}
-
 	@Test(dataProvider = "roleData")
 	public void testSave(String name, String description) {
 		Role role = new Role();

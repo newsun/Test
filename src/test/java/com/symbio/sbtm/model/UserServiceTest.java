@@ -3,9 +3,12 @@ package com.symbio.sbtm.model;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import junit.framework.Assert;
 
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.*;
@@ -23,14 +26,24 @@ public class UserServiceTest {
 		session = HSFactory.getSessionFactory().openSession();
 	}
 
-
 	@DataProvider(name = "userData")
 	public static Object[][] usersDataProvider() {
-		return new Object[][] {
-				new Object[] { "admin", "System Administrator", "Administrator" },
-				new Object[] { "pm", "Project Manager", "Project Manager" },
-				new Object[] { "creator", "Component Creator", "Creator" },
-				new Object[] { "tester", "Tester", "Tester" } };
+		return new Object[][] { new Object[] { "admin", "System Administrator",
+				"Administrator" },
+		// new Object[] { "pm", "Project Manager", "Project Manager" },
+		// new Object[] { "creator", "Component Creator", "Creator" },
+		// new Object[] { "tester", "Tester", "Tester" }
+		};
+	}
+
+	@DataProvider(name = "roleData")
+	public static Object[][] rolesDataProvider() {
+		return new Object[][] { new Object[] { "Administrator",
+				"System Administrator" },
+		// new Object[] { "Project Manager", "Project Manager" },
+		// new Object[] { "Creator", "Component Creator" },
+		// new Object[] { "Tester", "Tester" }
+		};
 	}
 
 	@Test(dataProvider = "roleData")
@@ -51,7 +64,6 @@ public class UserServiceTest {
 			// System.out.println("Description: " + ro.getDescription());
 			// System.out.println("----------------------------------------");
 			// }
-			//
 
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -64,27 +76,50 @@ public class UserServiceTest {
 	public void createUsers(String name, String description, String role) {
 		Transaction tx = session.beginTransaction();
 		try {
-			User up = new User(name, description);
+			User up = new User(name, "1111");
+			up.setDescription(description);
 
-			// up.getRoles().add(role);
 			session.save(up);
-			List users = session.createQuery("FROM User").list();
+			tx.commit();
 
-			for (Iterator iterator = users.iterator(); iterator.hasNext();) {
-				User user = (User) iterator.next();
-				System.out.println("UserID: " + user.getUserId());
-				System.out.println("Username: " + user.getFirstName());
-				System.out.println("Description: " + user.getDescription());
-				System.out.println("Role: "
-						+ user.getRoles().toArray()[0].toString());
-				System.out.println("----------------------------------------");
+			List roles = session
+					.createQuery("from Role as role where role.name=:name")
+					.setString("name", role).list();
+			Role ro = null;
+			if (roles.size() > 0) {
+				tx = session.beginTransaction();
+				ro = (Role) roles.get(0);
+				ro.getUsers().add(up);
+				session.update(ro);
+				tx.commit();
 			}
+
+			if (null != ro) {
+				tx = session.beginTransaction();
+				up.getRoles().add(ro);
+				session.update(up);
+				tx.commit();
+			}
+
+			// List users = session.createQuery("FROM User").list();
+			// for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+			// User user = (User) iterator.next();
+			// System.out.println("UserID: " + user.getUserId());
+			// System.out.println("Username: " + user.getFirstName());
+			// System.out.println("Description: " + user.getDescription());
+			// System.out.println("Role: "
+			// + user.getRoles().toArray()[0].toString());
+			// System.out.println("----------------------------------------");
+			// }
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
 			Assert.fail();
 		}
+		
+		
+		
 	}
 
 	@AfterClass

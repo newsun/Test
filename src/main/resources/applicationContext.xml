@@ -15,6 +15,12 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<!-- datastore configuration file -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/jdbc.properties" />
+	</bean>
+
 	<!-- scans the classpath for annotated components (including @Repostory 
 		and @Service that will be auto-registered as Spring beans -->
 	<context:component-scan base-package="com.symbio.sbtm" />
@@ -25,10 +31,39 @@
 
 	<!-- Creates a data source that can provide a connection to in-memory embedded 
 		database populated with test data see: http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/ch12s08.html -->
-	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:hsql_schema.sql" />
-		<jdbc:script location="classpath:hsql_test_data.sql" />
-	</jdbc:embedded-database>
+	<!-- <jdbc:embedded-database id="dataSource"> <jdbc:script location="classpath:hsql_schema.sql" 
+		/> <jdbc:script location="classpath:hsql_test_data.sql" /> </jdbc:embedded-database> -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
+		<property name="driverClassName"> <value>${jdbc.driverClassName}</value> 
+		</property> <property name="url"> <value>${jdbc.url}</value> </property> 
+		<property name="username"> <value>${jdbc.username}</value> </property> <property 
+		name="password"> <value>${jdbc.password}</value> </property> <property name="maxActive"> 
+		<value>80</value> </property> <property name="maxIdle"> <value>20</value> 
+		</property> <property name="maxWait"> <value>3000</value> </property> </bean> -->
+	<!--bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource" 
+		destroy-method="close"> <property name="driver"><value>${jdbc.driverClassName}</value></property> 
+		<property name="driverUrl"><value>${jdbc.url}</value></property> <property 
+		name="user"><value>${jdbc.username}</value></property> <property name="password"><value>${jdbc.password}</value></property> 
+		<property name="alias"><value>test</value></property> <property name="houseKeepingSleepTime"><value>90000</value></property> 
+		<property name="prototypeCount"><value>10</value></property> <property name="maximumConnectionCount"><value>100</value></property> 
+		<property name="minimumConnectionCount"><value>10</value></property> <property 
+		name="trace"><value>true</value></property> <property name="verbose"><value>true</value></property> 
+		</bean> -->
 
 	<!-- This will ensure that hibernate or jpa exceptions are automatically 
 		translated into Spring's generic DataAccessException hierarchy for those 
