@@ -6,14 +6,15 @@
 	<!-- this persistence unit is for the web application -->
 	<persistence-unit name="springJpaPersistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
+		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+		<provider>org.hibernate.dialect.MySQLDialect</provider>
 		<class>com.symbio.sbtm.model.Role</class>
 		<class>com.symbio.sbtm.model.User</class>
 
 
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<!-- value='create' to build a new database on each run; value='update' 
 				to modify an existing database; value='create-drop' means the same as 'create' 
 				but also drops tables when Hibernate closes; value='validate' makes no changes 

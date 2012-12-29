@@ -1,5 +1,6 @@
-create database SBTM;
-use SBTM;
+/*create database SBTM;*/
+/*use SBTM;*/
+
 /*step1 create a role table*/
 create table Role(
 id bigint auto_increment primary key,
@@ -7,7 +8,7 @@ name varchar(50) not null unique,
 description varchar(250) default ""
 );
 /*step2 create a user table*/
-/********************
+/*
  * User is able to be created but forbidden to delete, the column 'validate' is used to set its status 
  */
 create table User(

@@ -1,6 +1,7 @@
 package com.symbio.sbtm.model.dao;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
+
 
 public class NewTest {
   @Test
