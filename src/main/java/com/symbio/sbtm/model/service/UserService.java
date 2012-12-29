@@ -3,10 +3,9 @@ package com.symbio.sbtm.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.symbio.sbtm.model.dao.*;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
@@ -18,35 +17,35 @@ import com.symbio.sbtm.model.User;
  */
 @Service("IUserService")
 public class UserService implements IUserService {
-	
+
 	@Autowired
-	private IUserService userService;
+	private IUserDao userDao;
 
 	@Override
 	@Transactional
 	public void save(User user) throws Exception {
-		userService.save(user);
+		userDao.save(user);
 	}
 
 	@Override
 	@Transactional
 	public void delete(User user) throws Exception {
-		userService.delete(user);
+		userDao.delete(user);
 	}
 
 	@Override
 	@Transactional
 	public void update(User user) throws Exception {
-		userService.update(user);
+		userDao.update(user);
 	}
 
 	@Override
 	public List<Role> getRoles(String userId) throws Exception {
-		return userService.getRoles(userId);
+		return userDao.getRoles(userId);
 	}
 
 	@Override
 	public User getUserByUserId(String userId) throws Exception {
-		return userService.getUserByUserId(userId);
+		return userDao.getUserByUserId(userId);
 	}
 }

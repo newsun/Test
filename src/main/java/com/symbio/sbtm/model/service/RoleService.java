@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.symbio.sbtm.model.dao.*;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
@@ -19,33 +19,33 @@ import com.symbio.sbtm.model.User;
 public class RoleService implements IRoleService {
 
 	@Autowired
-	private IRoleService roleService;
+	private IRoleDao roleDao;
 
 	@Override
 	@Transactional
 	public void save(Role role) throws Exception {
-		roleService.save(role);
+		roleDao.save(role);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Role role) throws Exception {
-		roleService.delete(role);
+		roleDao.delete(role);
 	}
 
 	@Override
 	@Transactional
 	public void update(Role role) throws Exception {
-		roleService.update(role);
+		roleDao.update(role);
 	}
 
 	@Override
 	public Role getRoleByName(String name) throws Exception {
-		return roleService.getRoleByName(name);
+		return roleDao.getRoleByName(name);
 	}
 
 	@Override
 	public List<User> getAllUserByRoleId(String userId) throws Exception {
-		return roleService.getAllUserByRoleId(userId);
+		return roleDao.getAllUserByRoleId(userId);
 	}
 }
