@@ -26,8 +26,8 @@
 	<!-- Creates a data source that can provide a connection to in-memory embedded 
 		database populated with test data see: http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/ch12s08.html -->
 	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:schema.sql" />
-		<jdbc:script location="classpath:test-data.sql" />
+		<jdbc:script location="classpath:hsql_schema.sql" />
+		<jdbc:script location="classpath:hsql_test_data.sql" />
 	</jdbc:embedded-database>
 
 	<!-- This will ensure that hibernate or jpa exceptions are automatically 

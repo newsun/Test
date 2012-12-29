@@ -1,26 +1,21 @@
-create database SBTM;
-use SBTM;
-/*step1 create a role table*/
 create table Role(
-id bigint auto_increment primary key,
-name varchar(50) not null unique,
-description varchar(250) default ""
+id bigint IDENTITY primary key,
+name varchar(50) not null UNIQUE,
+description varchar(250) default "",
+constraint userid_unique unique (1)
 );
-/*step2 create a user table*/
-/********************
- * User is able to be created but forbidden to delete, the column 'validate' is used to set its status 
- */
+
 create table User(
-id bigint auto_increment primary key,
-userId varchar(50) not null unique,
+id bigint IDENTITY primary key,
+userId varchar(50) not null,
 password varchar(50) not null,
 firstName varchar(50) default null,
 lastName varchar(50) default null,
+constraint userid_unique unique (1),
 valid boolean default true,
 description varchar(250) default ""
 );
 
-/*step3 create Role_User table*/
 create table Role_User(
 userId bigint not null,
 roleId bigint not null,
@@ -29,45 +24,43 @@ foreign key(roleId) references Role(id) on delete cascade on update cascade,
 foreign key(userId) references User(id) on delete cascade on update cascade
 );
 
-/*step3 Create a os table*/
 create table OS(
-id int(10) auto_increment primary key,
-name varchar(50) unique,
+id int(10) IDENTITY primary key,
+name varchar(50) UNIQUE,
 description varchar(250)
 );
-/*step4 Create a duration table*/
+
 create table Duration(
 name varchar(50) primary key,
 timespan varchar(50) not null,
 description varchar(250)
 );
-/*Step5 Create a strategy table*/
+
 create table Strategy(
 name varchar(60) primary key,
 description varchar(250)
 );
 
-/*step6 Create a project table */
 create table Project(
-id bigint auto_increment primary key,
-name varchar(50) not null unique,
+id bigint IDENTITY primary key,
+name varchar(50) not null UNIQUE,
 description varchar(200),
 createtime datetime,
 creatorId varchar(50),
 foreign key(creatorId) references User(userId) on delete no action on update cascade
 );
-/*step7 Create a build table*/
+
 create table Build(
-id bigint primary key auto_increment,
+id bigint primary key IDENTITY,
 name varchar(50) not null,
 description varchar(250),
 projectId bigint not null,
 foreign key(projectId) references Project(id) on delete cascade on update cascade
 );
-/*step8 Create a multiple dynamic tree*/
+
 create table Area(
-id bigint primary key auto_increment,
-name varchar(50) not null unique,
+id bigint primary key IDENTITY,
+name varchar(50) not null UNIQUE,
 description varchar(200),
 projectId bigint not null,
 buildId bigint default null,
@@ -77,9 +70,8 @@ foreign key(buildId) references Build(id) on delete cascade on update cascade,
 foreign key(parentId) references Area(id) on delete cascade on update cascade
 );
 
-/*step9 Create a charter table*/
 create table Charter(
-id bigint primary key auto_increment,
+id bigint primary key IDENTITY,
 name varchar(60) not null,
 description varchar(250),
 projectId bigint not null,
@@ -107,7 +99,7 @@ foreign key(testerId) references User(userId) on delete no action on update casc
 
 /*step10 Create a bug table*/
 create table Bug(
-id bigint primary key auto_increment,
+id bigint primary key IDENTITY,
 summary varchar(50) not null,
 precedure varchar(250) not null,
 description varchar(250),
@@ -117,7 +109,7 @@ foreign key(charterId) references Charter(id) on delete cascade on update cascad
 
 /*step11 Create a issue table*/
 create table Issue(
-id bigint primary key auto_increment,
+id bigint primary key IDENTITY,
 summary varchar(50) not null,
 precedure varchar(250) not null,
 description varchar(250),
