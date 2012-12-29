@@ -8,7 +8,9 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>edu.ku.it.si.springjpaexample.model.Person</class>
+		<class>com.symbio.sbtm.model.Role</class>
+		<class>com.symbio.sbtm.model.User</class>
+
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
