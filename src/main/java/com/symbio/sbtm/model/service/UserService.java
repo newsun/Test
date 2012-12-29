@@ -18,6 +18,7 @@ import com.symbio.sbtm.model.User;
  */
 @Service("IUserService")
 public class UserService implements IUserService {
+	
 	@Autowired
 	private IUserService userService;
 
