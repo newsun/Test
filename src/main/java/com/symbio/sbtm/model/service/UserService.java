@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.symbio.sbtm.model.Role;
@@ -15,7 +16,7 @@ import com.symbio.sbtm.model.User;
  * @author Ken Jiang
  * 
  */
-@Repository("IUserService")
+@Service("IUserService")
 public class UserService implements IUserService {
 	@Autowired
 	private IUserService userService;
