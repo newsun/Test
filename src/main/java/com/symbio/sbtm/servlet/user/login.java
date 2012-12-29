@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.User;
 
 /**
@@ -71,8 +70,8 @@ public class login extends HttpServlet {
 		user.setUserId(userid);
 		boolean b = false;
 		try {
-			b = DAOFactory.getUserDAO().getUser(user).get(0).getPassword()
-					.equals(pwd);
+//			b = DAOFactory.getUserDAO().getUser(user).get(0).getPassword()
+//					.equals(pwd);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

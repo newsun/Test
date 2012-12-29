@@ -2,7 +2,7 @@ package com.symbio.sbtm.ui.action.build;
 
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.symbio.sbtm.factory.DAOFactory;
+//import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.Build;
 
 public class BuildAction extends ActionSupport {
@@ -13,7 +13,7 @@ public class BuildAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		try {
-			build = DAOFactory.getBuildDAO().getBuild(build).get(0);
+//			build = DAOFactory.getBuildDAO().getBuild(build).get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

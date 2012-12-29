@@ -18,9 +18,9 @@ import com.symbio.sbtm.model.User;
  * @author Ken Jiang
  * 
  */
-@Repository("IUser")
-public class UserJpa implements IUser {
-	private static final Logger logger = Logger.getLogger(UserJpa.class
+@Repository("IUserDao")
+public class UserDao implements IUserDao {
+	private static final Logger logger = Logger.getLogger(UserDao.class
 			.getName());
 
 	private EntityManager entityManager;

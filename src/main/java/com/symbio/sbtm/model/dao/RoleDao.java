@@ -18,10 +18,10 @@ import com.symbio.sbtm.model.User;
  * @author Ken Jiang
  * 
  */
-@Repository("IRole")
-public class RoleJpa implements IRole {
+@Repository("IRoleDao")
+public class RoleDao implements IRoleDao {
 
-	private static final Logger logger = Logger.getLogger(RoleJpa.class
+	private static final Logger logger = Logger.getLogger(IRoleDao.class
 			.getName());
 
 	private EntityManager entityManager;

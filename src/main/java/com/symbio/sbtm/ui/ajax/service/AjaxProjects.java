@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.Project;
 
 /**
@@ -24,18 +23,18 @@ public class AjaxProjects {
 	}
 
 	public String execute() {
-		try {
-			ArrayList<Project> projectListArray = DAOFactory.getProjectDAO()
-					.getAllProjects();
-			projectsMap = new TreeMap<Integer, String>();
-			for (Project project : projectListArray) {
-				projectsMap.put(Integer.valueOf(project.getId()), project
-						.getName());
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			ArrayList<Project> projectListArray = DAOFactory.getProjectDAO()
+//					.getAllProjects();
+//			projectsMap = new TreeMap<Integer, String>();
+//			for (Project project : projectListArray) {
+//				projectsMap.put(Integer.valueOf(project.getId()), project
+//						.getName());
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return "success";
 	}
 }

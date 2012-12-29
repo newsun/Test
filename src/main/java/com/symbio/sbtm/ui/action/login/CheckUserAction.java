@@ -23,7 +23,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import com.symbio.sbtm.factory.DAOFactory;
+//import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.User;
 
 @SuppressWarnings("serial")
@@ -64,15 +64,15 @@ public class CheckUserAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
-		User user_ = new User();
-		user_.setUserId(this.name);
-		user_.setPassword(this.password);
-		user_.setValid(true);
-		ArrayList<User> users = DAOFactory.getUserDAO().getUser(user_);
-		if (users == null || users.size() != 1) {
-			this.addFieldError("msg", "Invalid username or password");
-			return this.INPUT;
-		} else
+//		User user_ = new User();
+//		user_.setUserId(this.name);
+//		user_.setPassword(this.password);
+//		user_.setValid(true);
+//		ArrayList<User> users = DAOFactory.getUserDAO().getUser(user_);
+//		if (users == null || users.size() != 1) {
+//			this.addFieldError("msg", "Invalid username or password");
+//			return this.INPUT;
+//		} else
 			return SUCCESS;
 	}
 }

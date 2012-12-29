@@ -5,7 +5,7 @@ import java.util.List;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public interface IUser {
+public interface IUserDao {
 	/*
 	 * Create a user
 	 * 

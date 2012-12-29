@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.symbio.sbtm.factory.DAOFactory;
+//import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.Project;
 
 public class util {
@@ -135,21 +135,23 @@ public class util {
 			Class<?> inputCl, Object obj, String condition) throws Exception {
 		if (null == obj)
 			return null;
-		String sqlcmd = util.getBeforeSqlCmd(outputCl) + condition;
-		ArrayList<Object> list = DAOFactory.getDataBaseOperator()
-				.ExecuteReader(sqlcmd, null);
-		return convert2Class(outputCl, list);
+		// String sqlcmd = util.getBeforeSqlCmd(outputCl) + condition;
+		// ArrayList<Object> list = DAOFactory.getDataBaseOperator()
+		// .ExecuteReader(sqlcmd, null);
+		// return convert2Class(outputCl, list);
+		return null;
 	}
 
 	public static ArrayList<?> getAllObjects(Class<?> outputCl,
 			Class<?> inputCl, Object obj) throws Exception {
 		if (null == obj)
 			return null;
-		String sqlcmd = getSqlCmd(outputCl, inputCl, obj);
+//		String sqlcmd = getSqlCmd(outputCl, inputCl, obj);
 
-		ArrayList<Object> list = DAOFactory.getDataBaseOperator()
-				.ExecuteReader(sqlcmd, null);
-		return convert2Class(outputCl, list);
+		// ArrayList<Object> list = DAOFactory.getDataBaseOperator()
+		// .ExecuteReader(sqlcmd, null);
+		// return convert2Class(outputCl, list);
+		return null;
 	}
 
 	private static <T> ArrayList<Object> convert2Class(Class<T> cl,

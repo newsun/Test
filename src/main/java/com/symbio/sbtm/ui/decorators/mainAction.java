@@ -9,7 +9,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
-import com.symbio.sbtm.factory.DAOFactory;
+//import com.symbio.sbtm.factory.DAOFactory;
 import com.symbio.sbtm.model.Project;
 
 public class mainAction extends ActionSupport {
@@ -19,18 +19,18 @@ public class mainAction extends ActionSupport {
 	private ArrayList<Project> projectlist;
 
 	public ArrayList<Project> getProjectlist() {
-		if (null == ServletActionContext.getPageContext().getSession()
-				.getAttribute("projectlist")) {
-			try {
-				projectlist = DAOFactory.getProjectDAO().getAllProjects();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				projectlist = new ArrayList<Project>();
-			}
-			ServletActionContext.getPageContext().getSession()
-					.setAttribute("projectlist", projectlist);
-		}
+//		if (null == ServletActionContext.getPageContext().getSession()
+//				.getAttribute("projectlist")) {
+//			try {
+//				projectlist = DAOFactory.getProjectDAO().getAllProjects();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				projectlist = new ArrayList<Project>();
+//			}
+//			ServletActionContext.getPageContext().getSession()
+//					.setAttribute("projectlist", projectlist);
+//		}
 		return this.projectlist;
 	}
 

@@ -1,4 +1,4 @@
-package com.symbio.sbtm.vo;
+package com.symbio.sbtm.model.service;
 
 import java.util.Iterator;
 import java.util.List;
