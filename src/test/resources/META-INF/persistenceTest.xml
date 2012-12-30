@@ -8,8 +8,8 @@
 	<persistence-unit name="springJpaPersistenceUnitTest"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<!-- <class>com.symbio.sbtm.model.Role</class> -->
-		<!-- <class>com.symbio.sbtm.model.User</class> -->
+		<class>com.symbio.sbtm.model.Role</class>
+		<class>com.symbio.sbtm.model.User</class>
 		<properties>
 			<!-- value='create' to build a new database on each run; value='update' 
 				to modify an existing database; value='create-drop' means the same as 'create' 
@@ -24,6 +24,7 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.connection.autocommit" value="true" />
 		</properties>
 	</persistence-unit>
 </persistence>

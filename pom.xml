@@ -14,13 +14,13 @@
 
 	<properties>
 		<struts2.version>2.3.8</struts2.version>
-		<servletapi.version>2.4</servletapi.version>
-		<jspapi.version>2.0</jspapi.version>
+		<servletapi.version>2.5</servletapi.version>
+		<jspapi.version>2.1</jspapi.version>
 		<java.version>1.6</java.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
-		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
-		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
-		<hibernamte.annotations.version>3.5.6-Final</hibernamte.annotations.version>
+		<hibernate.version>3.5.1-Final</hibernate.version>
+		<hibernate.validator.version>4.0.2.GA</hibernate.validator.version>
+		<hibernamte.annotations.version>3.5.1-Final</hibernamte.annotations.version>
 	</properties>
 
 	<repositories>
@@ -134,10 +134,17 @@
 			<artifactId>struts2-dojo-plugin</artifactId>
 			<version>${struts2.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-config-browser-plugin</artifactId>
 			<version>${struts2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-junit-plugin</artifactId>
+			<version>${struts2.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- <dependency> <groupId>org.apache.struts</groupId> <artifactId>struts2-convention-plugin</artifactId> 
 			<version>3.0-SNAPSHOT</version> </dependency> -->
@@ -150,12 +157,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
+			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>${jspapi.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<!-- Jakarta Commons -->
 		<!-- The FileUpload component provides a simple yet flexible means of adding 
 			support for multipart file upload functionality to servlets and web applications. -->
@@ -181,13 +187,8 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>proxool</groupId>
-			<artifactId>proxool</artifactId>
-			<version>0.8.3</version>
-		</dependency>
- -->
+		<!-- <dependency> <groupId>proxool</groupId> <artifactId>proxool</artifactId> 
+			<version>0.8.3</version> </dependency> -->
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
 			<version>2.5.5</version> </dependency> -->
 		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-test</artifactId> 
@@ -203,26 +204,31 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.9</version>
 		</dependency>
-		<dependency>
-			<groupId>hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>1.8.0.10</version>
-		</dependency>
+		<!-- <dependency> <groupId>hsqldb</groupId> <artifactId>hsqldb</artifactId> 
+			<version>1.8.0.10</version> </dependency> -->
 
 
-		<!-- hibernate 4.1.7 -->
+		<!-- hibernate 3.5.1 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
-			<version>${hibernamte.annotations.version}</version> </dependency> -->
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator</artifactId> 
-			<version>${hibernate.validator.version}</version> </dependency> -->
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
-			<version>${hibernate.annotation.version}</version> </dependency> -->
-
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>${hibernamte.annotations.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>1.6.2</version>
+		</dependency>
 		<!-- Dwr -->
 		<!-- <dependency> <groupId>org.directwebremoting</groupId> <artifactId>dwr</artifactId> 
 			<version>2.0.9</version> </dependency> -->
@@ -236,12 +242,20 @@
 
 
 		<!-- log system -->
-		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-simple</artifactId> 
-			<version>1.5.6</version> </dependency> -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.0</version>
 		</dependency>
 
 		<!-- java system -->
@@ -302,7 +316,9 @@
 		<!-- embedded mysql -->
 		<!-- <dependency> <groupId>com.mysql</groupId> <artifactId>management</artifactId> 
 			<version>5.0.2-beta</version> <scope>compile</scope> <type>jar</type> </dependency> -->
-
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-ehcache</artifactId> 
+			<version>4.1.9.Final</version> </dependency> -->
+			
 	</dependencies>
 
 	<build>

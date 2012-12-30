@@ -1,16 +1,16 @@
 package com.symbio.sbtm.model.service;
 
-import junit.framework.Assert;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import com.symbio.sbtm.model.*;
 
 @ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
-public class RoleServiceTest {
+public class RoleServiceTest extends AbstractTestNGSpringContextTests {
 
 	private static final Logger logger = Logger.getLogger(RoleServiceTest.class
 			.getName());

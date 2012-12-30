@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
@@ -18,7 +19,7 @@ import com.symbio.sbtm.model.User;
  * @author Ken Jiang
  * 
  */
-@Repository(value="IRoleDao")
+@Repository(value = "IRoleDao")
 public class RoleDao implements IRoleDao {
 
 	private static final Logger logger = Logger.getLogger(IRoleDao.class
@@ -57,11 +58,12 @@ public class RoleDao implements IRoleDao {
 
 	@Override
 	public Role getRoleByName(String name) throws Exception {
-		TypedQuery<Role> query = entityManager.createQuery(
-				"from " + Role.class.getName(), Role.class);
+		String sql = "from " + Role.class.getSimpleName()
+				+ " as role where role.name='" + name + "'";
+		Query query = entityManager.createQuery(sql);
 		Role role = null;
 		try {
-			role = query.getSingleResult();
+			role = (Role) query.getSingleResult();
 		} catch (Exception e) {
 			logger.warn("No Role was found with an role name of " + name);
 		}

@@ -11,7 +11,7 @@ public interface IRoleService {
 	public void delete(Role role) throws Exception;
 
 	public void update(Role role) throws Exception;
-
+	
 	public Role getRoleByName(String name) throws Exception;
 
 	public List<User> getAllUserByRoleId(String userId) throws Exception;

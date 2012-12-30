@@ -33,7 +33,8 @@ public class User {
 	@Column(name = "description", length = 250)
 	private String description;
 
-	@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.DETACH)
+	@JoinTable(name = "role_user", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
 	private List<Role> roles = new ArrayList<Role>();
 
 	public User() {

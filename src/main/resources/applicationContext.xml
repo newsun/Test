@@ -24,8 +24,10 @@
 	<tx:annotation-driven />
 
 	<!-- datastore configuration file -->
-	<!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="location" value="/WEB-INF/jdbc.properties" /> </bean> -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/META-INF/jdbc.properties" />
+	</bean>
 
 	<!-- Creates a data source that can provide a connection to in-memory embedded 
 		database populated with test data see: http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/ch12s08.html -->
@@ -66,7 +68,6 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:persistenceXmlLocation="classpath*:META-INF/persistence.xml"
-		p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"
 		p:persistenceUnitName="springJpaPersistenceUnit" />
 
 

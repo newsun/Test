@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
@@ -57,16 +58,18 @@ public class UserDao implements IUserDao {
 	@Override
 	public User getUserByUserId(String userId) throws Exception {
 		User user = null;
-		TypedQuery<User> query = entityManager.createQuery(
-				"from " + User.class.getName() + " where id=" + userId,
-				User.class);
-		query.setParameter("userId", userId);
+		// TypedQuery<User> query = entityManager.createQuery(
+		// "from " + User.class.getName() + " where id=" + userId,
+		// User.class);
+		// query.setParameter("userId", userId);
+		String sql = "from " + User.class.getSimpleName() + " as user "
+				+ " where user.userId='" + userId + "'";
+		Query query = entityManager.createQuery(sql);
 		try {
-			user = query.getSingleResult();
+			user = (User) query.getSingleResult();
 		} catch (javax.persistence.NoResultException ex) {
 			logger.warn("No User was found with an userId of " + userId);
 		}
 		return user;
 	}
-
 }

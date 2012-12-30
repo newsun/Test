@@ -30,9 +30,9 @@ public class UserModelTest {
 	public static Object[][] usersDataProvider() {
 		return new Object[][] { new Object[] { "admin", "System Administrator",
 				"Administrator" },
-		// new Object[] { "pm", "Project Manager", "Project Manager" },
-		// new Object[] { "creator", "Component Creator", "Creator" },
-		// new Object[] { "tester", "Tester", "Tester" }
+		 new Object[] { "pm", "Project Manager", "Project Manager" },
+		 new Object[] { "creator", "Component Creator", "Creator" },
+		 new Object[] { "tester", "Tester", "Tester" }
 		};
 	}
 
@@ -117,9 +117,6 @@ public class UserModelTest {
 			e.printStackTrace();
 			Assert.fail();
 		}
-		
-		
-		
 	}
 
 	@AfterClass
