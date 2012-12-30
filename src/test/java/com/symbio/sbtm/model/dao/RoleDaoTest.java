@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import com.symbio.sbtm.model.*;
 
-@ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
+@ContextConfiguration(locations = { "classpath*:applicationContextTest.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class RoleDaoTest {

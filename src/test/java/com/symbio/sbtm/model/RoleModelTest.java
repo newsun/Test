@@ -8,16 +8,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.*;
 import com.symbio.sbtm.model.service.*;
 
-@ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
-public class RoleServiceTest {
+@ContextConfiguration(locations = { "classpath*:applicationContextTest.xml" })
+public class RoleModelTest {
 
-	private static final Logger logger = Logger.getLogger(RoleServiceTest.class
+	private static final Logger logger = Logger.getLogger(RoleModelTest.class
 			.getName());
 
 	@Autowired
 	private IRoleService roleService;
 
-	@Test(dataProvider = "roleData")
+	@Test(dataProvider = "roleData", dataProviderClass = UserModelTest.class)
 	public void testSave(String name, String description) {
 		Role role = new Role();
 		role.setName(name);

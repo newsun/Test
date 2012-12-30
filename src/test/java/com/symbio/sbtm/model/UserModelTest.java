@@ -17,7 +17,7 @@ import com.symbio.sbtm.factory.HSFactory;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
-public class UserServiceTest {
+public class UserModelTest {
 
 	private Session session;
 
