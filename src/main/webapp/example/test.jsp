@@ -19,7 +19,7 @@
 
 	<h1>2 url tag with parameter</h1>
 	<s:url action="hello" var="registerInputLink">
-		<s:param name="user.name">Bruce Phillips</s:param>
+		<s:param name="user.userId">Bruce Phillips</s:param>
 	</s:url>
 	<a href="${registerInputLink}">Please register</a> for our prize
 	drawing.
@@ -27,9 +27,11 @@
 	<h1>3 form and field validation</h1>
 	<s:form action="hello">
 		<!--  validate="true"> -->
-		<s:textfield name="user.name" label="Your name" />
+		<s:textfield name="user.userId" label="Your name" />
 		<s:submit value="Submit" />
 	</s:form>
+
+	<s:label key="user.description" />
 
 	<h1>4 resource property</h1>
 	<s:textfield key="user.description" />
@@ -38,21 +40,21 @@
 	<s:text name="struts.i18n.encoding" />
 
 	<h1>6 select tag</h1>
-	<s:select key="user.name" list="listExample" />
+	<s:select key="user.userId" list="listExample" />
 
 	<h1>7 radio tag</h1>
-	<s:radio key="user.name" list="listExample" />
+	<s:radio key="user.userId" list="listExample" />
 
 	<h1>8 checkbox tag</h1>
-	<s:checkbox key="user.name" />
+	<s:checkbox key="user.userId" />
 
 	<h1>9 checkboxlist tag</h1>
-	<s:checkboxlist key="user.name" list="listExample" />
+	<s:checkboxlist key="user.userId" list="listExample" />
 
 	<h1>10 xml validation</h1>
 	<s:form action="hello" method="post" theme="xhtml"
 		namespace="/validation" validate="true">
-		<s:textfield label="User name" name="user.name"></s:textfield>
+		<s:textfield label="User name" name="user.userId"></s:textfield>
 		<sx:submit value="check" validate="true" />
 	</s:form>
 

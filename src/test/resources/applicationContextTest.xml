@@ -33,8 +33,8 @@
 		database populated with test data see: http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/ch12s08.html -->
 	<!-- <jdbc:embedded-database id="mysql"> <jdbc:script location="classpath:hsql_schema.sql" 
 		/> <jdbc:script location="classpath:hsql_test_data.sql" /> </jdbc:embedded-database> -->
-		
-	<bean id="dataSourceTest"
+
+	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
 			<value>${jdbc.driverClassName}</value>
@@ -57,21 +57,21 @@
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 	<!-- JPA Entity Manager Factory -->
-	<bean id="entityManagerFactoryTest"
+	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-		p:dataSource-ref="dataSourceTest" p:persistenceXmlLocation="META-INF/persistenceTest.xml"
-		p:persistenceUnitName="springJpaPersistenceUnit_Test" />
+		p:dataSource-ref="dataSource" p:persistenceXmlLocation="META-INF/persistence.xml"
+		p:persistenceUnitName="springJpaPersistenceUnit" />
 
 	<!-- bean post-processor for JPA annotations -->
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
 	<!-- Transaction Config -->
-	<bean id="transactionManagerTest" class="org.springframework.orm.jpa.JpaTransactionManager"
-		p:entityManagerFactory-ref="entityManagerFactoryTest" />
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<!-- use declarative transaction management -->
-	<tx:annotation-driven transaction-manager="transactionManagerTest" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- Example of SAF2 action instantiated by Spring -->
 

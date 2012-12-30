@@ -15,12 +15,6 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!-- datastore configuration file -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="/WEB-INF/jdbc.properties" />
-	</bean>
-
 	<!-- scans the classpath for annotated components (including @Repostory 
 		and @Service that will be auto-registered as Spring beans -->
 	<context:component-scan base-package="com.symbio.sbtm" />
@@ -29,25 +23,19 @@
 		annotated with Transactional -->
 	<tx:annotation-driven />
 
+	<!-- datastore configuration file -->
+	<!-- <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="location" value="/WEB-INF/jdbc.properties" /> </bean> -->
+
 	<!-- Creates a data source that can provide a connection to in-memory embedded 
 		database populated with test data see: http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/ch12s08.html -->
 	<!-- <jdbc:embedded-database id="dataSource"> <jdbc:script location="classpath:hsql_schema.sql" 
 		/> <jdbc:script location="classpath:hsql_test_data.sql" /> </jdbc:embedded-database> -->
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName">
-			<value>${jdbc.driverClassName}</value>
-		</property>
-		<property name="url">
-			<value>${jdbc.url}</value>
-		</property>
-		<property name="username">
-			<value>${jdbc.username}</value>
-		</property>
-		<property name="password">
-			<value>${jdbc.password}</value>
-		</property>
-	</bean>
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName"> <value>${jdbc.driverClassName}</value> 
+		</property> <property name="url"> <value>${jdbc.url}</value> </property> 
+		<property name="username"> <value>${jdbc.username}</value> </property> <property 
+		name="password"> <value>${jdbc.password}</value> </property> </bean> -->
 	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
 		<property name="driverClassName"> <value>${jdbc.driverClassName}</value> 
 		</property> <property name="url"> <value>${jdbc.url}</value> </property> 
@@ -72,10 +60,15 @@
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 	<!-- JPA Entity Manager Factory -->
+	<!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" 
+		p:dataSource-ref="dataSource" p:persistenceXmlLocation="META-INF/persistence.xml" 
+		p:persistenceUnitName="springJpaPersistenceUnit" /> -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-		p:dataSource-ref="dataSource" p:persistenceXmlLocation="META-INF/persistence.xml"
+		p:persistenceXmlLocation="classpath*:META-INF/persistence.xml"
+		p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"
 		p:persistenceUnitName="springJpaPersistenceUnit" />
+
 
 	<!-- bean post-processor for JPA annotations -->
 	<bean
@@ -91,6 +84,6 @@
 	<!-- Example of SAF2 action instantiated by Spring -->
 	<bean id="hello" class="com.symbio.sbtm.example.hello" />
 	<bean id="throwException" class="com.symbio.sbtm.example.ThrowException" />
-	
+
 </beans>
 

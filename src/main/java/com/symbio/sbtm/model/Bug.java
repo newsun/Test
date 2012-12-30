@@ -2,7 +2,7 @@ package com.symbio.sbtm.model;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class Bug {
 
 	@Id

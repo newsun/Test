@@ -2,9 +2,9 @@
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 
 <validators>
-	<field name="user.name">
+	<field name="user.userId">
 		<field-validator type="requiredstring">
-			<message>You must enter the use description</message>
+			<message>You must enter the user id</message>
 		</field-validator>
 	</field>
 	<!-- <validator type="requiredstring"> <param name="fieldname">personBean.email</param> 
