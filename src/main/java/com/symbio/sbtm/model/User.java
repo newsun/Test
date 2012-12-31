@@ -43,6 +43,9 @@ public class User implements Serializable {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
 	private List<Role> roles = new ArrayList<Role>();
 
+	@OneToMany(mappedBy = "creator")
+	private List<Project> createdProjects;
+
 	public User() {
 	}
 
@@ -115,6 +118,18 @@ public class User implements Serializable {
 		this.roles = roles;
 	}
 
+	public List<Project> getCreatedProjects() {
+		return createdProjects;
+	}
+
+	public void setCreatedProjects(List<Project> createdProjects) {
+		this.createdProjects = createdProjects;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return this.userId;
@@ -128,11 +143,9 @@ public class User implements Serializable {
 
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 
-		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 
-		result = prime * result
-				+ ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 
 		return result;
 	}
