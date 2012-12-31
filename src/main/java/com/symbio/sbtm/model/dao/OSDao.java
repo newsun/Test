@@ -52,7 +52,6 @@ public class OSDao implements IOSDao {
 			logger.warn(e.getMessage());
 		}
 		return null;
-
 	}
 
 	@SuppressWarnings("unchecked")

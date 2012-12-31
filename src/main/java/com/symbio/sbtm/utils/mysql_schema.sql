@@ -35,7 +35,8 @@ description varchar(255)
 );
 /*step4 Create a duration table*/
 create table Duration(
-name varchar(50) primary key,
+id bigint auto_increment primary key,
+name varchar(50) not null unique,
 timespan varchar(50) not null,
 description varchar(255)
 );
