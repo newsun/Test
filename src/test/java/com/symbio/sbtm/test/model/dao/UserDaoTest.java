@@ -1,23 +1,22 @@
-package com.symbio.sbtm.model.dao;
+package com.symbio.sbtm.test.model.dao;
 
 import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.testng.annotations.Test;
 
-import com.symbio.sbtm.model.*;
+import com.symbio.sbtm.model.Role;
+import com.symbio.sbtm.model.dao.IRoleDao;
+import com.symbio.sbtm.test.model.*;
 
-@ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath*:applicationContextTest.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-public class RoleDaoTest {
+public class UserDaoTest {
 	@Autowired
 	private IRoleDao roleDao;
 

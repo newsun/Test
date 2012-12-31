@@ -1,4 +1,4 @@
-package com.symbio.sbtm.model.service;
+package com.symbio.sbtm.test.model.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,8 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import com.symbio.sbtm.model.*;
+import com.symbio.sbtm.model.Role;
+import com.symbio.sbtm.model.service.IRoleService;
 
 @ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
 public class RoleServiceTest extends AbstractTestNGSpringContextTests {
@@ -37,7 +38,19 @@ public class RoleServiceTest extends AbstractTestNGSpringContextTests {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Failed to create role with role name of " + name);
-			Assert.fail();
+			Assert.fail(e.getMessage());
+		}
+	}
+
+	@Test(dataProvider = "roleData", dependsOnMethods = "testSave")
+	public void testDelete(String name, String description) {
+		try {
+			Role role = roleService.getRoleByName(name);
+			roleService.delete(role);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("Failed to delete role with role name of " + name);
+			Assert.fail(e.getMessage());
 		}
 	}
 }

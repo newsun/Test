@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.symbio.sbtm.model.dao.*;
+
+import com.symbio.sbtm.model.dao.IUserDao;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
+import com.symbio.sbtm.test.model.dao.*;
 
 /**
  * Implements IUser behaviors using JPA to interact with a data repository.

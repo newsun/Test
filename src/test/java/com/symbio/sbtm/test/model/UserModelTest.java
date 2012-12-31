@@ -1,4 +1,4 @@
-package com.symbio.sbtm.model;
+package com.symbio.sbtm.test.model;
 
 import java.util.Iterator;
 import java.util.List;

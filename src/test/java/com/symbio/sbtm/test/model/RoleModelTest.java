@@ -1,4 +1,4 @@
-package com.symbio.sbtm.model;
+package com.symbio.sbtm.test.model;
 
 import junit.framework.Assert;
 
@@ -6,7 +6,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.*;
-import com.symbio.sbtm.model.service.*;
+
+import com.symbio.sbtm.model.Role;
+import com.symbio.sbtm.model.service.IRoleService;
+import com.symbio.sbtm.test.model.service.*;
 
 @ContextConfiguration(locations = { "classpath*:applicationContextTest.xml" })
 public class RoleModelTest {

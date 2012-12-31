@@ -1,20 +1,15 @@
-package com.symbio.sbtm.model.service;
+package com.symbio.sbtm.test.model.service;
 
-import java.util.Iterator;
-import java.util.List;
-
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import com.symbio.sbtm.factory.HSFactory;
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
+import com.symbio.sbtm.model.service.IRoleService;
+import com.symbio.sbtm.model.service.IUserService;
 
 @ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
 public class UserServiceTest extends AbstractTestNGSpringContextTests {
@@ -23,17 +18,20 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private IRoleService roleService;
 
+	Role role = new Role("Tester");
+
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClass() throws Exception {
+		roleService.update(role);
 	}
 
 	@DataProvider(name = "userData")
 	public static Object[][] usersDataProvider() {
 		return new Object[][] {
-				new Object[] { "admin", "System Administrator", "Administrator" },
-				new Object[] { "pm", "Project Manager", "Project Manager" },
-				new Object[] { "creator", "Component Creator", "Creator" },
-				new Object[] { "tester", "Tester", "Tester" } };
+		// new Object[] { "admin", "System Administrator", "Administrator" },
+		// new Object[] { "ppmm", "Project Manager", "Project Manager" },
+		// new Object[] { "creator", "Component Creator", "Creator" },
+		new Object[] { "tester", "Tester", "Tester" } };
 	}
 
 	@Test(dataProvider = "userData")
@@ -41,7 +39,9 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 			throws Exception {
 		User user = new User(name, "1111");
 		user.setDescription(description);
-
+		User existUser = userService.getUserByUserId(name);
+		if (existUser != null)
+			return;
 		Role role = roleService.getRoleByName(roleName);
 
 		user.getRoles().add(role);
@@ -67,9 +67,16 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 
 		Assert.assertNotNull(role, "Role " + roleName
 				+ " is deleted wrongly where delete user " + userId);
+
+		boolean b = role.getUsers().contains(user);
+
+		Assert.assertFalse(b, "user " + userId
+				+ "is not deleted from role group " + roleName);
 	}
 
 	@AfterClass
-	public void afterClass() {
+	public void afterClass() throws Exception {
+		Role ro = roleService.getRoleByName(role.getName());
+		roleService.delete(ro);
 	}
 }

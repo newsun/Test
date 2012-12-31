@@ -19,7 +19,7 @@ description varchar(255) default ""
 );
 
 /*step3 create Role_User table*/
-create table Role_User(
+create table User_Role(
 userId bigint not null,
 roleId bigint not null,
 primary key(userId,roleId),
