@@ -14,5 +14,7 @@ public interface IRoleDao {
 
 	public Role getRoleByName(String name) throws Exception;
 
+	public List<Role> getAllRoles() throws Exception;
+
 	public List<User> getAllUserByRoleId(String userId) throws Exception;
 }

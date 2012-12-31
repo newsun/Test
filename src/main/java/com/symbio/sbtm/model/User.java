@@ -16,7 +16,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id", length = 20)
+	@Column(name = "id")
 	private Long id;
 
 	@Size(min = 4, max = 50, message = "user name must be between 5-50")

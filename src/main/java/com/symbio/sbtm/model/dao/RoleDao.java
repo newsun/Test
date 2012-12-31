@@ -70,4 +70,15 @@ public class RoleDao implements IRoleDao {
 		return role;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Role> getAllRoles() throws Exception {
+		String qlString = "from Role";
+		Query query = entityManager.createQuery(qlString);
+		try {
+			return query.getResultList();
+		} catch (Exception e) {
+		}
+		return null;
+	}
 }

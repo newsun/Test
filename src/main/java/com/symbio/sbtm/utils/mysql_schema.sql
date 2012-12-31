@@ -30,7 +30,7 @@ foreign key(userId) references User(id) on delete cascade on update cascade
 /*step3 Create a os table*/
 create table OS(
 id bigint auto_increment primary key,
-name varchar(50) unique,
+name varchar(50) unique not null,
 description varchar(255)
 );
 /*step4 Create a duration table*/
