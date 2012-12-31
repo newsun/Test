@@ -1,10 +1,17 @@
 package com.symbio.sbtm.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class Issue {
+public class Issue implements Serializable{
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id", length = 20)

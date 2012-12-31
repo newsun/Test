@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Role implements Serializable {
@@ -18,6 +19,7 @@ public class Role implements Serializable {
 	@Column(name = "id")
 	private Long id;
 
+	@Size(min = 4, max = 50, message = "Role name must be between 4-50")
 	@Column(name = "name", length = 50, unique = true, nullable = false)
 	private String name;
 

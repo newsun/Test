@@ -19,7 +19,7 @@ public class User implements Serializable {
 	@Column(name = "id")
 	private Long id;
 
-	@Size(min = 4, max = 50, message = "user name must be between 5-50")
+	@Size(min = 4, max = 50, message = "user name must be between 4-50")
 	@Column(name = "userId", length = 50, nullable = false, unique = true)
 	private String userId;
 

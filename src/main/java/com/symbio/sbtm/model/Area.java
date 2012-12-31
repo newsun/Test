@@ -1,12 +1,18 @@
 package com.symbio.sbtm.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 //@Entity
-public class Area {
+public class Area implements Serializable{
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id", length = 20)

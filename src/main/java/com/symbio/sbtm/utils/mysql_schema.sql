@@ -42,7 +42,8 @@ description varchar(255)
 );
 /*Step5 Create a strategy table*/
 create table Strategy(
-name varchar(60) primary key,
+id bigint auto_increment primary key,
+name varchar(60) not null unique,
 description varchar(255)
 );
 
