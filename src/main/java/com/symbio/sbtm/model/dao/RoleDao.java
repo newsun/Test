@@ -78,6 +78,7 @@ public class RoleDao implements IRoleDao {
 		try {
 			return query.getResultList();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

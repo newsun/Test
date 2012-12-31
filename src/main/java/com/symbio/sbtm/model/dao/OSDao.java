@@ -48,8 +48,8 @@ public class OSDao implements IOSDao {
 		try {
 			return (OS) query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
+			// e.printStackTrace();
+			logger.warn(e.getMessage());
 		}
 		return null;
 

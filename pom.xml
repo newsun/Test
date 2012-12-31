@@ -18,9 +18,10 @@
 		<jspapi.version>2.1</jspapi.version>
 		<java.version>1.6</java.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
-		<hibernate.version>3.5.1-Final</hibernate.version>
-		<hibernate.validator.version>4.0.2.GA</hibernate.validator.version>
-		<hibernamte.annotations.version>3.5.1-Final</hibernamte.annotations.version>
+
+		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
+		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
+		<hibernamte.annotations.version>3.5.6-Final</hibernamte.annotations.version>
 	</properties>
 
 	<repositories>
@@ -318,7 +319,7 @@
 			<version>5.0.2-beta</version> <scope>compile</scope> <type>jar</type> </dependency> -->
 		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-ehcache</artifactId> 
 			<version>4.1.9.Final</version> </dependency> -->
-			
+
 	</dependencies>
 
 	<build>
