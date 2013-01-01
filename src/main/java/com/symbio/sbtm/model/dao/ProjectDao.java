@@ -15,7 +15,7 @@ import com.symbio.sbtm.model.Project;
 @Repository(value = "IProjectDao")
 public class ProjectDao implements IProjectDao {
 
-	private static final Logger logger = Logger.getLogger(IProjectDao.class.getName());
+	private static final Logger logger = Logger.getLogger(ProjectDao.class.getName());
 
 	private EntityManager entityManager;
 

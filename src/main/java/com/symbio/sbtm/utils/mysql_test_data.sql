@@ -32,7 +32,7 @@ insert into duration(name,timespan,description) values("short","100","test only"
 
 
 /***************************************************************************
- *  step5: insert entries into strategies table
+ *  step5: insert entries into strategy table
  ***************************************************************************/
 insert into strategy(name,description) values("Training","test only");
 insert into strategy(name,description) values("Exploration & Analysis","test only");
@@ -54,9 +54,9 @@ insert into strategy(name,description) values("Complex | Structure Testing","tes
 /***************************************************************************
  *  step6: insert entries project table
  ***************************************************************************/
-insert into project(name,description,creatorId) values("ProjectA","ProjectA Description","user");
-insert into project(name,description,creatorId) values("ProjectB","ProjectB Description","johnny");
-insert into project(name,description,creatorId) values("ProjectC","ProjectC Description","admin");
+insert into project(name,description,creatorId) values("ProjectA","ProjectA Description",1);
+insert into project(name,description,creatorId) values("ProjectB","ProjectB Description",2);
+insert into project(name,description,creatorId) values("ProjectC","ProjectC Description",3);
 /***************************************************************************
  *  step7: insert entries into build table
  ***************************************************************************/

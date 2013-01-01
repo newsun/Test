@@ -2,6 +2,7 @@ package com.symbio.sbtm.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -21,16 +22,19 @@ public class Project implements Serializable {
 	@Column(name = "name", length = 50, nullable = false, unique = true)
 	private String name;
 
-	@Size(min = 4, max = 50, message = "Project description must be between 4-255")
 	@Column(name = "description")
 	private String description;
 
 	@Column(name = "createtime")
+	@GeneratedValue
 	private Date date;
 
-	@JoinColumn(name = "creatorId")
 	@ManyToOne
+	@JoinColumn(name = "creatorId")
 	private User creator;
+
+	@OneToMany(mappedBy = "project", cascade = { CascadeType.ALL })
+	private List<Build> builds;
 
 	public Project() {
 	}
@@ -80,8 +84,12 @@ public class Project implements Serializable {
 		this.creator = creator;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public List<Build> getBuilds() {
+		return builds;
+	}
+
+	public void setBuilds(List<Build> builds) {
+		this.builds = builds;
 	}
 
 	@Override

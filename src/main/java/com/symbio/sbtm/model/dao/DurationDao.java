@@ -14,7 +14,7 @@ import com.symbio.sbtm.model.OS;
 
 @Repository(value = "IDurationDao")
 public class DurationDao implements IDurationDao {
-	private static final Logger logger = Logger.getLogger(IDurationDao.class
+	private static final Logger logger = Logger.getLogger(DurationDao.class
 			.getName());
 	private EntityManager entityManager;
 

@@ -67,6 +67,7 @@ public class ProjectSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@AfterClass
 	public void afterClass() throws Exception {
+		// here have to remove user first because of their ownership.
 		userService.delete(user);
 		roleService.delete(role);
 	}

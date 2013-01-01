@@ -13,7 +13,7 @@ import com.symbio.sbtm.model.Strategy;
 
 @Repository(value = "IStrategyDao")
 public class StrategyDao implements IStrategyDao {
-	private static final Logger logger = Logger.getLogger(IStrategyDao.class.getName());
+	private static final Logger logger = Logger.getLogger(StrategyDao.class.getName());
 	private EntityManager entityManager;
 
 	@PersistenceContext

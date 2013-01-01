@@ -14,7 +14,7 @@ import com.symbio.sbtm.model.OS;
 @Repository(value = "IOSDao")
 public class OSDao implements IOSDao {
 
-	private static final Logger logger = Logger.getLogger(IOSDao.class
+	private static final Logger logger = Logger.getLogger(OSDao.class
 			.getName());
 
 	private EntityManager entityManager;

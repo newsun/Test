@@ -3,27 +3,35 @@ package com.symbio.sbtm.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
-//@Entity
-public class Build implements Serializable{
+@Entity
+public class Build implements Serializable {
 	/**
      * 
      */
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "id", length = 20)
-	private int id;
-	
+	@ManyToOne
+	@JoinColumn(name = "projectId")
+	private Project project;
+
+	@Id
+	@Size(min = 2, max = 50, message = "Build name must be between 2-50")
 	@Column(name = "name", length = 50)
 	private String name;
-	
-	@Column(name = "description", length = 250)
+
+	@Column(name = "description", length = 255)
 	private String description;
-	
-	@Column(name = "description", length = 250)
-	private Project project;
+
+	public Build() {
+	}
+
+	public Build(String name, Project project) {
+		this.name = name;
+		this.project = project;
+	}
 
 	public String getName() {
 		return name;
@@ -31,22 +39,6 @@ public class Build implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getDescription() {
@@ -57,10 +49,17 @@ public class Build implements Serializable{
 		this.description = description;
 	}
 
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return String.valueOf(this.id);
+		return this.name;
 	}
 
 }

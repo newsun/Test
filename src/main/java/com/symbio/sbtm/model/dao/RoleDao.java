@@ -22,7 +22,7 @@ import com.symbio.sbtm.model.User;
 @Repository(value = "IRoleDao")
 public class RoleDao implements IRoleDao {
 
-	private static final Logger logger = Logger.getLogger(IRoleDao.class
+	private static final Logger logger = Logger.getLogger(RoleDao.class
 			.getName());
 
 	private EntityManager entityManager;

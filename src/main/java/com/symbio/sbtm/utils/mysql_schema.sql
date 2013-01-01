@@ -50,28 +50,30 @@ description varchar(255)
 /*step6 Create a project table */
 create table Project(
 id bigint auto_increment primary key,
-name varchar(50) unique not null ,
+name varchar(50) unique not null,
 description varchar(255),
-createtime TIMESTAMP,
+createtime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 creatorId bigint not null,
 foreign key(creatorId) references User(id) on delete no action on update cascade
 );
 /*step7 Create a build table*/
 create table Build(
-id bigint primary key auto_increment,
+id bigint auto_increment primary key,
 name varchar(50) not null,
 description varchar(255),
 projectId bigint not null,
+unique(projectId,name),
 foreign key(projectId) references Project(id) on delete cascade on update cascade
 );
 /*step8 Create a multiple dynamic tree*/
 create table Area(
-id bigint primary key auto_increment,
-name varchar(50) not null unique,
+name varchar(50) not null,
 description varchar(255),
 projectId bigint not null,
 buildId bigint default null,
 parentId bigint default null,
+isLeaf boolean not null default true,
+primary key(projectId,name),
 foreign key(projectId) references Project(id) on delete cascade on update cascade,
 foreign key(buildId) references Build(id) on delete cascade on update cascade,
 foreign key(parentId) references Area(id) on delete cascade on update cascade
