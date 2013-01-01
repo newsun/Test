@@ -14,98 +14,27 @@
 
 	<properties>
 		<struts2.version>2.3.8</struts2.version>
-		<servletapi.version>2.5</servletapi.version>
-		<jspapi.version>2.1</jspapi.version>
 		<java.version>1.6</java.version>
-		<spring.version>3.1.0.RELEASE</spring.version>
-
+		<spring.version>3.0.5.RELEASE</spring.version>
 		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
-		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
-		<!-- <hibernamte.annotations.version>3.5.6-Final</hibernamte.annotations.version> -->
+		<hibernate.validator.version>5.0.0-SNAPSHOT</hibernate.validator.version>
 	</properties>
-
 	<repositories>
 		<repository>
-			<id>apache.nexus</id>
-			<name>ASF Nexus Staging</name>
-			<url>https://repository.apache.org/content/groups/staging/</url>
-		</repository>
-
-		<repository>
-			<id>ibiblio mirror</id>
-			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
-		</repository>
-		<repository>
 			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Maven Repository Group</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<name>JBoss Public
+			Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
 			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
 		</repository>
 		<repository>
-			<id>people.apache.snapshots</id>
-			<url>http://repository.apache.org/content/groups/snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
+			<id>com.springsource.repository.maven.release</id>
+			<url>http://maven.springframework.org/release</url>
 			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>people.apache.snapshots-group</id>
-			<url>http://repository.apache.org/content/groups/snapshots-group</url>
-			<releases>
 				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>apache.snapshots.public</id>
-			<name>Apache Snapshots</name>
-			<url>http://repository.apache.org/content/groups/public</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>apache.snapshots.snapshots-group</id>
-			<name>Apache Snapshots</name>
-			<url>http://repository.apache.org/content/groups/snapshots-group</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Repository Group</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<dependencies>
 		<!-- Junit -->
 		<dependency>
@@ -154,13 +83,13 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>${servletapi.version}</version>
+			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>${jspapi.version}</version>
+			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- Jakarta Commons -->
