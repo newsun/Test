@@ -17,11 +17,11 @@
 		<servletapi.version>2.5</servletapi.version>
 		<jspapi.version>2.1</jspapi.version>
 		<java.version>1.6</java.version>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>3.1.0.RELEASE</spring.version>
 
 		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
 		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
-		<hibernamte.annotations.version>3.5.6-Final</hibernamte.annotations.version>
+		<!-- <hibernamte.annotations.version>3.5.6-Final</hibernamte.annotations.version> -->
 	</properties>
 
 	<repositories>
@@ -215,21 +215,15 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>${hibernamte.annotations.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
+			<version>${hibernamte.annotations.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate.validator.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>1.6.2</version>
-		</dependency>
+		<!-- <dependency> <groupId>net.sf.ehcache</groupId> <artifactId>ehcache</artifactId> 
+			<version>1.6.2</version> </dependency> -->
 		<!-- Dwr -->
 		<!-- <dependency> <groupId>org.directwebremoting</groupId> <artifactId>dwr</artifactId> 
 			<version>2.0.9</version> </dependency> -->
