@@ -67,18 +67,24 @@ foreign key(projectId) references Project(id) on delete cascade on update cascad
 );
 /*step8 Create a multiple dynamic tree*/
 create table Area(
+id bigint auto_increment primary key,
 name varchar(50) not null,
 description varchar(255),
 projectId bigint not null,
-buildId bigint default null,
 parentId bigint default null,
-isLeaf boolean not null default true,
-primary key(projectId,name),
+isLeaf boolean default true,
+unique(projectId,name),
 foreign key(projectId) references Project(id) on delete cascade on update cascade,
-foreign key(buildId) references Build(id) on delete cascade on update cascade,
 foreign key(parentId) references Area(id) on delete cascade on update cascade
 );
 
+create table Build_Area(
+areaId bigint not null,
+buildId bigint not null,
+primary key(areaId,buildId),
+foreign key(areaId) references Area(id) on delete cascade on update cascade,
+foreign key(buildId) references Build(id) on delete cascade on update cascade
+);
 /*step9 Create a charter table*/
 create table Charter(
 id bigint primary key auto_increment,

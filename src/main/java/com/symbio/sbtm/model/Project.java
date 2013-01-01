@@ -33,8 +33,11 @@ public class Project implements Serializable {
 	@JoinColumn(name = "creatorId")
 	private User creator;
 
-	@OneToMany(mappedBy = "project", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "project")
 	private List<Build> builds;
+
+	@OneToMany(mappedBy = "project")
+	private List<Area> areas;
 
 	public Project() {
 	}
@@ -90,6 +93,14 @@ public class Project implements Serializable {
 
 	public void setBuilds(List<Build> builds) {
 		this.builds = builds;
+	}
+
+	public List<Area> getAreas() {
+		return areas;
+	}
+
+	public void setAreas(List<Area> areas) {
+		this.areas = areas;
 	}
 
 	@Override
