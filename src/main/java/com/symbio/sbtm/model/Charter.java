@@ -27,9 +27,9 @@ public class Charter implements Serializable {
 	@Column(name = "description", length = 255)
 	private String description;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "areaId")
-	private Area area;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "Charter_Area", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
+	private Set<Area> areas = new HashSet<Area>();
 
 	@Column(name = "starttime")
 	private Date starttime;
@@ -68,21 +68,21 @@ public class Charter implements Serializable {
 	@JoinTable(name = "Charter_Strategy", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "strategyId"))
 	private Set<Strategy> strategies = new HashSet<Strategy>();
 
-	// @OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
-	// private Set<Bug> bugs;
-	//
-	// @OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
-	// private Set<Issue> issues;
+	@OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
+	private Set<Bug> bugs;
 
-	// @OneToMany(mappedBy = "charter", fetch = FetchType.LAZY)
-	// private Set<DataFile> datafiles;
+	@OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
+	private Set<Issue> issues;
+
+	@OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
+	private Set<DataFile> datafiles;
 
 	public Charter() {
 	}
 
-	public Charter(String name, Area area, User tester) {
+	public Charter(String name, Set<Area> areas, User tester) {
 		this.name = name;
-		this.area = area;
+		this.areas = areas;
 		this.tester = tester;
 	}
 
@@ -110,12 +110,12 @@ public class Charter implements Serializable {
 		this.description = description;
 	}
 
-	public Area getArea() {
-		return area;
+	public Set<Area> getArea() {
+		return areas;
 	}
 
-	public void setArea(Area area) {
-		this.area = area;
+	public void setArea(Set<Area> areas) {
+		this.areas = areas;
 	}
 
 	public Date getStarttime() {
@@ -204,6 +204,34 @@ public class Charter implements Serializable {
 
 	public void setStrategies(Set<Strategy> strategies) {
 		this.strategies = strategies;
+	}
+
+	public Set<Bug> getBugs() {
+		return bugs;
+	}
+
+	public void setBugs(Set<Bug> bugs) {
+		this.bugs = bugs;
+	}
+
+	public Set<Issue> getIssues() {
+		return issues;
+	}
+
+	public void setIssues(Set<Issue> issues) {
+		this.issues = issues;
+	}
+
+	public Set<DataFile> getDatafiles() {
+		return datafiles;
+	}
+
+	public void setDatafiles(Set<DataFile> datafiles) {
+		this.datafiles = datafiles;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override

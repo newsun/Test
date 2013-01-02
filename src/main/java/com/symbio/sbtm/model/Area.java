@@ -41,7 +41,7 @@ public class Area implements Serializable {
 	@ManyToMany(mappedBy = "areas", fetch = FetchType.EAGER)
 	private Set<Build> builds = new HashSet<Build>();
 
-	@OneToMany(mappedBy = "area", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "areas", fetch = FetchType.EAGER)
 	private Set<Charter> charters = new HashSet<Charter>();
 
 	public Area() {

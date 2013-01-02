@@ -17,6 +17,9 @@
 		<class>com.symbio.sbtm.model.Build</class>
 		<class>com.symbio.sbtm.model.Area</class>
 		<class>com.symbio.sbtm.model.Charter</class>
+		<class>com.symbio.sbtm.model.Bug</class>
+		<class>com.symbio.sbtm.model.Issue</class>
+		<class>com.symbio.sbtm.model.DataFile</class>
 		<properties>
 			<!-- value='create' to build a new database on each run; value='update' 
 				to modify an existing database; value='create-drop' means the same as 'create' 

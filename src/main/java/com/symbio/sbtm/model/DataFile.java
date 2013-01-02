@@ -1,16 +1,10 @@
 package com.symbio.sbtm.model;
 
-import java.io.InputStream;
 import java.io.Serializable;
-import java.nio.Buffer;
 
 import javax.persistence.*;
 
-import org.hibernate.type.BlobType;
-
-import com.mysql.jdbc.Blob;
-
-//@Entity
+@Entity
 public class DataFile implements Serializable {
 	/**
      * 
@@ -21,32 +15,106 @@ public class DataFile implements Serializable {
 	@Column(name = "id")
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "charterId")
 	private Charter charter;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bugId")
 	private Bug bug;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "issueId")
 	private Issue issue;
 
-	@JoinColumn(name = "fileName")
+	@Column(name = "fileName")
 	private String fileName;
 
-	@JoinColumn(name = "description")
+	@Column(name = "description")
 	private String description;
 
-	@JoinColumn(name = "binData")
-	private Blob buffer;
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name = "content", columnDefinition = "BLOB", nullable = true)
+	private byte[] content;
 
-	@JoinColumn(name = "fileSize")
+	@Column(name = "fileSize")
 	private Long size;
 
-	@JoinColumn(name = "fileType")
+	@Column(name = "fileType")
 	private String type;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Charter getCharter() {
+		return charter;
+	}
+
+	public void setCharter(Charter charter) {
+		this.charter = charter;
+	}
+
+	public Bug getBug() {
+		return bug;
+	}
+
+	public void setBug(Bug bug) {
+		this.bug = bug;
+	}
+
+	public Issue getIssue() {
+		return issue;
+	}
+
+	public void setIssue(Issue issue) {
+		this.issue = issue;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public byte[] getContent() {
+		return content;
+	}
+
+	public void setContent(byte[] content) {
+		this.content = content;
+	}
+
+	public Long getSize() {
+		return size;
+	}
+
+	public void setSize(Long size) {
+		this.size = size;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public String toString() {

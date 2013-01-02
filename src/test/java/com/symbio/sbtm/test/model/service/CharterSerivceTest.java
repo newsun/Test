@@ -1,5 +1,7 @@
 package com.symbio.sbtm.test.model.service;
 
+import java.util.HashSet;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -55,7 +57,9 @@ public class CharterSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testSave() throws Exception {
-		charter = new Charter(charterName, area, user);
+		HashSet<Area> areas = new HashSet<Area>();
+		areas.add(area);
+		charter = new Charter(charterName, areas, user);
 		charterService.save(charter);
 		Assert.assertNotNull(charter, "charter is not saved successfully");
 
@@ -73,8 +77,7 @@ public class CharterSerivceTest extends AbstractTestNGSpringContextTests {
 		buildService.update(build);
 
 		charter = charterService.getCharter(charter.getId());
-		Assert.assertEquals(charter.getDescription(), "Description is udpated",
-		        "Charter's description is not updated");
+		Assert.assertEquals(charter.getDescription(), "Description is udpated", "Charter's description is not updated");
 
 		build = buildService.getBuildByName(project, buildName);
 		boolean b = false;

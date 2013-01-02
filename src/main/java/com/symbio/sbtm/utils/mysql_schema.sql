@@ -123,38 +123,22 @@ foreign key(osId) references OS(id) on delete no action on update cascade
 /*step12 Create a bug table*/
 create table Bug(
 id bigint primary key auto_increment,
-summary varchar(50) not null,
-precedure varchar(255) not null,
-description varchar(255),
+summary varchar(255) not null,
+precedure varchar(5000) not null,
+description varchar(5000),
 charterId bigint not null,
 foreign key(charterId) references Charter(id) on delete cascade on update cascade
 );
-/*step13 Create a Charter_Bug table*/
-create table Charter_Bug(
-charterId bigint not null,
-bugId bigint not null,
-primary key(charterId,bugId),
-foreign key(charterId) references Charter(id) on delete cascade on update cascade,
-foreign key(bugId) references Bug(id) on delete cascade on update cascade
-);
-/*step14 Create a issue table*/
+/*step13 Create a issue table*/
 create table Issue(
 id bigint primary key auto_increment,
-summary varchar(50) not null,
-precedure varchar(255) not null,
-description varchar(255),
+summary varchar(255) not null,
+precedure varchar(5000) not null,
+description varchar(5000),
 charterId bigint not null,
 foreign key(charterId) references Charter(id) on delete cascade on update cascade
 );
-/*step15 Create a Charter_Issue table*/
-create table Charter_Issue(
-charterId bigint not null,
-issueId bigint not null,
-primary key(charterId,issueId),
-foreign key(charterId) references Charter(id) on delete cascade on update cascade,
-foreign key(issueId) references Issue(id) on delete cascade on update cascade
-);
-/*step16 Create a strategies table for charters*/
+/*step14 Create a strategies table for charters*/
 create table Charter_Strategy(
 charterId bigint not null,
 strategyId bigint not null,
@@ -178,7 +162,7 @@ bugId bigint,
 issueId bigint,
 fileName varchar(255) not null,
 description varchar(255),
-binData LONGBLOB,
+content LONGBLOB,
 fileSize bigint,
 fileType varchar(50),
 foreign key(charterId) references Charter(id) on delete cascade on update cascade,
