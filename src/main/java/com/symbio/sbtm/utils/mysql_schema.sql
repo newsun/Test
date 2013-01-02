@@ -146,17 +146,17 @@ primary key(charterId,strategyId),
 foreign key(charterId) references Charter(id) on delete cascade on update cascade,
 foreign key(strategyId) references Strategy(id) on delete no action on update cascade
 );
-/*step17 Create a areas table for charters*/s
+/*step17 Create a areas table for charters*/
 create table Charter_Area(
 charterId bigint not null,
 areaId bigint not null,
 primary key(charterId,areaId),
 foreign key(charterId) references Charter(id) on delete cascade on update cascade,
-foreign key(areaId) references Area(id) on delete no action on update cascade
+foreign key(areaId) references Area(id) on delete cascade on update cascade
 );
 /*step18 Create data files list for charter,bug, issue*/
 create table datafiles(
-id bigint auto_increment primarykey,
+id bigint auto_increment primary key,
 charterId bigint,
 bugId bigint,
 issueId bigint,

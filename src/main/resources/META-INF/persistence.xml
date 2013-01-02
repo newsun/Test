@@ -10,6 +10,16 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.symbio.sbtm.model.Role</class>
 		<class>com.symbio.sbtm.model.User</class>
+		<class>com.symbio.sbtm.model.OS</class>
+		<class>com.symbio.sbtm.model.Duration</class>
+		<class>com.symbio.sbtm.model.Strategy</class>
+		<class>com.symbio.sbtm.model.Project</class>
+		<class>com.symbio.sbtm.model.Build</class>
+		<class>com.symbio.sbtm.model.Area</class>
+		<class>com.symbio.sbtm.model.Charter</class>
+		<class>com.symbio.sbtm.model.Bug</class>
+		<class>com.symbio.sbtm.model.Issue</class>
+		<class>com.symbio.sbtm.model.DataFile</class>
 		<properties>
 			<!-- value='create' to build a new database on each run; value='update' 
 				to modify an existing database; value='create-drop' means the same as 'create' 
