@@ -16,13 +16,9 @@ public class OSDao implements IOSDao {
 
 	private static final Logger logger = Logger.getLogger(OSDao.class
 			.getName());
-
-	private EntityManager entityManager;
-
+	
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	@Override
 	public void save(OS os) throws Exception {

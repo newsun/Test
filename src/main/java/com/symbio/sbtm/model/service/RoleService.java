@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.symbio.sbtm.model.dao.IRoleDao;
 import com.symbio.sbtm.model.Role;
-import com.symbio.sbtm.model.User;
 
 /**
  * Implements IRole behaviors using JPA to interact with a data repository.
@@ -43,11 +42,6 @@ public class RoleService implements IRoleService {
 	@Override
 	public Role getRoleByName(String name) throws Exception {
 		return roleDao.getRoleByName(name);
-	}
-
-	@Override
-	public List<User> getAllUserByRoleId(String userId) throws Exception {
-		return roleDao.getAllUserByRoleId(userId);
 	}
 
 	@Override

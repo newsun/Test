@@ -1,7 +1,8 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -28,7 +29,7 @@ public class Area implements Serializable {
 	private Area parent;
 
 	@OneToMany(mappedBy = "parent")
-	private List<Area> subAreas;
+	private Set<Area> subAreas = new HashSet<Area>();
 
 	@Column(name = "description", length = 255)
 	private String description;
@@ -38,7 +39,10 @@ public class Area implements Serializable {
 	private Project project;
 
 	@ManyToMany(mappedBy = "areas", fetch = FetchType.EAGER)
-	private List<Build> builds;
+	private Set<Build> builds = new HashSet<Build>();
+
+	@OneToMany(mappedBy = "area", fetch = FetchType.EAGER)
+	private Set<Charter> charters = new HashSet<Charter>();
 
 	public Area() {
 	}
@@ -80,11 +84,11 @@ public class Area implements Serializable {
 		this.description = description;
 	}
 
-	public List<Area> getSubAreas() {
+	public Set<Area> getSubAreas() {
 		return subAreas;
 	}
 
-	public void setSubAreas(List<Area> subAreas) {
+	public void setSubAreas(Set<Area> subAreas) {
 		this.subAreas = subAreas;
 	}
 
@@ -96,16 +100,24 @@ public class Area implements Serializable {
 		this.parent = parent;
 	}
 
-	public List<Build> getBuilds() {
+	public Set<Build> getBuilds() {
 		return builds;
 	}
 
-	public void setBuilds(List<Build> builds) {
+	public void setBuilds(Set<Build> builds) {
 		this.builds = builds;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Set<Charter> getCharters() {
+		return charters;
+	}
+
+	public void setCharters(Set<Charter> charters) {
+		this.charters = charters;
 	}
 
 	@Override
@@ -119,8 +131,8 @@ public class Area implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((project == null) ? 0 : project.hashCode());
-		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
+		// result = prime * result + ((project == null) ? 0 : project.hashCode());
+		// result = prime * result + ((parent == null) ? 0 : parent.hashCode());
 		return result;
 	}
 
@@ -147,17 +159,17 @@ public class Area implements Serializable {
 		} else if (!name.equals(other.name))
 			return false;
 
-		if (project == null) {
-			if (other.project != null)
-				return false;
-		} else if (!project.equals(other.project))
-			return false;
-
-		if (parent == null) {
-			if (other.parent != null)
-				return false;
-		} else if (!parent.equals(other.parent))
-			return false;
+		// if (project == null) {
+		// if (other.project != null)
+		// return false;
+		// } else if (!project.equals(other.project))
+		// return false;
+		//
+		// if (parent == null) {
+		// if (other.parent != null)
+		// return false;
+		// } else if (!parent.equals(other.parent))
+		// return false;
 		return true;
 	}
 }

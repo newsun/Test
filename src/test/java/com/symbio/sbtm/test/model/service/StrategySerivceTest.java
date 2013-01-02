@@ -17,23 +17,25 @@ public class StrategySerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
 	private IStrategyService StrategySerivce;
+	private Strategy strategy = null;
+	private String strategyName = "Exploration & Analysis";
 
 	@Test
 	public void testSave() throws Exception {
-		Strategy strategy = new Strategy("Normal");
+		strategy = new Strategy(strategyName);
 		StrategySerivce.save(strategy);
-		Strategy strategy2 = StrategySerivce.getStrategyByName("Normal");
+		Strategy strategy2 = StrategySerivce.getStrategyByName(strategyName);
 		Assert.assertNotNull(strategy2, "Strategy is not saved successfully");
 		logger.info("StrategySerivceTest.testSave passed");
 	}
 
 	@Test(dependsOnMethods = "testSave")
 	public void testUpdate() throws Exception {
-		Strategy Strategy = StrategySerivce.getStrategyByName("Normal");
+		Strategy Strategy = StrategySerivce.getStrategyByName(strategyName);
 		Assert.assertNotNull(Strategy, "Strategy is not saved successfully");
 		Strategy.setDescription("Description is udpated");
 		StrategySerivce.update(Strategy);
-		Strategy Strategy2 = StrategySerivce.getStrategyByName("Normal");
+		Strategy Strategy2 = StrategySerivce.getStrategyByName(strategyName);
 		Assert.assertEquals(Strategy.getDescription(), Strategy2.getDescription(),
 		        "Strategy's description is not updated");
 		logger.info("StrategySerivceTest.testUpdate passed");
@@ -41,10 +43,10 @@ public class StrategySerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Test(dependsOnMethods = "testUpdate")
 	public void testDelete() throws Exception {
-		Strategy Strategy = StrategySerivce.getStrategyByName("Normal");
+		Strategy Strategy = StrategySerivce.getStrategyByName(strategyName);
 		Assert.assertNotNull(Strategy, "Strategy is not saved successfully");
 		StrategySerivce.delete(Strategy);
-		Strategy Strategy2 = StrategySerivce.getStrategyByName("Normal");
+		Strategy Strategy2 = StrategySerivce.getStrategyByName(strategyName);
 		Assert.assertNull(Strategy2, "Strategy is not deleted");
 		logger.info("StrategySerivceTest.testDelete passed");
 	}

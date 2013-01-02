@@ -1,8 +1,5 @@
 package com.symbio.sbtm.model.dao;
 
-import java.util.List;
-
-import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
 public interface IUserDao {
@@ -38,18 +35,6 @@ public interface IUserDao {
 	 * @throws Exception
 	 */
 	public void update(User user) throws Exception;
-
-	/*
-	 * find current user's roles
-	 * 
-	 * @param user
-	 * 
-	 * @return whether created successfully
-	 * 
-	 * @throws Exception
-	 */
-
-	public List<Role> getRoles(String userId) throws Exception;
 
 	/*
 	 * find a user whether exists

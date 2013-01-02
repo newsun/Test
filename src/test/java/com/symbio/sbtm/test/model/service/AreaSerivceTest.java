@@ -27,85 +27,75 @@ public class AreaSerivceTest extends AbstractTestNGSpringContextTests {
 	private User user = null;
 	private Project project = null;
 	private Build build = null;
+	private Area area = null;
+	private String userId = "userId_AreaSerivceTest";
+	private String projectName = "projectName_AreaSerivceTest";
+	private String buildName = "buildName_AreaSerivceTest";
+	private String areaName = "areaName_AreaSerivceTest";
 
 	@BeforeClass
 	public void beforeClass() throws Exception {
-		user = new User("tester", "1111");
-		userService.update(user);
-		user = userService.getUserByUserId(user.getUserId());
-		project = new Project("testProject", user);
-		projectService.update(project);
-		project = projectService.getProjectByName(project.getName());
-		build = new Build("Area1", project);
+		user = new User(userId, "1111");
+		userService.save(user);
+		project = new Project(projectName, user);
+		projectService.save(project);
+		build = new Build(buildName, project);
 		buildService.save(build);
-		build = buildService.getBuildByName(build.getName());
 	}
 
 	@Test
 	public void testSave() throws Exception {
-		Area area = new Area("Area1", project);
-
+		area = new Area(areaName, project);
 		areaService.save(area);
-		Area area2 = areaService.getAreaByName("Area1");
-		Assert.assertNotNull(area2, "area is not saved successfully");
+		Assert.assertNotNull(area, "area is not saved successfully");
+
+		project = projectService.getProjectByName(projectName);
+		Assert.assertTrue(project.getAreas().contains(area), "Don't get inserted area in project");
+
 		logger.info("AreaSerivceTest.testSave passed");
 	}
 
 	@Test(dependsOnMethods = "testSave")
 	public void testUpdate() throws Exception {
-		Area area = areaService.getAreaByName("Area1");
-		Assert.assertNotNull(area, "area is not saved successfully");
-
-		area.setDescription("Description is udpated");
+		area.setDescription("Description is udpated by area");
+		area.getBuilds().add(build);
+		areaService.update(area);
+		area = areaService.getAreaByName(project, area.getName());
+		Assert.assertEquals(area.getDescription(), "Description is udpated by area",
+		        "Description udpate by area failed");
+		Assert.assertFalse(area.getBuilds().contains(build), "Check area's build failed");
 
 		build.getAreas().add(area);
 		buildService.update(build);
+		build = buildService.getBuildByName(project, buildName);
+		area = areaService.getAreaByName(build, areaName);
+		Assert.assertTrue(area.getBuilds().contains(build), "Check area's build failed");
 
-		areaService.update(area);
-		Area area2 = areaService.getAreaByName("Area1");
-		Assert.assertEquals(area.getDescription(), area2.getDescription(), "Area's description is not updated");
-		Assert.assertTrue(area2.getBuilds().contains(build), "Area's build list is not updated");
+		build = buildService.getBuildByName(project, build.getName());
+
+		Assert.assertTrue(build.getAreas().contains(area));
 
 		logger.info("AreaSerivceTest.testUpdate passed");
 	}
 
 	@Test(dependsOnMethods = "testUpdate")
 	public void testDelete() throws Exception {
-		Area area = areaService.getAreaByName("Area1");
-		Assert.assertNotNull(area, "area is not saved successfully");
 		areaService.delete(area);
-		Area area2 = areaService.getAreaByName("Area1");
-		Assert.assertNull(area2, "Area is not deleted.");
+		area = areaService.getAreaByName(project, areaName);
+		Assert.assertNull(area, "Area is not deleted.");
 
-		Project project = projectService.getProjectByName(area.getProject().getName());
+		project = projectService.getProjectByName(project.getName());
 		Assert.assertNotNull(project, "Project is deleted wrongly when delete its area");
-		Build build = buildService.getBuildByName(area.getBuilds().get(0).getName());
+		build = buildService.getBuildByName(project, build.getName());
 		Assert.assertNotNull(build, "build is deleted wrongly when delete its area");
 		Assert.assertFalse(build.getAreas().contains(area));
 	}
 
-	@Test(dependsOnMethods = "testDelete")
-	public void testLink() throws Exception {
-		Area area = new Area("Area1", project);
-		areaService.save(area);
-		Area area2 = areaService.getAreaByName("Area1");
-		Assert.assertNotNull(area2, "area is not saved successfully");
-		Assert.assertEquals(project, area2.getProject(), "Area's project is not save successfully");
-
-		projectService.delete(project);
-		project = projectService.getProjectByName(project.getName());
-		Assert.assertNull(project, "Failed to delete project");
-		Area area3 = areaService.getAreaByName("Area1");
-		Assert.assertNull(area3, "area is not delete when delete its parent project");
-
-		logger.info("AreaSerivceTest.testDelete passed");
-	}
-
 	@AfterClass
 	public void afterClass() throws Exception {
-		// have to delete project first
-		if (project != null && build != null)
-			buildService.delete(build);
+		// don't have to delete project first
+		// if (project != null && build != null)
+		// buildService.delete(build);
 		if (project != null)
 			projectService.delete(project);
 		if (user != null)

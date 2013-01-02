@@ -14,12 +14,9 @@ import com.symbio.sbtm.model.Strategy;
 @Repository(value = "IStrategyDao")
 public class StrategyDao implements IStrategyDao {
 	private static final Logger logger = Logger.getLogger(StrategyDao.class.getName());
-	private EntityManager entityManager;
-
+	
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	@Override
 	public void save(Strategy strategy) throws Exception {

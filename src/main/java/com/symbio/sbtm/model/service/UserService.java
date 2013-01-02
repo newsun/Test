@@ -1,13 +1,10 @@
 package com.symbio.sbtm.model.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.symbio.sbtm.model.dao.IUserDao;
-import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
 
 /**
@@ -38,11 +35,6 @@ public class UserService implements IUserService {
 	@Transactional
 	public void update(User user) throws Exception {
 		userDao.update(user);
-	}
-
-	@Override
-	public List<Role> getRoles(String userId) throws Exception {
-		return userDao.getRoles(userId);
 	}
 
 	@Override

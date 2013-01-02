@@ -17,58 +17,67 @@ public class ProjectSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
 	private IProjectService projectService;
-	@Autowired
-	private IRoleService roleService;
 
 	@Autowired
 	private IUserService userService;
 
-	private Role role = null;
 	private User user = null;
+	private Project project = null;
+
+	private String userId = "userId_CharterSerivceTest";
+	private String projectName = "projectName_CharterSerivceTest";
 
 	@BeforeClass
 	public void beforeClass() throws Exception {
-		role = new Role("Tester");
-		roleService.save(role);
-		user = new User("tester", "1111");
-		user.getRoles().add(role);
+		user = new User(userId, "1111");
 		userService.save(user);
 	}
 
 	@Test
 	public void testSave() throws Exception {
-		Project project = new Project("Normal", user);
+		project = new Project(projectName, user);
 		projectService.save(project);
-		Project project2 = projectService.getProjectByName("Normal");
-		Assert.assertNotNull(project2, "project is not saved successfully");
+		project = projectService.getProjectByName(projectName);
+		Assert.assertNotNull(project, "project is not saved successfully");
 		logger.info("ProjectSerivceTest.testSave passed");
 	}
 
 	@Test(dependsOnMethods = "testSave")
 	public void testUpdate() throws Exception {
-		Project project = projectService.getProjectByName("Normal");
-		Assert.assertNotNull(project, "project is not saved successfully");
 		project.setDescription("Description is udpated");
 		projectService.update(project);
-		Project project2 = projectService.getProjectByName("Normal");
-		Assert.assertEquals(project.getDescription(), project2.getDescription(), "Project's description is not updated");
+		project = projectService.getProjectByName(projectName);
+		Assert.assertEquals(project.getDescription(), "Description is udpated", "Project's description is not updated");
 		logger.info("ProjectSerivceTest.testUpdate passed");
 	}
 
 	@Test(dependsOnMethods = "testUpdate")
-	public void testDelete() throws Exception {
-		Project project = projectService.getProjectByName("Normal");
-		Assert.assertNotNull(project, "project is not saved successfully");
-		projectService.delete(project);
-		Project project2 = projectService.getProjectByName("Normal");
-		Assert.assertNull(project2, "Project is not deleted");
+	public void testLink() throws Exception {
+		User us = project.getCreator();
+		Assert.assertEquals(user, us, "project creator is not correct!");
+
+		user = userService.getUserByUserId(userId);
+		Assert.assertTrue(user.getCreatedProjects().contains(project), "user's create project list is wrong");
+	}
+
+	@Test(dependsOnMethods = "testLink", expectedExceptions = { org.hibernate.LazyInitializationException.class })
+	public void testDelete() {
+		try {
+			projectService.delete(project);
+			project = projectService.getProjectByName(projectName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Assert.assertNull(project, "Project is not deleted");
 		logger.info("ProjectSerivceTest.testDelete passed");
 	}
 
 	@AfterClass
 	public void afterClass() throws Exception {
-		// here have to remove user first because of their ownership.
-		userService.delete(user);
-		roleService.delete(role);
+		if (project != null)
+			projectService.delete(project);
+		if (null != user)
+			userService.delete(user);
 	}
 }

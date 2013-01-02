@@ -34,13 +34,13 @@ public class BuildService implements IBuildService {
 	}
 
 	@Override
-	public Build getBuildByName(String name) throws Exception {
-		return buildDao.getBuildByName(name);
+	public Build getBuildByName(Project project, String name) throws Exception {
+		return buildDao.getBuildByName(project, name);
 	}
 
 	@Override
-	public List<Build> getAllBuilds() throws Exception {
-		return buildDao.getAllBuilds();
+	public List<Build> getAllBuilds(Project project) throws Exception {
+		return buildDao.getAllBuilds(project);
 	}
 
 }

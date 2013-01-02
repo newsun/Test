@@ -18,11 +18,13 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private IRoleService roleService;
 
-	Role role = new Role("Tester");
+	private Role role;
+	private User user;
 
 	@BeforeClass
 	public void beforeClass() throws Exception {
-		roleService.update(role);
+		role = new Role("Tester");
+		roleService.save(role);
 	}
 
 	@DataProvider(name = "userData")
@@ -35,48 +37,35 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 	}
 
 	@Test(dataProvider = "userData")
-	public void testSave(String name, String description, String roleName)
-			throws Exception {
-		User user = new User(name, "1111");
+	public void testSave(String name, String description, String roleName) throws Exception {
+		user = new User(name, "1111");
 		user.setDescription(description);
-		User existUser = userService.getUserByUserId(name);
-		if (existUser != null)
-			return;
-		Role role = roleService.getRoleByName(roleName);
-
 		user.getRoles().add(role);
-
 		userService.save(user);
+		Assert.assertTrue(user.getRoles().contains(role), "Failed in checking the role of newly added user " + name);
 
-		Assert.assertTrue(userService.getUserByUserId(name).getRoles()
-				.contains(role),
-				"Failed in checking the role of newly added user " + name);
+		role = roleService.getRoleByName(roleName);
+		Assert.assertTrue(role.getUsers().contains(user), "Failed in checking the role of newly added user " + name);
+
 	}
 
 	@Test(dataProvider = "userData", dependsOnMethods = "testSave")
-	public void testDelete(String userId, String description, String roleName)
-			throws Exception {
-		User user = userService.getUserByUserId(userId);
+	public void testDelete(String userId, String description, String roleName) throws Exception {
 		userService.delete(user);
-
 		user = userService.getUserByUserId(user.getUserId());
-
 		Assert.assertNull(user, "User " + userId + " is not deleted");
 
-		Role role = roleService.getRoleByName(roleName);
-
-		Assert.assertNotNull(role, "Role " + roleName
-				+ " is deleted wrongly where delete user " + userId);
-
+		role = roleService.getRoleByName(roleName);
+		Assert.assertNotNull(role, "Role " + roleName + " is deleted wrongly where delete user " + userId);
 		boolean b = role.getUsers().contains(user);
-
-		Assert.assertFalse(b, "user " + userId
-				+ "is not deleted from role group " + roleName);
+		Assert.assertFalse(b, "user " + userId + "is not deleted from role group " + roleName);
 	}
 
 	@AfterClass
 	public void afterClass() throws Exception {
-		Role ro = roleService.getRoleByName(role.getName());
-		roleService.delete(ro);
+		if (user != null)
+			userService.delete(user);
+		if (role != null)
+			roleService.delete(role);
 	}
 }

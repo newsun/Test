@@ -1,8 +1,8 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 import javax.validation.constraints.Size;
@@ -41,10 +41,13 @@ public class User implements Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
-	private List<Role> roles = new ArrayList<Role>();
+	private Set<Role> roles = new HashSet<Role>();
 
-	@OneToMany(mappedBy = "creator")
-	private List<Project> createdProjects;
+	@OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+	private Set<Project> createdProjects = new HashSet<Project>();
+
+	@OneToMany(mappedBy = "tester", fetch = FetchType.EAGER)
+	private Set<Charter> charters = new HashSet<Charter>();
 
 	public User() {
 	}
@@ -110,24 +113,32 @@ public class User implements Serializable {
 		this.description = description;
 	}
 
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 
-	public List<Project> getCreatedProjects() {
+	public Set<Project> getCreatedProjects() {
 		return createdProjects;
 	}
 
-	public void setCreatedProjects(List<Project> createdProjects) {
+	public void setCreatedProjects(Set<Project> createdProjects) {
 		this.createdProjects = createdProjects;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Set<Charter> getCharters() {
+		return charters;
+	}
+
+	public void setCharters(Set<Charter> charters) {
+		this.charters = charters;
 	}
 
 	@Override
@@ -185,15 +196,13 @@ public class User implements Serializable {
 		} else if (!lastName.equals(other.lastName))
 			return false;
 
-		List<Role> otherroles = other.getRoles();
-		if (roles.size() != otherroles.size())
-			return false;
-		for (int i = 0; i < roles.size(); i++) {
-			Role ro = roles.get(i);
-			if (!otherroles.contains(ro))
-				return false;
-		}
+		// Set<Role> otherroles = other.getRoles();
+		// if (roles.size() != otherroles.size())
+		// return false;
+		// for (Iterator<Role> it = roles.iterator(); it.hasNext();) {
+		// if (!otherroles.contains(it))
+		// return false;
+		// }
 		return true;
 	}
-
 }

@@ -1,39 +1,96 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Date;
 
-public class Charter implements Serializable{
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+@Entity
+public class Charter implements Serializable {
 	/**
      * 
      */
-    private static final long serialVersionUID = 1L;
-	private int id;
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	private Long id;
+
+	@Size(min = 4, max = 50, message = "Charter name must be between 4-50")
+	@Column(name = "name", length = 50)
 	private String name;
+
+	@Column(name = "description", length = 255)
 	private String description;
-	private Project project;
-	private Build build;
-	private String starttime;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "areaId")
+	private Area area;
+
+	@Column(name = "starttime")
+	private Date starttime;
+
+	@Column(name = "endtime")
+	private Date endtime;
+
+	@ManyToOne
+	@JoinColumn(name = "testerId")
 	private User tester;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "durationId")
 	private Duration duration;
+
+	@Column(name = "designAndExectution")
 	private int designAndExectution;
+
+	@Column(name = "bugIvestigationAndReporting")
 	private int bugIvestigationAndReporting;
+
+	@Column(name = "sesstionSetup")
 	private int sesstionSetup;
+
+	@Column(name = "chartervsopp")
 	private String chartervsopp;
-	private ArrayList<String> datafiles;
-	private String notes;
 
-	private ArrayList<Area> areas;
-	private ArrayList<OS> oss;
-	private ArrayList<Strategy> strategies;
-	private ArrayList<Bug> bugs;
-	private ArrayList<Issue> issues;
+	@Column(name = "note")
+	private String note;
 
-	public int getId() {
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "Charter_OS", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "osId"))
+	private Set<OS> oss = new HashSet<OS>();
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "Charter_Strategy", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "strategyId"))
+	private Set<Strategy> strategies = new HashSet<Strategy>();
+
+	// @OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
+	// private Set<Bug> bugs;
+	//
+	// @OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
+	// private Set<Issue> issues;
+
+	// @OneToMany(mappedBy = "charter", fetch = FetchType.LAZY)
+	// private Set<DataFile> datafiles;
+
+	public Charter() {
+	}
+
+	public Charter(String name, Area area, User tester) {
+		this.name = name;
+		this.area = area;
+		this.tester = tester;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,28 +110,28 @@ public class Charter implements Serializable{
 		this.description = description;
 	}
 
-	public Project getProject() {
-		return project;
+	public Area getArea() {
+		return area;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setArea(Area area) {
+		this.area = area;
 	}
 
-	public Build getBuild() {
-		return build;
-	}
-
-	public void setBuild(Build build) {
-		this.build = build;
-	}
-
-	public String getStarttime() {
+	public Date getStarttime() {
 		return starttime;
 	}
 
-	public void setStarttime(String starttime) {
+	public void setStarttime(Date starttime) {
 		this.starttime = starttime;
+	}
+
+	public Date getEndtime() {
+		return endtime;
+	}
+
+	public void setEndtime(Date endtime) {
+		this.endtime = endtime;
 	}
 
 	public User getTester() {
@@ -125,66 +182,74 @@ public class Charter implements Serializable{
 		this.chartervsopp = chartervsopp;
 	}
 
-	public ArrayList<String> getDatafiles() {
-		return datafiles;
+	public String getNote() {
+		return note;
 	}
 
-	public void setDatafiles(ArrayList<String> datafiles) {
-		this.datafiles = datafiles;
+	public void setNote(String note) {
+		this.note = note;
 	}
 
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public ArrayList<Area> getAreas() {
-		return areas;
-	}
-
-	public void setAreas(ArrayList<Area> areas) {
-		this.areas = areas;
-	}
-
-	public ArrayList<OS> getOss() {
+	public Set<OS> getOss() {
 		return oss;
 	}
 
-	public void setOss(ArrayList<OS> oss) {
+	public void setOss(Set<OS> oss) {
 		this.oss = oss;
 	}
 
-	public ArrayList<Strategy> getStrategies() {
+	public Set<Strategy> getStrategies() {
 		return strategies;
 	}
 
-	public void setStrategies(ArrayList<Strategy> strategies) {
+	public void setStrategies(Set<Strategy> strategies) {
 		this.strategies = strategies;
-	}
-
-	public ArrayList<Bug> getBugs() {
-		return bugs;
-	}
-
-	public void setBugs(ArrayList<Bug> bugs) {
-		this.bugs = bugs;
-	}
-
-	public ArrayList<Issue> getIssues() {
-		return issues;
-	}
-
-	public void setIssues(ArrayList<Issue> issues) {
-		this.issues = issues;
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return String.valueOf(this.id);
+		return this.name;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		// result = prime * result + ((area == null) ? 0 : area.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+
+		if (getClass() != obj.getClass())
+			return false;
+
+		Charter other = (Charter) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+
+		// if (area == null) {
+		// if (other.area != null)
+		// return false;
+		// } else if (!area.equals(other.area))
+		// return false;
+
+		return true;
+	}
 }

@@ -2,7 +2,8 @@ package com.symbio.sbtm.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -29,15 +30,15 @@ public class Project implements Serializable {
 	@GeneratedValue
 	private Date date;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "creatorId")
 	private User creator;
 
-	@OneToMany(mappedBy = "project")
-	private List<Build> builds;
+	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+	private Set<Build> builds = new HashSet<Build>();
 
-	@OneToMany(mappedBy = "project")
-	private List<Area> areas;
+	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+	private Set<Area> areas = new HashSet<Area>();
 
 	public Project() {
 	}
@@ -87,19 +88,19 @@ public class Project implements Serializable {
 		this.creator = creator;
 	}
 
-	public List<Build> getBuilds() {
+	public Set<Build> getBuilds() {
 		return builds;
 	}
 
-	public void setBuilds(List<Build> builds) {
+	public void setBuilds(Set<Build> builds) {
 		this.builds = builds;
 	}
 
-	public List<Area> getAreas() {
+	public Set<Area> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<Area> areas) {
+	public void setAreas(Set<Area> areas) {
 		this.areas = areas;
 	}
 
@@ -114,7 +115,7 @@ public class Project implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
+		// result = prime * result + ((creator == null) ? 0 : creator.hashCode());
 		return result;
 	}
 
@@ -141,11 +142,11 @@ public class Project implements Serializable {
 		} else if (!name.equals(other.name))
 			return false;
 
-		if (creator == null) {
-			if (other.creator != null)
-				return false;
-		} else if (!creator.equals(other.creator))
-			return false;
+		// if (creator == null) {
+		// if (other.creator != null)
+		// return false;
+		// } else if (!creator.equals(other.creator))
+		// return false;
 		return true;
 	}
 }

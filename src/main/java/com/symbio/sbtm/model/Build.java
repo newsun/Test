@@ -1,7 +1,8 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -23,7 +24,7 @@ public class Build implements Serializable {
 	@Column(name = "name", length = 50)
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "projectId")
 	private Project project;
 
@@ -31,8 +32,8 @@ public class Build implements Serializable {
 	private String description;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "build_area", joinColumns = @JoinColumn(name = "buildId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
-	private List<Area> areas;
+	@JoinTable(name = "Build_Area", joinColumns = @JoinColumn(name = "buildId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
+	private Set<Area> areas = new HashSet<Area>();
 
 	public Build() {
 	}
@@ -74,11 +75,11 @@ public class Build implements Serializable {
 		this.project = project;
 	}
 
-	public List<Area> getAreas() {
+	public Set<Area> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(List<Area> areas) {
+	public void setAreas(Set<Area> areas) {
 		this.areas = areas;
 	}
 
@@ -93,7 +94,7 @@ public class Build implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((project == null) ? 0 : project.hashCode());
+		// result = prime * result + ((project == null) ? 0 : project.hashCode());
 		return result;
 	}
 
@@ -120,11 +121,11 @@ public class Build implements Serializable {
 		} else if (!name.equals(other.name))
 			return false;
 
-		if (project == null) {
-			if (other.project != null)
-				return false;
-		} else if (!project.equals(other.project))
-			return false;
+		// if (project == null) {
+		// if (other.project != null)
+		// return false;
+		// } else if (!project.equals(other.project))
+		// return false;
 
 		return true;
 	}

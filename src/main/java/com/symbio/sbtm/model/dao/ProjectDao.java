@@ -17,12 +17,8 @@ public class ProjectDao implements IProjectDao {
 
 	private static final Logger logger = Logger.getLogger(ProjectDao.class.getName());
 
-	private EntityManager entityManager;
-
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	@Override
 	public void save(Project project) throws Exception {

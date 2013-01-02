@@ -2,7 +2,7 @@ package com.symbio.sbtm.model.dao;
 
 import java.util.List;
 
-import com.symbio.sbtm.model.Build;
+import com.symbio.sbtm.model.*;
 
 public interface IBuildDao {
 	public void save(Build build) throws Exception;
@@ -11,7 +11,7 @@ public interface IBuildDao {
 
 	public void update(Build build) throws Exception;
 
-	public Build getBuildByName(String name) throws Exception;
-	
-	public List<Build> getAllBuilds() throws Exception;
+	public Build getBuildByName(Project project, String buildName) throws Exception;
+
+	public List<Build> getAllBuilds(Project project) throws Exception;
 }

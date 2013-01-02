@@ -17,35 +17,43 @@ public class DurationSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
 	private IDurationService durationService;
+	private Duration duration = null;
+	private String durationName = "durationName_DurationSerivceTest";
 
 	@Test
 	public void testSave() throws Exception {
-		Duration duration = new Duration("Normal", "100m");
+		duration = new Duration(durationName, "100m");
 		durationService.save(duration);
-		Duration duration2 = durationService.getDurationByName("Normal");
-		Assert.assertNotNull(duration2, "duration is not saved successfully");
+		duration = durationService.getDurationByName(durationName);
+		Assert.assertNotNull(duration, "duration is not saved successfully");
 		logger.info("DurationSerivceTest.testSave passed");
 	}
 
 	@Test(dependsOnMethods = "testSave")
 	public void testUpdate() throws Exception {
-		Duration duration = durationService.getDurationByName("Normal");
+		duration = durationService.getDurationByName(durationName);
 		Assert.assertNotNull(duration, "duration is not saved successfully");
 		duration.setDescription("Description is udpated");
 		durationService.update(duration);
-		Duration duration2 = durationService.getDurationByName("Normal");
-		Assert.assertEquals(duration.getDescription(), duration2.getDescription(),
+		duration = durationService.getDurationByName(durationName);
+		Assert.assertEquals(duration.getDescription(), "duration is not saved successfully",
 		        "Duration's description is not updated");
 		logger.info("DurationSerivceTest.testUpdate passed");
 	}
 
 	@Test(dependsOnMethods = "testUpdate")
 	public void testDelete() throws Exception {
-		Duration duration = durationService.getDurationByName("Normal");
+		Duration duration = durationService.getDurationByName(durationName);
 		Assert.assertNotNull(duration, "duration is not saved successfully");
 		durationService.delete(duration);
-		Duration duration2 = durationService.getDurationByName("Normal");
-		Assert.assertNull(duration2, "Duration is not deleted");
+		duration = durationService.getDurationByName(durationName);
+		Assert.assertNull(duration, "Duration is not deleted");
 		logger.info("DurationSerivceTest.testDelete passed");
+	}
+
+	@AfterClass
+	public void afterClass() throws Exception {
+		if (null != duration)
+			durationService.delete(duration);
 	}
 }

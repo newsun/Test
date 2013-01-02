@@ -22,49 +22,48 @@ public class BuildSerivceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private IUserService userService;
 
-	User user = null;
-	Project project = null;
+	private User user = null;
+	private Project project = null;
+	private Build build = null;
+	private String userId = "userId_BuildSerivceTest";
+	private String projectName = "projectName_BuildSerivceTest";
+	private String buildName = "buildName_BuildSerivceTest";
 
 	@BeforeClass
 	public void beforeClass() throws Exception {
-		user = new User("tester", "1111");
-		userService.update(user);
-		user = userService.getUserByUserId(user.getUserId());
-		project = new Project("testProject", user);
-		projectService.update(project);
-		project = projectService.getProjectByName(project.getName());
+		user = new User(userId, "1111");
+		userService.save(user);
+		project = new Project(projectName, user);
+		projectService.save(project);
 	}
 
 	@Test
 	public void testSave() throws Exception {
-		Build build = new Build("v1.1", project);
+		build = new Build(buildName, project);
 		buildService.save(build);
 		// used below to test whether the unique work. result: doesn't work
-		// Build build1 = new Build("v1.1", project);
+		// Build build1 = new Build(buildName, project);
 		// buildService.save(build1);
-		Build build2 = buildService.getBuildByName("v1.1");
-		Assert.assertNotNull(build2, "build is not saved successfully");
+		build = buildService.getBuildByName(project, buildName);
+		Assert.assertNotNull(build, "build is not saved successfully");
 		logger.info("BuildSerivceTest.testSave passed");
 	}
 
 	@Test(dependsOnMethods = "testSave")
 	public void testUpdate() throws Exception {
-		Build build = buildService.getBuildByName("v1.1");
-		Assert.assertNotNull(build, "build is not saved successfully");
-
 		build.setDescription("Description is udpated");
 		buildService.update(build);
-		Build build2 = buildService.getBuildByName("v1.1");
+		Build build2 = buildService.getBuildByName(project, buildName);
 		Assert.assertEquals(build.getDescription(), build2.getDescription(), "Build's description is not updated");
 		logger.info("BuildSerivceTest.testUpdate passed");
 	}
 
 	@Test(dependsOnMethods = "testUpdate")
 	public void testDelete() throws Exception {
-		Build build = buildService.getBuildByName("v1.1");
+		Build build = buildService.getBuildByName(project, buildName);
 		Assert.assertNotNull(build, "build is not saved successfully");
 		buildService.delete(build);
-		Build build2 = buildService.getBuildByName("v1.1");
+		Build build2 = buildService.getBuildByName(project, buildName);
 		Assert.assertNull(build2, "Build is not deleted.");
 
 		Project project = projectService.getProjectByName(build.getProject().getName());
@@ -73,18 +72,15 @@ public class BuildSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Test(dependsOnMethods = "testDelete")
 	public void testLink() throws Exception {
-		Build build = new Build("v1.1", project);
+		Build build = new Build(buildName, project);
 		buildService.save(build);
-		Build build2 = buildService.getBuildByName("v1.1");
+		Build build2 = buildService.getBuildByName(project, buildName);
 		Assert.assertNotNull(build2, "build is not saved successfully");
 		Assert.assertEquals(project, build2.getProject(), "Build's project is not save successfully");
 
 		projectService.delete(project);
 		project = projectService.getProjectByName(project.getName());
 		Assert.assertNull(project, "Failed to delete project");
-		Build build3 = buildService.getBuildByName("v1.1");
-		Assert.assertNull(build3, "build is not delete when delete its parent project");
-
 		logger.info("BuildSerivceTest.testDelete passed");
 
 	}

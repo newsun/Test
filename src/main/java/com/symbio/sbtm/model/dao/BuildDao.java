@@ -9,18 +9,15 @@ import javax.persistence.Query;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
-import com.symbio.sbtm.model.Build;
+import com.symbio.sbtm.model.*;
 
 @Repository(value = "IBuildDao")
 public class BuildDao implements IBuildDao {
 
 	private static final Logger logger = Logger.getLogger(BuildDao.class.getName());
-	private EntityManager entityManager;
 
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	@Override
 	public void save(Build build) throws Exception {
@@ -39,9 +36,11 @@ public class BuildDao implements IBuildDao {
 	}
 
 	@Override
-	public Build getBuildByName(String name) throws Exception {
-		String qlString = "from " + Build.class.getSimpleName() + " as build where build.name='" + name + "'";
-		Query query = entityManager.createQuery(qlString);
+	public Build getBuildByName(Project project, String name) throws Exception {
+		String qlString = "from " + Build.class.getSimpleName()
+		        + " as build where build.name=:name and build.project.id=:pid";
+		Query query = entityManager.createQuery(qlString).setParameter("name", name)
+		        .setParameter("pid", project.getId());
 		try {
 			return (Build) query.getSingleResult();
 		} catch (Exception e) {
@@ -52,9 +51,9 @@ public class BuildDao implements IBuildDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Build> getAllBuilds() throws Exception {
-		String qlString = "from " + Build.class.getSimpleName();
-		return entityManager.createQuery(qlString).getResultList();
+	public List<Build> getAllBuilds(Project project) throws Exception {
+		String qlString = "from " + Build.class.getSimpleName() + " as build where build.project.id=:pid";
+		return entityManager.createQuery(qlString).setParameter("pid", project.getId()).getResultList();
 	}
 
 }

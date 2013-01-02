@@ -14,14 +14,10 @@ import com.symbio.sbtm.model.OS;
 
 @Repository(value = "IDurationDao")
 public class DurationDao implements IDurationDao {
-	private static final Logger logger = Logger.getLogger(DurationDao.class
-			.getName());
-	private EntityManager entityManager;
-
+	private static final Logger logger = Logger.getLogger(DurationDao.class.getName());
+	
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	@Override
 	public void save(Duration duration) throws Exception {
@@ -41,8 +37,7 @@ public class DurationDao implements IDurationDao {
 
 	@Override
 	public Duration getDurationByName(String name) throws Exception {
-		String qlString = "from " + Duration.class.getSimpleName()
-				+ " as du where du.name='" + name + "'";
+		String qlString = "from " + Duration.class.getSimpleName() + " as du where du.name='" + name + "'";
 		Query query = entityManager.createQuery(qlString);
 		try {
 			return (Duration) query.getSingleResult();

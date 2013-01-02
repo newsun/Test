@@ -5,13 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.symbio.sbtm.model.Role;
-import com.symbio.sbtm.model.User;
 
 /**
  * Implements IRole behaviors using JPA to interact with a data repository.
@@ -24,13 +22,9 @@ public class RoleDao implements IRoleDao {
 
 	private static final Logger logger = Logger.getLogger(RoleDao.class
 			.getName());
-
-	private EntityManager entityManager;
-
+	
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
+	private EntityManager entityManager;
 
 	@Override
 	public void save(Role role) throws Exception {
@@ -46,14 +40,6 @@ public class RoleDao implements IRoleDao {
 	@Override
 	public void update(Role role) throws Exception {
 		entityManager.merge(role);
-	}
-
-	@Override
-	public List<User> getAllUserByRoleId(String userId) throws Exception {
-		TypedQuery<User> query = entityManager.createQuery(
-				"from " + Role.class.getName(), User.class);
-		List<User> users = query.getResultList();
-		return users;
 	}
 
 	@Override

@@ -1,11 +1,10 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -29,6 +28,9 @@ public class Duration implements Serializable {
 
 	@Column(name = "description")
 	private String description;
+
+	@OneToMany(mappedBy = "duration", fetch = FetchType.EAGER)
+	private Set<Charter> charters = new HashSet<Charter>();
 
 	public Duration() {
 	}
@@ -68,6 +70,14 @@ public class Duration implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Charter> getCharters() {
+		return charters;
+	}
+
+	public void setCharters(Set<Charter> charters) {
+		this.charters = charters;
 	}
 
 	@Override

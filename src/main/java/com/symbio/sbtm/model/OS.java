@@ -1,16 +1,18 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-public class OS implements Serializable{
+public class OS implements Serializable {
 
 	/**
      * 
      */
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -22,6 +24,9 @@ public class OS implements Serializable{
 
 	@Column(name = "description")
 	private String description;
+
+	@ManyToMany(mappedBy = "oss", fetch = FetchType.EAGER)
+	private Set<Charter> charters = new HashSet<Charter>();
 
 	public OS() {
 	}
@@ -57,6 +62,14 @@ public class OS implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Set<Charter> getCharters() {
+		return charters;
+	}
+
+	public void setCharters(Set<Charter> charters) {
+		this.charters = charters;
 	}
 
 	@Override
