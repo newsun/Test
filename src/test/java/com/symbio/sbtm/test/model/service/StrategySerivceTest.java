@@ -18,7 +18,7 @@ public class StrategySerivceTest extends AbstractTestNGSpringContextTests {
 	private static final Logger logger = Logger.getLogger(StrategySerivceTest.class.getName());
 
 	@Autowired
-	private IStrategyService StrategySerivce;
+	private StrategyService StrategySerivce;
 	private Strategy strategy = null;
 	private String strategyName = "strategyName_" + This.class.getSimpleName() + System.currentTimeMillis();
 

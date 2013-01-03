@@ -72,7 +72,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-junit-plugin</artifactId>
+			<artifactId>struts2-testng-plugin</artifactId>
 			<version>${struts2.version}</version>
 			<scope>test</scope>
 		</dependency>

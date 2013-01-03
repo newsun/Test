@@ -16,11 +16,11 @@ public class BuildSerivceTest extends AbstractTestNGSpringContextTests {
 	private static final Logger logger = Logger.getLogger(BuildSerivceTest.class.getName());
 
 	@Autowired
-	private IBuildService buildService;
+	private BuildService buildService;
 	@Autowired
-	private IProjectService projectService;
+	private ProjectService projectService;
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 
 	private User user = null;
 	private Project project = null;

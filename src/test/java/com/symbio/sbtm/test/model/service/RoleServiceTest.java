@@ -7,7 +7,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.*;
 
 import com.symbio.sbtm.model.Role;
-import com.symbio.sbtm.model.service.IRoleService;
+import com.symbio.sbtm.model.service.RoleService;
 
 @ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
 public class RoleServiceTest extends AbstractTestNGSpringContextTests {
@@ -15,7 +15,7 @@ public class RoleServiceTest extends AbstractTestNGSpringContextTests {
 	private static final Logger logger = Logger.getLogger(RoleServiceTest.class.getName());
 
 	@Autowired
-	private IRoleService roleService;
+	private RoleService roleService;
 
 	@DataProvider(name = "roleData")
 	public Object[][] rolesDataProvider() {

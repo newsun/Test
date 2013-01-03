@@ -16,7 +16,7 @@ public class OSSserviceTest extends AbstractTestNGSpringContextTests {
 	private static final Logger logger = Logger.getLogger(OSSserviceTest.class.getName());
 
 	@Autowired
-	private IOSService osService;
+	private OSService osService;
 	private String osName = "OS_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 
 	@Test

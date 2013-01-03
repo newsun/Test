@@ -21,7 +21,7 @@ public class Area implements Serializable {
 	private Long id;
 
 	@Size(min = 4, max = 50, message = "Area name must be between 4-50")
-	@Column(name = "name",nullable=false)
+	@Column(name = "name", nullable = false)
 	private String name;
 
 	@ManyToOne
@@ -68,12 +68,8 @@ public class Area implements Serializable {
 		this.name = name;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getDescription() {

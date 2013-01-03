@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.User;
-import com.symbio.sbtm.model.service.UserService;
+import com.symbio.sbtm.model.service.UserServiceImpl;
 
 @Repository("hello")
 public class hello extends ActionSupport {
@@ -16,7 +16,7 @@ public class hello extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	private User user;
-	private transient UserService userService;
+	private transient UserServiceImpl userService;
 
 	public ArrayList<String> listExample;
 

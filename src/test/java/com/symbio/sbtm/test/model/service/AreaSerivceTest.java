@@ -14,15 +14,14 @@ import com.symbio.sbtm.model.*;
 public class AreaSerivceTest extends AbstractTestNGSpringContextTests {
 
 	private static final Logger logger = Logger.getLogger(AreaSerivceTest.class.getName());
-
 	@Autowired
-	private IAreaService areaService;
+	private AreaService areaService;
 	@Autowired
-	private IProjectService projectService;
+	private ProjectService projectService;
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 	@Autowired
-	private IBuildService buildService;
+	private BuildService buildService;
 
 	private User user = null;
 	private Project project = null;

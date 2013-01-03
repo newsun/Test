@@ -10,15 +10,15 @@ import bsh.This;
 
 import com.symbio.sbtm.model.Role;
 import com.symbio.sbtm.model.User;
-import com.symbio.sbtm.model.service.IRoleService;
-import com.symbio.sbtm.model.service.IUserService;
+import com.symbio.sbtm.model.service.RoleService;
+import com.symbio.sbtm.model.service.UserService;
 
 @ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
 public class UserServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 	@Autowired
-	private IRoleService roleService;
+	private RoleService roleService;
 
 	private Role role = null;
 	private User user = null;

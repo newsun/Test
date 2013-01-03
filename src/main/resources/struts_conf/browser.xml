@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="browser" extends="struts-default">
+		<global-results>
+			<result name="securityerror">/example/securityerror.jsp</result>
+			<result name="error">/example/error.jsp</result>
+		</global-results>
+
+		<action name="index" class="index">
+			<result name="input">/jsp/index.jsp</result>
+			<result>/jsp/index.jsp</result>
+		</action>
+		
+		<action name="project" class="project">
+			<result>/jsp/project.jsp</result>
+		</action>
+		<action name="build" class="build">
+			<result>/jsp/build.jsp</result>
+		</action>
+		<action name="area" class="area">
+			<result>/jsp/area</result>
+		</action>
+		<action name="charter" class="charter">
+			<result>/jsp/charter.jsp</result>
+		</action>
+	</package>
+	<package name="ajaxBrowser" extends="json-default">
+		<action name="AjaxProjects" class="AjaxProjects">
+			<result type="json"></result>
+		</action>
+		<action name="AjaxBuilds" class="AjaxBuilds">
+			<result type="json"></result>
+		</action>
+		<action name="AjaxAreas" class="AjaxAreas">
+			<result type="json"></result>
+		</action>
+	</package>
+</struts>

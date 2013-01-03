@@ -11,7 +11,6 @@ public class BuildAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
 		try {
 //			build = DAOFactory.getBuildDAO().getBuild(build).get(0);
 		} catch (Exception e) {

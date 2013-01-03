@@ -16,7 +16,7 @@ public class DurationSerivceTest extends AbstractTestNGSpringContextTests {
 	private static final Logger logger = Logger.getLogger(DurationSerivceTest.class.getName());
 
 	@Autowired
-	private IDurationService durationService;
+	private DurationService durationService;
 	private Duration duration = null;
 	private String durationName = "durationName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 

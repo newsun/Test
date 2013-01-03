@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="chartPackage" extends="struts-default">
+		<result-types>
+			<result-type name="chart"
+				class="org.apache.struts2.dispatcher.ChartResult" />
+		</result-types>
+		<action name="ListAllFruit4Bar2" class="com.symbio.sbtm.ui.chart.Example1">
+			<result name="success" type="chart">
+				<param name="chart">chart</param>
+				<param name="height">400</param>
+				<param name="width">700</param>
+			</result>
+		</action>
+		<action name="ListAllFruit4Pie2" class="com.symbio.sbtm.ui.chart.Example2">
+			<result name="success" type="chart">
+				<param name="chart">chart</param>
+				<param name="height">400</param>
+				<param name="width">700</param>
+			</result>
+		</action>
+		<action name="ListAllFruit4BarAndPie" class="">
+			<result name="success" type="dispatcher">/WEB-INF/chart/ListAllFruit4BarAndPie.jsp
+			</result>
+		</action>
+	</package>
+</struts>

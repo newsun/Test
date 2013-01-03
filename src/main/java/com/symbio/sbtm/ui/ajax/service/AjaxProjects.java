@@ -1,40 +1,49 @@
 package com.symbio.sbtm.ui.ajax.service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.Project;
+import com.symbio.sbtm.model.service.ProjectService;
 
 /**
  * Servlet implementation class service1
  */
-public class AjaxProjects {
+public class AjaxProjects extends ActionSupport {
+
+	/**
+     * 
+     */
+	private static final long serialVersionUID = 1L;
+	private transient ProjectService projectService;
 
 	private Map<Integer, String> projectsMap;
-
-	public Map<Integer, String> getProjectsMap() {
-		return projectsMap;
-	}
 
 	public void setProjectMap(Map<Integer, String> projectsMap) {
 		this.projectsMap = projectsMap;
 	}
 
 	public String execute() {
-//		try {
-//			ArrayList<Project> projectListArray = DAOFactory.getProjectDAO()
-//					.getAllProjects();
-//			projectsMap = new TreeMap<Integer, String>();
-//			for (Project project : projectListArray) {
-//				projectsMap.put(Integer.valueOf(project.getId()), project
-//						.getName());
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		List<Project> projectListArray = projectService.getAllProjects();
+		projectsMap = new TreeMap<Integer, String>();
+		for (Project project : projectListArray) {
+			projectsMap.put(project.getId().intValue(), project.getName());
+		}
 		return "success";
 	}
+
+	public void setProjectsMap(Map<Integer, String> projectsMap) {
+		this.projectsMap = projectsMap;
+	}
+
+	public Map<Integer, String> getProjectsMap() {
+		return projectsMap;
+	}
+
+	public void setProjectService(ProjectService projectService) {
+		this.projectService = projectService;
+	}
+
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+            http://www.springframework.org/schema/jdbc
+            http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- struts_conf/test.xml -->
+	<bean id="hello" class="com.symbio.sbtm.example.hello" />
+	<bean id="throwException" class="com.symbio.sbtm.example.ThrowException" />
+
+	<!-- struts_conf/browser.xml mydefault package -->
+	<bean id="index" class="com.symbio.sbtm.ui.action.IndexAction" />
+	<bean id="project" class="com.symbio.sbtm.ui.action.project.ProjectAction" />
+	<bean id="build" class="com.symbio.sbtm.ui.action.build.BuildAction" />
+	<bean id="area" class="com.symbio.sbtm.ui.action.area.AreaAction" />
+	<bean id="charter" class="com.symbio.sbtm.ui.action.charter.CharterAction" />
+	
+	<bean id="AjaxProjects" class="com.symbio.sbtm.ui.ajax.service.AjaxProjects" />
+	<bean id="AjaxBuilds" class="com.symbio.sbtm.ui.ajax.service.AjaxBuilds" />
+	<bean id="AjaxAreas" class="com.symbio.sbtm.ui.ajax.service.AjaxAreas" />
+
+</beans>

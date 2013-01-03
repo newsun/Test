@@ -1,14 +1,23 @@
 package com.symbio.sbtm.ui.ajax.service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.Area;
 import com.symbio.sbtm.model.Build;
 import com.symbio.sbtm.model.Project;
+import com.symbio.sbtm.model.service.AreaService;
 
-public class AjaxAreas {
+public class AjaxAreas extends ActionSupport {
+	/**
+     * 
+     */
+	private static final long serialVersionUID = 1L;
+
+	private transient AreaService areaService;
+
 	private Map<Integer, String> areaMap;
 	private Project project;
 	private Build build;
@@ -16,19 +25,19 @@ public class AjaxAreas {
 	public String execute() {
 		if (areaMap == null)
 			try {
-				ArrayList<Area> AreaArray = new ArrayList<Area>();
-//				if (project != null && project.getId() > 0) {
-//					AreaArray = DAOFactory.getAreaDAO().getAllAreas(project);
-//				} else if (build != null && build.getId() > 0) {
-////					AreaArray = DAOFactory.getAreaDAO().getAllAreas(build);
-//				}
+				List<Area> areas = null;
+				if (project != null && project.getId() > 0) {
+					areas = areaService.getAllAreaInBuild(build);
+				} else if (build != null && build.getId() > 0) {
+					areas = areaService.getAllAreaInProject(project);
+				}
 				areaMap = new TreeMap<Integer, String>();
-				for (Area area : AreaArray) {
-//					areaMap.put(Integer.valueOf(area.getId()), area.getName());
+				for (Area area : areas) {
+					areaMap.put(area.getId().intValue(), area.getName());
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return "Error";
 			}
 		return "success";
 	}
@@ -55,6 +64,10 @@ public class AjaxAreas {
 
 	public void setBuild(Build build) {
 		this.build = build;
+	}
+
+	public void setAreaService(AreaService areaService) {
+		this.areaService = areaService;
 	}
 
 }

@@ -48,13 +48,13 @@ public class Charter implements Serializable {
 	private Duration duration;
 
 	@Column(name = "designAndExectution")
-	private int designAndExectution;
+	private String designAndExectution;
 
 	@Column(name = "bugIvestigationAndReporting")
-	private int bugIvestigationAndReporting;
+	private String bugIvestigationAndReporting;
 
 	@Column(name = "sesstionSetup")
-	private int sesstionSetup;
+	private String sesstionSetup;
 
 	@Column(name = "chartervsopp")
 	private String chartervsopp;
@@ -152,27 +152,27 @@ public class Charter implements Serializable {
 		this.duration = duration;
 	}
 
-	public int getDesignAndExectution() {
+	public String getDesignAndExectution() {
 		return designAndExectution;
 	}
 
-	public void setDesignAndExectution(int designAndExectution) {
+	public void setDesignAndExectution(String designAndExectution) {
 		this.designAndExectution = designAndExectution;
 	}
 
-	public int getBugIvestigationAndReporting() {
+	public String getBugIvestigationAndReporting() {
 		return bugIvestigationAndReporting;
 	}
 
-	public void setBugIvestigationAndReporting(int bugIvestigationAndReporting) {
+	public void setBugIvestigationAndReporting(String bugIvestigationAndReporting) {
 		this.bugIvestigationAndReporting = bugIvestigationAndReporting;
 	}
 
-	public int getSesstionSetup() {
+	public String getSesstionSetup() {
 		return sesstionSetup;
 	}
 
-	public void setSesstionSetup(int sesstionSetup) {
+	public void setSesstionSetup(String sesstionSetup) {
 		this.sesstionSetup = sesstionSetup;
 	}
 

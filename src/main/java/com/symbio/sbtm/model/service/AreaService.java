@@ -2,60 +2,23 @@ package com.symbio.sbtm.model.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.symbio.sbtm.model.*;
-import com.symbio.sbtm.model.dao.*;
 
-@Service("IAreaService")
-public class AreaService implements IAreaService {
+public interface AreaService {
 
-	@Autowired
-	private IAreaDao areaDao;
+	public void save(Area area) ;
 
-	@Override
-	@Transactional
-	public void save(Area area)  {
-		areaDao.save(area);
-	}
+	public void delete(Area area) ;
 
-	@Override
-	@Transactional
-	public void delete(Area area)  {
-		areaDao.delete(area);
-	}
+	public void update(Area area) ;
 
-	@Override
-	@Transactional
-	public void update(Area area)  {
-		areaDao.update(area);
-	}
+	public Area getAreaByName(Project project, String name) ;
 
-	@Override
-	public Area getAreaByName(Project project, String name)  {
-		return areaDao.getAreaByName(project, name);
-	}
+	public Area getAreaByName(Build build, String name) ;
 
-	@Override
-	public Area getAreaByName(Build build, String name)  {
-		return areaDao.getAreaByName(build, name);
-	}
+	public List<Area> getAllAreaInBuild(Build build) ;
 
-	@Override
-	public List<Area> getAllAreaInBuild(Build build)  {
-		return areaDao.getAllAreaInBuild(build);
-	}
+	public List<Area> getAllAreaInProject(Project project) ;
 
-	@Override
-	public List<Area> getAllAreaInProject(Project project)  {
-		return areaDao.getAllAreaInProject(project);
-	}
-
-	@Override
-	public Area getAreaById(Long id)  {
-		return areaDao.getAreaById(id);
-	}
-
+	Area getAreaById(Long id) ;
 }

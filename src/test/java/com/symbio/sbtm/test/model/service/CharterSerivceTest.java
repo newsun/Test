@@ -18,15 +18,15 @@ public class CharterSerivceTest extends AbstractTestNGSpringContextTests {
 	private static final Logger logger = Logger.getLogger(CharterSerivceTest.class.getName());
 
 	@Autowired
-	private IProjectService projectService;
+	private ProjectService projectService;
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 	@Autowired
-	private IBuildService buildService;
+	private BuildService buildService;
 	@Autowired
-	private IAreaService areaService;
+	private AreaService areaService;
 	@Autowired
-	private ICharterService charterService;
+	private CharterService charterService;
 
 	private User user = null;
 	private Project project = null;

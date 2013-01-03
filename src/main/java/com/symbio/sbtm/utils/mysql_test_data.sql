@@ -9,30 +9,35 @@ insert into Role(name,description) values("Tester","Tester");
 /***************************************************************************
  *  step2: insert entries into user table
  ***************************************************************************/
-insert into user(userId,password) values("admin","admin");
-insert into user(userId,password) values("johnny","johnny");
-insert into user(userId,password) values("user","user");
-insert into user(userId,password) values("james","james");
-/*
+insert into User(userId,password) values("admin","admin");
+insert into User(userId,password) values("johnny","johnny");
+insert into User(userId,password) values("user","user");
+insert into User(userId,password) values("james","james");
 /***************************************************************************
- *  step3: insert entries into os table
+ *  step3: insert entries into User_Role table
  ***************************************************************************/
-insert into os(name,description) values("Win98","test only");
-insert into os(name,description) values("Win2008","test only");
-insert into os(name,description) values("Win7","test only");
-insert into os(name,description) values("Win8","test only");
+insert into User_Role(userId,roleId) values(1,1);
+insert into User_Role(userId,roleId) values(2,2);
+insert into User_Role(userId,roleId) values(3,3);
+insert into User_Role(userId,roleId) values(4,4);
 
 /***************************************************************************
- *  step4: insert entries into duration table
+ *  step4: insert entries into os table
+ ***************************************************************************/
+insert into OS(name,description) values("Win98","test only");
+insert into OS(name,description) values("Win2008","test only");
+insert into OS(name,description) values("Win7","test only");
+insert into OS(name,description) values("Win8","test only");
+
+/***************************************************************************
+ *  step5: insert entries into duration table
  ***************************************************************************/
 insert into duration(name,timespan,description) values("long","1000","test only");
 insert into duration(name,timespan,description) values("middle","500","test only");
 insert into duration(name,timespan,description) values("short","100","test only");
 
-
-
 /***************************************************************************
- *  step5: insert entries into strategy table
+ *  step6: insert entries into strategy table
  ***************************************************************************/
 insert into strategy(name,description) values("Training","test only");
 insert into strategy(name,description) values("Exploration & Analysis","test only");
@@ -48,17 +53,17 @@ insert into strategy(name,description) values("Complex | Risk Testing","test onl
 insert into strategy(name,description) values("Complex | Structure Testing","test only");
 
 /***************************************************************************
- * upper tables are independent with any project
+ * above tables are independent with any project
  ***************************************************************************/
 
 /***************************************************************************
- *  step6: insert entries project table
+ *  step7: insert entries project table
  ***************************************************************************/
 insert into project(name,description,creatorId) values("ProjectA","ProjectA Description",1);
 insert into project(name,description,creatorId) values("ProjectB","ProjectB Description",2);
 insert into project(name,description,creatorId) values("ProjectC","ProjectC Description",3);
 /***************************************************************************
- *  step7: insert entries into build table
+ *  step8: insert entries into build table
  ***************************************************************************/
 insert into build(name,description,projectId) values("1.2","test only",1);
 insert into build(name,description,projectId) values("1.3","test only",1);
@@ -76,79 +81,179 @@ insert into build(name,description,projectId) values("1.4","test only",3);
 insert into build(name,description,projectId) values("1.5","test only",3);
 
 /***************************************************************************
- *  step8: insert entries into area table
+ *  step9: insert entries into area table
  ***************************************************************************/
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("DecideRight",-1,false,"test only",1,1);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("User Manual",1,true,"test only",1,1);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Installation",1,true,"test only",1,1);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Online Help",1,true,"test only",1,1);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Preferences",1,true,"test only",1,1);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Advisor",1,true,"test only",1,1);
+insert into area(name,projectId) values("DecideRight",1);
+insert into area(name,projectId) values("User Manual",1);
+insert into area(name,projectId) values("Installation",1);
+insert into area(name,projectId) values("Online Help",1);
+insert into area(name,projectId) values("Preferences",1);
+insert into area(name,projectId) values("Advisor",1);
 
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("DecideRight",-1,false,"test only",2,5);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("User Manual",1,true,"test only",2,5);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Installation",1,true,"test only",2,5);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Online Help",1,true,"test only",2,5);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Preferences",1,true,"test only",2,5);
+insert into area(name,projectId) values("DecideRight",2);
+insert into area(name,projectId) values("User Manual",2);
+insert into area(name,projectId) values("Installation",2);
+insert into area(name,projectId) values("Online Help",2);
+insert into area(name,projectId) values("Preferences",2);
 
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("DecideRight",-1,true,"test only",2,6);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("User Manual",1,true,"test only",2,6);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Installation",1,true,"test only",2,6);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Online Help",1,true,"test only",2,6);
-insert into area(name,parentId,isleaf,description,projectId,buildId) values("Preferences",1,true,"test only",2,6);
-
+insert into area(name,projectId) values("DecideRight 2",2);
+insert into area(name,projectId) values("User Manual 2",2);
+insert into area(name,projectId) values("Installation 2",2);
+insert into area(name,projectId) values("Online Help 2",2);
+insert into area(name,projectId) values("Preferences 2",2);
 
 /***************************************************************************
- *  step9 insert entries into charter table
- ***************************************************************************/
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter1","",1,1,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter2","",1,1,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter3","",1,1,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
+* step10: insert into build_area
+***************************************************************************/
+insert into Build_Area(buildId,areaId) values(1,1);
+insert into Build_Area(buildId,areaId) values(1,2);
+insert into Build_Area(buildId,areaId) values(1,3);
+insert into Build_Area(buildId,areaId) values(1,4);
+insert into Build_Area(buildId,areaId) values(1,5);
+insert into Build_Area(buildId,areaId) values(2,1);
+insert into Build_Area(buildId,areaId) values(2,2);
+insert into Build_Area(buildId,areaId) values(2,3);
+insert into Build_Area(buildId,areaId) values(2,4);
+insert into Build_Area(buildId,areaId) values(2,5);
+insert into Build_Area(buildId,areaId) values(3,1);
+insert into Build_Area(buildId,areaId) values(3,2);
+insert into Build_Area(buildId,areaId) values(3,3);
+insert into Build_Area(buildId,areaId) values(3,4);
+insert into Build_Area(buildId,areaId) values(3,5);
+insert into Build_Area(buildId,areaId) values(4,1);
+insert into Build_Area(buildId,areaId) values(4,2);
+insert into Build_Area(buildId,areaId) values(4,3);
+insert into Build_Area(buildId,areaId) values(4,4);
+insert into Build_Area(buildId,areaId) values(4,5);
+insert into Build_Area(buildId,areaId) values(5,1);
+insert into Build_Area(buildId,areaId) values(5,2);
+insert into Build_Area(buildId,areaId) values(5,3);
+insert into Build_Area(buildId,areaId) values(5,4);
+insert into Build_Area(buildId,areaId) values(5,5);
 
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter3","",2,5,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,5,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,5,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,5,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,5,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,6,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,6,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,6,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,6,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
-insert into charter(name,description,projectId, buildId,starttime,testerId,durationName,designAndExectution,bugIvestigationAndReporting,sesstionSetup,chartervsopp,datafiles,notes) values("charter4","",2,6,"2012-4-22 10:00:00","johnny","long",3,2,1,"charter vs opp","[datafile1],[datafile1],[datafile3]","");
+insert into Build_Area(buildId,areaId) values(6,1);
+insert into Build_Area(buildId,areaId) values(6,2);
+insert into Build_Area(buildId,areaId) values(6,3);
+insert into Build_Area(buildId,areaId) values(6,4);
+insert into Build_Area(buildId,areaId) values(6,5);
+insert into Build_Area(buildId,areaId) values(7,1);
+insert into Build_Area(buildId,areaId) values(7,2);
+insert into Build_Area(buildId,areaId) values(7,3);
+insert into Build_Area(buildId,areaId) values(7,4);
+insert into Build_Area(buildId,areaId) values(7,5);
+insert into Build_Area(buildId,areaId) values(8,1);
+insert into Build_Area(buildId,areaId) values(8,2);
+insert into Build_Area(buildId,areaId) values(8,3);
+insert into Build_Area(buildId,areaId) values(8,4);
+insert into Build_Area(buildId,areaId) values(8,5);
+insert into Build_Area(buildId,areaId) values(9,1);
+insert into Build_Area(buildId,areaId) values(9,2);
+insert into Build_Area(buildId,areaId) values(9,3);
+insert into Build_Area(buildId,areaId) values(9,4);
+insert into Build_Area(buildId,areaId) values(9,5);
+insert into Build_Area(buildId,areaId) values(10,1);
+insert into Build_Area(buildId,areaId) values(10,2);
+insert into Build_Area(buildId,areaId) values(10,3);
+insert into Build_Area(buildId,areaId) values(10,4);
+insert into Build_Area(buildId,areaId) values(10,5);
+insert into Build_Area(buildId,areaId) values(11,1);
+insert into Build_Area(buildId,areaId) values(11,2);
+insert into Build_Area(buildId,areaId) values(11,3);
+insert into Build_Area(buildId,areaId) values(11,4);
+insert into Build_Area(buildId,areaId) values(11,5);
+insert into Build_Area(buildId,areaId) values(12,1);
+insert into Build_Area(buildId,areaId) values(12,2);
+insert into Build_Area(buildId,areaId) values(12,3);
+insert into Build_Area(buildId,areaId) values(12,4);
+insert into Build_Area(buildId,areaId) values(12,5);
 
 /***************************************************************************
- *  step10 insert entries into bug table
+ *  step11 insert entries into charter table
  ***************************************************************************/
-insert into bug(summary,description,charterId) values("BUG1: Sumary for bug1","Manual mentions different platforms (Win 3.1, WFW, and WinNT 3.51) and does not mention Win2000. We think Win 2000 is important to test on and that the older OSes are no longer meaningful.",1);
-insert into bug(summary,description,charterId) values("BUG2: Sumary for bug2","We did this analysis on Win98.  I have no data to suggest that features may be different on other operating systems, but I'm not sure about that.",2);
+insert into Charter(name,testerId) values("Charter1",4);
+insert into Charter(name,testerId) values("Charter2",4);
+insert into Charter(name,testerId) values("Charter3",4);
+insert into Charter(name,testerId) values("Charter4",4);
+insert into Charter(name,testerId) values("Charter5",4);
+insert into Charter(name,testerId) values("Charter6",4);
+insert into Charter(name,testerId) values("Charter7",4);
+insert into Charter(name,testerId) values("Charter8",4);
+insert into Charter(name,testerId) values("Charter9",4);
+insert into Charter(name,testerId) values("Charter10",4);
+insert into Charter(name,testerId) values("Charter11",4);
+insert into Charter(name,testerId) values("Charter12",4);
+insert into Charter(name,testerId) values("Charter13",4);
+insert into Charter(name,testerId) values("Charter14",4);
+insert into Charter(name,testerId) values("Charter15",4);
+insert into Charter(name,testerId) values("Charter16",4);
+insert into Charter(name,testerId) values("Charter17",4);
+insert into Charter(name,testerId) values("Charter18",4);
+insert into Charter(name,testerId) values("Charter19",4);
+insert into Charter(name,testerId) values("Charter20",4);
+
+insert into Charter(name,testerId) values("Charter1",4);
+insert into Charter(name,testerId) values("Charter2",4);
+insert into Charter(name,testerId) values("Charter3",4);
+insert into Charter(name,testerId) values("Charter4",4);
+insert into Charter(name,testerId) values("Charter5",4);
+insert into Charter(name,testerId) values("Charter6",4);
+insert into Charter(name,testerId) values("Charter7",4);
+insert into Charter(name,testerId) values("Charter8",4);
+insert into Charter(name,testerId) values("Charter9",4);
+insert into Charter(name,testerId) values("Charter10",4);
+insert into Charter(name,testerId) values("Charter11",4);
+insert into Charter(name,testerId) values("Charter12",4);
+insert into Charter(name,testerId) values("Charter13",4);
+insert into Charter(name,testerId) values("Charter14",4);
+insert into Charter(name,testerId) values("Charter15",4);
+insert into Charter(name,testerId) values("Charter16",4);
+insert into Charter(name,testerId) values("Charter17",4);
+insert into Charter(name,testerId) values("Charter18",4);
+insert into Charter(name,testerId) values("Charter19",4);
+insert into Charter(name,testerId) values("Charter20",4);
+
+insert into Charter(name,testerId) values("Charter1",4);
+insert into Charter(name,testerId) values("Charter2",4);
+insert into Charter(name,testerId) values("Charter3",4);
+insert into Charter(name,testerId) values("Charter4",4);
+insert into Charter(name,testerId) values("Charter5",4);
+insert into Charter(name,testerId) values("Charter6",4);
+insert into Charter(name,testerId) values("Charter7",4);
+insert into Charter(name,testerId) values("Charter8",4);
+insert into Charter(name,testerId) values("Charter9",4);
+insert into Charter(name,testerId) values("Charter10",4);
+insert into Charter(name,testerId) values("Charter11",4);
+insert into Charter(name,testerId) values("Charter12",4);
+insert into Charter(name,testerId) values("Charter13",4);
+insert into Charter(name,testerId) values("Charter14",4);
+insert into Charter(name,testerId) values("Charter15",4);
+insert into Charter(name,testerId) values("Charter16",4);
+insert into Charter(name,testerId) values("Charter17",4);
+insert into Charter(name,testerId) values("Charter18",4);
+insert into Charter(name,testerId) values("Charter19",4);
+insert into Charter(name,testerId) values("Charter20",4);
+/***************************************************************************
+ *  step12 insert entries into bug table
+ ***************************************************************************/
+insert into bug(summary,precedure,description,charterId) values("BUG1: Sumary for bug1","Manual mentions different platforms (Win 3.1, WFW, and WinNT 3.51) and does not mention Win2000. We think Win 2000 is important to test on and that the older OSes are no longer meaningful.","",1);
+insert into bug(summary,precedure,description,charterId) values("BUG2: Sumary for bug2","We did this analysis on Win98.  I have no data to suggest that features may be different on other operating systems, but I'm not sure about that.","",2);
 
 /***************************************************************************
- *  step11 insert entries into issue table
+ *  step13 insert entries into issue table
  ***************************************************************************/
-insert into issue(summary,description,charterId) values("ISSUE1: Sumary for issue1","Manual mentions different platforms (Win 3.1, WFW, and WinNT 3.51) and does not mention Win2000. We think Win 2000 is important to test on and that the older OSes are no longer meaningful.",1);
-insert into issue(summary,description,charterId) values("ISSUE2: Sumary for issue2","We did this analysis on Win98.  I have no data to suggest that features may be different on other operating systems, but I'm not sure about that.",2);
+insert into issue(summary,precedure,description,charterId) values("ISSUE1: Sumary for issue1","Manual mentions different platforms (Win 3.1, WFW, and WinNT 3.51) and does not mention Win2000. We think Win 2000 is important to test on and that the older OSes are no longer meaningful.","",1);
+insert into issue(summary,precedure,description,charterId) values("ISSUE2: Sumary for issue2","We did this analysis on Win98.  I have no data to suggest that features may be different on other operating systems, but I'm not sure about that.","",2);
 
 /***************************************************************************
- *  step12 insert entries into oss table
+ *  step14 insert entries into oss table
  ***************************************************************************/
-insert into oss(charterId,osName) values(1,"Win8");
 
 /***************************************************************************
- *  step13 insert entries into strategies table
+ *  step15 insert entries into strategies table
  ***************************************************************************/
 insert into strategies(charterId,strategyName) values(1,"Training");
 
 /***************************************************************************
- *  step14 insert entries into areas table
+ *  step16des insert entries into areas table
  ***************************************************************************/
-insert into areas(charterId,areaId) values(1,1);
-insert into areas(charterId,areaId) values(1,1);
-insert into areas(charterId,areaId) values(1,1);
-insert into areas(charterId,areaId) values(1,1);
-insert into areas(charterId,areaId) values(2,1);
-insert into areas(charterId,areaId) values(3,1);
-insert into areas(charterId,areaId) values(4,1);
-insert into areas(charterId,areaId) values(5,3);
 commit;
-*/

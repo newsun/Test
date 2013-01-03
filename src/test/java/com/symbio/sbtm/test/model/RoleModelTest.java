@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.*;
 
 import com.symbio.sbtm.model.Role;
-import com.symbio.sbtm.model.service.IRoleService;
+import com.symbio.sbtm.model.service.RoleService;
 import com.symbio.sbtm.test.model.service.*;
 
 @ContextConfiguration(locations = { "classpath*:applicationContextTest.xml" })
@@ -18,7 +18,7 @@ public class RoleModelTest {
 			.getName());
 
 	@Autowired
-	private IRoleService roleService;
+	private RoleService roleService;
 
 	@Test(dataProvider = "roleData", dataProviderClass = UserModelTest.class, enabled = false)
 	public void testSave(String name, String description) {

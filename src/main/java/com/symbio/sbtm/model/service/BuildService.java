@@ -2,45 +2,17 @@ package com.symbio.sbtm.model.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.symbio.sbtm.model.Build;
+import com.symbio.sbtm.model.Project;
 
-import com.symbio.sbtm.model.*;
-import com.symbio.sbtm.model.dao.*;
+public interface BuildService {
+	public void save(Build build) ;
 
-@Service("IBuildService")
-public class BuildService implements IBuildService {
+	public void delete(Build build) ;
 
-	@Autowired
-	private IBuildDao buildDao;
+	public void update(Build build) ;
 
-	@Override
-	@Transactional
-	public void save(Build build)  {
-		buildDao.save(build);
-	}
+	public Build getBuildByName(Project project, String buildName) ;
 
-	@Override
-	@Transactional
-	public void delete(Build build)  {
-		buildDao.delete(build);
-	}
-
-	@Override
-	@Transactional
-	public void update(Build build)  {
-		buildDao.update(build);
-	}
-
-	@Override
-	public Build getBuildByName(Project project, String name)  {
-		return buildDao.getBuildByName(project, name);
-	}
-
-	@Override
-	public List<Build> getAllBuilds(Project project)  {
-		return buildDao.getAllBuilds(project);
-	}
-
+	public List<Build> getAllBuilds(Project project) ;
 }

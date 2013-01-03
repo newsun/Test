@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user.management" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="Timeout"
+				class="com.symbio.sbtm.ui.action.login.TimeOutInterceptor" />
+			<interceptor name="Login"
+				class="com.symbio.sbtm.ui.action.login.LoginInterceptor" />
+			<interceptor-stack name="appDefaultStack">
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+				<interceptor-ref name="Login">
+					<!-- <param name="includeMethods">list,del</param> -->
+					<param name="excludeMethods">log</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="appDefaultStack" />
+
+		<action name="cf*" method="{1}"
+			class="com.myproject.action.user.ConfigAction">
+			<interceptor-ref name="Timeout">
+				<param name="excludeMethods">
+					UpdateInfo,UpdCss
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="basicStack" />
+			<result name="config">/user/config.jsp</result>
+		</action>
+
+		<action name="checkuser" class="helloWorldAction">
+			<result name="input">/jsp/login.jsp</result>
+			<result>/jsp/welcome.jsp</result>
+		</action>
+	</package>
+
+</struts>

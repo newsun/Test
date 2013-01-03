@@ -2,56 +2,21 @@ package com.symbio.sbtm.model.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
-import org.apache.log4j.Logger;
-import org.springframework.stereotype.Repository;
-
-import com.symbio.sbtm.model.OS;
 import com.symbio.sbtm.model.Project;
 
-@Repository(value = "IProjectDao")
-public class ProjectDao implements IProjectDao {
+public interface ProjectDao {
+	public void save(Project project);
 
-	private static final Logger logger = Logger.getLogger(ProjectDao.class.getName());
+	public void delete(Project project);
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	public void update(Project project);
 
-	@Override
-	public void save(Project project) {
-		entityManager.persist(project);
-	}
+	public Project getProjectByName(String name);
 
-	@Override
-	public void delete(Project project) {
-		Project deleteproject = entityManager.merge(project);
-		entityManager.remove(deleteproject);
-	}
+	public Project getProject(Project project);
 
-	@Override
-	public void update(Project project) {
-		entityManager.merge(project);
-	}
+	public Project getProjectById(Long projectId);
 
-	@Override
-	public Project getProjectByName(String name) {
-		String qlString = "from " + Project.class.getSimpleName() + " as pro where pro.name='" + name + "'";
-		Query query = entityManager.createQuery(qlString);
-		try {
-			return (Project) query.getSingleResult();
-		} catch (Exception e) {
-			logger.warn(e.getMessage());
-		}
-		return null;
-	}
+	public List<Project> getAllProjects();
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Project> getAllProjects() {
-		String qlString = "from " + OS.class.getSimpleName();
-		return entityManager.createQuery(qlString).getResultList();
-	}
 }
