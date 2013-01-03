@@ -1,0 +1,19 @@
+[Role ManyToMany User, set collection,both eager]
+1.	Role role1 = new Role("tempRole");===>role1 id is null, users is PersistentSet
+	roleService.update(role1);===========>role1 id is null
+	roleService.save(role1);=============>role1 will have its id
+	rolsService.delete(role1);===========>role1 id doesn't turn to null
+2. 	User user=new User("name","pass");===>user.getRoles() is empty PersistentSet
+	Role role=new Role("roleName"); =====>role.getUsers() is a empty PersistentSet
+	//user.getRoles().add(role);
+	//userSerivce.save(user);============>org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing
+	roleService.save(role);
+	user.getRoles().add(role);===========>user.getRoles() is PersistentSet containing a role element
+	userservice.save(user); ============>user.getRoles() is PersistentBag containing a PersistentSet bag
+							 ============>role.getUsers() is PersistenBag containing a empty PersistentSet bag
+	role = roleService.getRoleByName("roleName");============>role.getUsers() is PersistenBag containing a PersistentSet bag with user inside.
+	
+//org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.symbio.sbtm.model.Role.users, could not initialize proxy - no Session
+	
+3.About configuration
+	hibernate.properties is the first priority, persistence.xml is the second priority.
