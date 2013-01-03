@@ -20,7 +20,7 @@ public class RoleModelTest {
 	@Autowired
 	private IRoleService roleService;
 
-	@Test(dataProvider = "roleData", dataProviderClass = UserModelTest.class)
+	@Test(dataProvider = "roleData", dataProviderClass = UserModelTest.class, enabled = false)
 	public void testSave(String name, String description) {
 		Role role = new Role();
 		role.setName(name);

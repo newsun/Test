@@ -23,29 +23,29 @@ public class RoleService implements IRoleService {
 
 	@Override
 	@Transactional
-	public void save(Role role) throws Exception {
+	public void save(Role role)  {
 		roleDao.save(role);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Role role) throws Exception {
+	public void delete(Role role)  {
 		roleDao.delete(role);
 	}
 
 	@Override
 	@Transactional
-	public void update(Role role) throws Exception {
+	public void update(Role role)  {
 		roleDao.update(role);
 	}
 
 	@Override
-	public Role getRoleByName(String name) throws Exception {
+	public Role getRoleByName(String name)  {
 		return roleDao.getRoleByName(name);
 	}
 
 	@Override
-	public List<Role> getAllRoles() throws Exception {
+	public List<Role> getAllRoles()  {
 		return roleDao.getAllRoles();
 	}
 }

@@ -28,10 +28,10 @@ public class AreaSerivceTest extends AbstractTestNGSpringContextTests {
 	private Project project = null;
 	private Build build = null;
 	private Area area = null;
-	private String userId = "userId_AreaSerivceTest";
-	private String projectName = "projectName_AreaSerivceTest";
-	private String buildName = "buildName_AreaSerivceTest";
-	private String areaName = "areaName_AreaSerivceTest";
+	private String userId = "userId_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String projectName = "projectName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String buildName = "buildName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String areaName = "areaName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 
 	@BeforeClass
 	public void beforeClass() throws Exception {

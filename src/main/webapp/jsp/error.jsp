@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Symbio SBTM</title>
+<title>Error</title>
 </head>
 <body>
-	<h1>Security Error</h1>
+<h3>Something is wrong.</h3>
 </body>
 </html>

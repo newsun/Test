@@ -18,7 +18,7 @@ public class DurationSerivceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private IDurationService durationService;
 	private Duration duration = null;
-	private String durationName = "durationName_DurationSerivceTest";
+	private String durationName = "durationName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 
 	@Test
 	public void testSave() throws Exception {
@@ -31,12 +31,10 @@ public class DurationSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Test(dependsOnMethods = "testSave")
 	public void testUpdate() throws Exception {
-		duration = durationService.getDurationByName(durationName);
-		Assert.assertNotNull(duration, "duration is not saved successfully");
 		duration.setDescription("Description is udpated");
 		durationService.update(duration);
 		duration = durationService.getDurationByName(durationName);
-		Assert.assertEquals(duration.getDescription(), "duration is not saved successfully",
+		Assert.assertEquals(duration.getDescription(), "Description is udpated",
 		        "Duration's description is not updated");
 		logger.info("DurationSerivceTest.testUpdate passed");
 	}

@@ -17,29 +17,29 @@ public class BuildService implements IBuildService {
 
 	@Override
 	@Transactional
-	public void save(Build build) throws Exception {
+	public void save(Build build)  {
 		buildDao.save(build);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Build build) throws Exception {
+	public void delete(Build build)  {
 		buildDao.delete(build);
 	}
 
 	@Override
 	@Transactional
-	public void update(Build build) throws Exception {
+	public void update(Build build)  {
 		buildDao.update(build);
 	}
 
 	@Override
-	public Build getBuildByName(Project project, String name) throws Exception {
+	public Build getBuildByName(Project project, String name)  {
 		return buildDao.getBuildByName(project, name);
 	}
 
 	@Override
-	public List<Build> getAllBuilds(Project project) throws Exception {
+	public List<Build> getAllBuilds(Project project)  {
 		return buildDao.getAllBuilds(project);
 	}
 

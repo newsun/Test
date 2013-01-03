@@ -12,9 +12,25 @@
 	</context-param>
 
 	<!-- Filters -->
-	<!-- <filter> <filter-name>action2-cleanup</filter-name> <filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class> 
-		</filter> <filter-mapping> <filter-name>action2-cleanup</filter-name> <url-pattern>/*</url-pattern> 
-		</filter-mapping> -->
+	<filter>
+		<filter-name>action2-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareFilter</filter-class>
+		<!-- org.apache.struts2.dispatcher.ng.filter.StrutsExecuteFilter -->
+	</filter>
+	<filter-mapping>
+		<filter-name>action2-cleanup</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- struts2 -->
 	<filter>

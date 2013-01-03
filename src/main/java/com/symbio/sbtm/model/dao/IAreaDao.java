@@ -6,19 +6,19 @@ import com.symbio.sbtm.model.*;
 
 public interface IAreaDao {
 
-	public void save(Area area) throws Exception;
+	public void save(Area area);
 
-	public void delete(Area area) throws Exception;
+	public void delete(Area area);
 
-	public void update(Area area) throws Exception;
+	public void update(Area area);
 
-	public Area getAreaByName(Project project, String name) throws Exception;
+	public Area getAreaByName(Project project, String name);
 
-	public Area getAreaByName(Build build, String name) throws Exception;
+	public Area getAreaByName(Build build, String name);
 
-	public List<Area> getAllAreaInBuild(Build build) throws Exception;
+	public List<Area> getAllAreaInBuild(Build build);
 
-	public List<Area> getAllAreaInProject(Project project) throws Exception;
+	public List<Area> getAllAreaInProject(Project project);
 
-	Area getAreaById(Long id) throws Exception;
+	Area getAreaById(Long id);
 }

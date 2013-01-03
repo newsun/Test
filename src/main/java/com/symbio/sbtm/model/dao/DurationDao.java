@@ -20,23 +20,23 @@ public class DurationDao implements IDurationDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(Duration duration) throws Exception {
+	public void save(Duration duration)  {
 		entityManager.persist(duration);
 	}
 
 	@Override
-	public void delete(Duration duration) throws Exception {
+	public void delete(Duration duration)  {
 		Duration deleteDuration = entityManager.merge(duration);
 		entityManager.remove(deleteDuration);
 	}
 
 	@Override
-	public void update(Duration duration) throws Exception {
+	public void update(Duration duration)  {
 		entityManager.merge(duration);
 	}
 
 	@Override
-	public Duration getDurationByName(String name) throws Exception {
+	public Duration getDurationByName(String name)  {
 		String qlString = "from " + Duration.class.getSimpleName() + " as du where du.name='" + name + "'";
 		Query query = entityManager.createQuery(qlString);
 		try {
@@ -49,7 +49,7 @@ public class DurationDao implements IDurationDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Duration> getAllDurations() throws Exception {
+	public List<Duration> getAllDurations()  {
 		String qlString = "from " + OS.class.getSimpleName();
 		return entityManager.createQuery(qlString).getResultList();
 	}

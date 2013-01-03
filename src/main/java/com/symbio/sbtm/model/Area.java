@@ -21,7 +21,7 @@ public class Area implements Serializable {
 	private Long id;
 
 	@Size(min = 4, max = 50, message = "Area name must be between 4-50")
-	@Column(name = "name")
+	@Column(name = "name",nullable=false)
 	private String name;
 
 	@ManyToOne

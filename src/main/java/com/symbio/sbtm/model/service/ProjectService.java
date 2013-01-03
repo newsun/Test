@@ -16,29 +16,29 @@ public class ProjectService implements IProjectService {
 
 	@Override
 	@Transactional
-	public void save(Project project) throws Exception {
+	public void save(Project project) {
 		projectDao.save(project);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Project project) throws Exception {
+	public void delete(Project project) {
 		projectDao.delete(project);
 	}
 
 	@Override
 	@Transactional
-	public void update(Project project) throws Exception {
+	public void update(Project project) {
 		projectDao.update(project);
 	}
 
 	@Override
-	public Project getProjectByName(String name) throws Exception {
+	public Project getProjectByName(String name) {
 		return projectDao.getProjectByName(name);
 	}
 
 	@Override
-	public List<Project> getAllProjects() throws Exception {
+	public List<Project> getAllProjects() {
 		return projectDao.getAllProjects();
 	}
 

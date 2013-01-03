@@ -30,7 +30,7 @@ public class Project implements Serializable {
 	@GeneratedValue
 	private Date date;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "creatorId")
 	private User creator;
 

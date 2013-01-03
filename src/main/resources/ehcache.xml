@@ -1,0 +1,14 @@
+<ehcache>
+	<terracottaConfig url="someserver:9510" />
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToLiveSeconds="600"
+            
+		<terracotta clustered="true" coherent="true" />
+		/>
+
+		<cache name="com.company.domain.Pets" maxElementsInMemory="10000"
+			eternal=”true”>
+			<terracotta clustered="true" coherent="true" />
+		</cache>
+	</cache>
+</ehcache> 

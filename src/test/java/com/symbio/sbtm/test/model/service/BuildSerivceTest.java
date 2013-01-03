@@ -25,9 +25,9 @@ public class BuildSerivceTest extends AbstractTestNGSpringContextTests {
 	private User user = null;
 	private Project project = null;
 	private Build build = null;
-	private String userId = "userId_BuildSerivceTest";
-	private String projectName = "projectName_BuildSerivceTest";
-	private String buildName = "buildName_BuildSerivceTest";
+	private String userId = "userId_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String projectName = "projectName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String buildName = "buildName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 
 	@BeforeClass
 	public void beforeClass() throws Exception {

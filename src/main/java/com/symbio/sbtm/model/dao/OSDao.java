@@ -21,18 +21,18 @@ public class OSDao implements IOSDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(OS os) throws Exception {
+	public void save(OS os)  {
 		entityManager.persist(os);
 	}
 
 	@Override
-	public void delete(OS os) throws Exception {
+	public void delete(OS os)  {
 		OS deleteOS = entityManager.merge(os);
 		entityManager.remove(deleteOS);
 	}
 
 	@Override
-	public void update(OS os) throws Exception {
+	public void update(OS os)  {
 		entityManager.merge(os);
 	}
 
@@ -52,7 +52,7 @@ public class OSDao implements IOSDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<OS> getAllOS() throws Exception {
+	public List<OS> getAllOS()  {
 		String qlString = "from " + OS.class.getSimpleName();
 		return entityManager.createQuery(qlString).getResultList();
 	}

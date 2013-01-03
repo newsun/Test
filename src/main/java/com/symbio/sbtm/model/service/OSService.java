@@ -17,29 +17,29 @@ public class OSService implements IOSService {
 
 	@Override
 	@Transactional
-	public void save(OS os) throws Exception {
+	public void save(OS os)  {
 		osDao.save(os);
 	}
 
 	@Override
 	@Transactional
-	public void delete(OS os) throws Exception {
+	public void delete(OS os)  {
 		osDao.delete(os);
 	}
 
 	@Override
 	@Transactional
-	public void update(OS os) throws Exception {
+	public void update(OS os)  {
 		osDao.update(os);
 	}
 
 	@Override
-	public OS getOSbyName(String name) throws Exception {
+	public OS getOSbyName(String name)  {
 		return osDao.getOSbyName(name);
 	}
 
 	@Override
-	public List<OS> getAllOS() throws Exception {
+	public List<OS> getAllOS()  {
 		return osDao.getAllOS();
 	}
 

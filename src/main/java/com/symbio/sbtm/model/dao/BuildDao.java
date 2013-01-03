@@ -20,23 +20,23 @@ public class BuildDao implements IBuildDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(Build build) throws Exception {
+	public void save(Build build) {
 		entityManager.persist(build);
 	}
 
 	@Override
-	public void delete(Build build) throws Exception {
+	public void delete(Build build) {
 		Build deletebuild = entityManager.merge(build);
 		entityManager.remove(deletebuild);
 	}
 
 	@Override
-	public void update(Build build) throws Exception {
+	public void update(Build build) {
 		entityManager.merge(build);
 	}
 
 	@Override
-	public Build getBuildByName(Project project, String name) throws Exception {
+	public Build getBuildByName(Project project, String name) {
 		String qlString = "from " + Build.class.getSimpleName()
 		        + " as build where build.name=:name and build.project.id=:pid";
 		Query query = entityManager.createQuery(qlString).setParameter("name", name)
@@ -51,7 +51,7 @@ public class BuildDao implements IBuildDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Build> getAllBuilds(Project project) throws Exception {
+	public List<Build> getAllBuilds(Project project) {
 		String qlString = "from " + Build.class.getSimpleName() + " as build where build.project.id=:pid";
 		return entityManager.createQuery(qlString).setParameter("pid", project.getId()).getResultList();
 	}

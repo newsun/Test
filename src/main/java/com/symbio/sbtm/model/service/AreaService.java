@@ -17,44 +17,44 @@ public class AreaService implements IAreaService {
 
 	@Override
 	@Transactional
-	public void save(Area area) throws Exception {
+	public void save(Area area)  {
 		areaDao.save(area);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Area area) throws Exception {
+	public void delete(Area area)  {
 		areaDao.delete(area);
 	}
 
 	@Override
 	@Transactional
-	public void update(Area area) throws Exception {
+	public void update(Area area)  {
 		areaDao.update(area);
 	}
 
 	@Override
-	public Area getAreaByName(Project project, String name) throws Exception {
+	public Area getAreaByName(Project project, String name)  {
 		return areaDao.getAreaByName(project, name);
 	}
 
 	@Override
-	public Area getAreaByName(Build build, String name) throws Exception {
+	public Area getAreaByName(Build build, String name)  {
 		return areaDao.getAreaByName(build, name);
 	}
 
 	@Override
-	public List<Area> getAllAreaInBuild(Build build) throws Exception {
+	public List<Area> getAllAreaInBuild(Build build)  {
 		return areaDao.getAllAreaInBuild(build);
 	}
 
 	@Override
-	public List<Area> getAllAreaInProject(Project project) throws Exception {
+	public List<Area> getAllAreaInProject(Project project)  {
 		return areaDao.getAllAreaInProject(project);
 	}
 
 	@Override
-	public Area getAreaById(Long id) throws Exception {
+	public Area getAreaById(Long id)  {
 		return areaDao.getAreaById(id);
 	}
 

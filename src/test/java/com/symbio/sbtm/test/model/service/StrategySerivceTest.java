@@ -7,6 +7,8 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import bsh.This;
+
 import com.symbio.sbtm.model.service.*;
 import com.symbio.sbtm.model.*;
 
@@ -18,7 +20,7 @@ public class StrategySerivceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private IStrategyService StrategySerivce;
 	private Strategy strategy = null;
-	private String strategyName = "Exploration & Analysis";
+	private String strategyName = "strategyName_" + This.class.getSimpleName() + System.currentTimeMillis();
 
 	@Test
 	public void testSave() throws Exception {

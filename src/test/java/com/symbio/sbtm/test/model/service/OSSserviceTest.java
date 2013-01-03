@@ -13,19 +13,18 @@ import com.symbio.sbtm.model.*;
 @ContextConfiguration(locations = { "classpath:applicationContextTest.xml" })
 public class OSSserviceTest extends AbstractTestNGSpringContextTests {
 
-	private static final Logger logger = Logger.getLogger(OSSserviceTest.class
-			.getName());
+	private static final Logger logger = Logger.getLogger(OSSserviceTest.class.getName());
 
 	@Autowired
 	private IOSService osService;
+	private String osName = "OS_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 
 	@Test
 	public void testSave() {
-		OS os = new OS("win8");
-		os.setDescription("Windows 8");
+		OS os = new OS(osName);
 		try {
 			osService.save(os);
-			OS o = osService.getOSbyName("win8");
+			OS o = osService.getOSbyName(osName);
 			Assert.assertNotNull(o, "OS win8 is not saved");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,11 +36,11 @@ public class OSSserviceTest extends AbstractTestNGSpringContextTests {
 	@Test(dependsOnMethods = "testSave")
 	public void testDelete() {
 		try {
-			OS o = osService.getOSbyName("win8");
+			OS o = osService.getOSbyName(osName);
 			Assert.assertNotNull(o, "OS win8 is not saved");
 
 			osService.delete(o);
-			OS o2 = osService.getOSbyName("win8");
+			OS o2 = osService.getOSbyName(osName);
 			Assert.assertNull(o2, "OS win8 is not deleted");
 
 		} catch (Exception e) {

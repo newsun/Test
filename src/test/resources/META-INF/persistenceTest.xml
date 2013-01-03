@@ -7,7 +7,7 @@
 	<!-- this persistence unit is for testing -->
 	<persistence-unit name="springJpaPersistenceUnitTest"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.symbio.sbtm.model.Role</class>
 		<class>com.symbio.sbtm.model.User</class>
 		<class>com.symbio.sbtm.model.OS</class>
@@ -35,6 +35,11 @@
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
 			<property name="hibernate.connection.autocommit" value="true" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.use_query_cache">true</property>
+			<property name="hibernate.cache.provider_class"
+				value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" />
 		</properties>
 	</persistence-unit>
-</persistence>
+</persistence> 

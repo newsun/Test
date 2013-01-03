@@ -24,8 +24,8 @@ public class ProjectSerivceTest extends AbstractTestNGSpringContextTests {
 	private User user = null;
 	private Project project = null;
 
-	private String userId = "userId_CharterSerivceTest";
-	private String projectName = "projectName_CharterSerivceTest";
+	private String userId = "userId_" + this.getClass().getSimpleName() + System.currentTimeMillis();;
+	private String projectName = "projectName_" + this.getClass().getSimpleName() + System.currentTimeMillis();;
 
 	@BeforeClass
 	public void beforeClass() throws Exception {
@@ -60,23 +60,24 @@ public class ProjectSerivceTest extends AbstractTestNGSpringContextTests {
 		Assert.assertTrue(user.getCreatedProjects().contains(project), "user's create project list is wrong");
 	}
 
-	@Test(dependsOnMethods = "testLink", expectedExceptions = { org.hibernate.LazyInitializationException.class })
+	@Test(dependsOnMethods = "testLink")
 	public void testDelete() {
 		try {
 			projectService.delete(project);
-			project = projectService.getProjectByName(projectName);
-		} catch (Exception e) {
+		} catch (org.hibernate.LazyInitializationException e) {
 			e.printStackTrace();
 		}
-
+		project = projectService.getProjectByName(projectName);
 		Assert.assertNull(project, "Project is not deleted");
 		logger.info("ProjectSerivceTest.testDelete passed");
 	}
 
 	@AfterClass
 	public void afterClass() throws Exception {
+		project = projectService.getProjectByName(projectName);
 		if (project != null)
 			projectService.delete(project);
+		user = userService.getUserByUserId(userId);
 		if (null != user)
 			userService.delete(user);
 	}

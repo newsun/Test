@@ -19,23 +19,23 @@ public class StrategyDao implements IStrategyDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(Strategy strategy) throws Exception {
+	public void save(Strategy strategy)  {
 		entityManager.persist(strategy);
 	}
 
 	@Override
-	public void delete(Strategy strategy) throws Exception {
+	public void delete(Strategy strategy)  {
 		Strategy deletestrategy = entityManager.merge(strategy);
 		entityManager.remove(deletestrategy);
 	}
 
 	@Override
-	public void update(Strategy strategy) throws Exception {
+	public void update(Strategy strategy)  {
 		entityManager.merge(strategy);
 	}
 
 	@Override
-	public Strategy getStrategyByName(String name) throws Exception {
+	public Strategy getStrategyByName(String name)  {
 		String qlString = "from " + Strategy.class.getSimpleName() + " as stra where stra.name='" + name + "'";
 		Query query = entityManager.createQuery(qlString);
 		try {
@@ -49,7 +49,7 @@ public class StrategyDao implements IStrategyDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Strategy> getAllstrategy() throws Exception {
+	public List<Strategy> getAllstrategy()  {
 		String qlString = "from " + Strategy.class.getSimpleName();
 		return entityManager.createQuery(qlString).getResultList();
 	}

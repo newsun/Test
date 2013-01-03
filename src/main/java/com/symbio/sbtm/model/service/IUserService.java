@@ -12,7 +12,7 @@ public interface IUserService {
 	 * 
 	 * @throws SQLException
 	 */
-	public void save(User user) throws Exception;
+	public void save(User user) ;
 
 	/*
 	 * Remove a user
@@ -21,9 +21,9 @@ public interface IUserService {
 	 * 
 	 * @return whether delete successfully
 	 * 
-	 * @throws Exception
+	 * @
 	 */
-	public void delete(User user) throws Exception;
+	public void delete(User user) ;
 
 	/*
 	 * Change user inforamtion
@@ -32,9 +32,9 @@ public interface IUserService {
 	 * 
 	 * @return whether created successfully
 	 * 
-	 * @throws Exception
+	 * @
 	 */
-	public void update(User user) throws Exception;
+	public void update(User user) ;
 
 	/*
 	 * find a user whether exists
@@ -43,7 +43,7 @@ public interface IUserService {
 	 * 
 	 * @return whether created successfully
 	 * 
-	 * @throws Exception
+	 * @
 	 */
-	public User getUserByUserId(String userId) throws Exception;
+	public User getUserByUserId(String userId) ;
 }

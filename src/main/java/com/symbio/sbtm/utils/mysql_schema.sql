@@ -90,7 +90,7 @@ create table Charter(
 id bigint primary key auto_increment,
 name varchar(50) not null,
 description varchar(255),
-areaId bigint not null,
+/*areaId bigint not null,*/
 /*projectId bigint not null,*/
 /*buildId bigint not null,*/
 starttime timestamp,
@@ -102,13 +102,13 @@ bugIvestigationAndReporting bigint,
 sesstionSetup bigint,
 chartervsopp varchar(50),
 note varchar(255),
-unique(areaId,name),
+/*unique(areaId,name),*/
 /*foreign key(projectId) references Project(id) on delete cascade on update cascade,*/
 /*foreign key(buildId) references Build(id) on delete cascade on update cascade,*/
 /*foreign key(areasId) references areas(id) on delete cascade on update cascade,*/
 /*foreign key(ossId) references oss(id) on delete no action on update cascade,*/
 /*foreign key(strategiesId) references strategies(id) on delete no action on update cascade,*/
-foreign key(areaId) references Area(id) on delete cascade on update cascade,
+/*foreign key(areaId) references Area(id) on delete cascade on update cascade,*/
 foreign key(durationId) references Duration(id) on delete no action on update cascade,
 foreign key(testerId) references User(id) on delete no action on update cascade
 );

@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Create New Area</title>
 </head>
 <body>
-This is a area page.
+<form action="CheckUserAction"><input type=""
+	label="Charter Name" /> <input type="text" label="Description" /> <input
+	type="submit"></form>
 </body>
 </html>

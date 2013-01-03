@@ -21,24 +21,24 @@ public class UserService implements IUserService {
 
 	@Override
 	@Transactional
-	public void save(User user) throws Exception {
+	public void save(User user)  {
 		userDao.save(user);
 	}
 
 	@Override
 	@Transactional
-	public void delete(User user) throws Exception {
+	public void delete(User user)  {
 		userDao.delete(user);
 	}
 
 	@Override
 	@Transactional
-	public void update(User user) throws Exception {
+	public void update(User user)  {
 		userDao.update(user);
 	}
 
 	@Override
-	public User getUserByUserId(String userId) throws Exception {
+	public User getUserByUserId(String userId)  {
 		return userDao.getUserByUserId(userId);
 	}
 }

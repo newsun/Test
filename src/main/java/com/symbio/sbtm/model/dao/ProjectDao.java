@@ -21,23 +21,23 @@ public class ProjectDao implements IProjectDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(Project project) throws Exception {
+	public void save(Project project) {
 		entityManager.persist(project);
 	}
 
 	@Override
-	public void delete(Project project) throws Exception {
+	public void delete(Project project) {
 		Project deleteproject = entityManager.merge(project);
 		entityManager.remove(deleteproject);
 	}
 
 	@Override
-	public void update(Project project) throws Exception {
+	public void update(Project project) {
 		entityManager.merge(project);
 	}
 
 	@Override
-	public Project getProjectByName(String name) throws Exception {
+	public Project getProjectByName(String name) {
 		String qlString = "from " + Project.class.getSimpleName() + " as pro where pro.name='" + name + "'";
 		Query query = entityManager.createQuery(qlString);
 		try {
@@ -50,7 +50,7 @@ public class ProjectDao implements IProjectDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Project> getAllProjects() throws Exception {
+	public List<Project> getAllProjects() {
 		String qlString = "from " + OS.class.getSimpleName();
 		return entityManager.createQuery(qlString).getResultList();
 	}

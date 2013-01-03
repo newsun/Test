@@ -27,23 +27,23 @@ public class RoleDao implements IRoleDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(Role role) throws Exception {
+	public void save(Role role)  {
 		entityManager.persist(role);
 	}
 
 	@Override
-	public void delete(Role role) throws Exception {
+	public void delete(Role role)  {
 		Role deleteRole = entityManager.merge(role);
 		entityManager.remove(deleteRole);
 	}
 
 	@Override
-	public void update(Role role) throws Exception {
+	public void update(Role role)  {
 		entityManager.merge(role);
 	}
 
 	@Override
-	public Role getRoleByName(String name) throws Exception {
+	public Role getRoleByName(String name)  {
 		String sql = "from " + Role.class.getSimpleName()
 				+ " as role where role.name='" + name + "'";
 		Query query = entityManager.createQuery(sql);
@@ -58,7 +58,7 @@ public class RoleDao implements IRoleDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Role> getAllRoles() throws Exception {
+	public List<Role> getAllRoles()  {
 		String qlString = "from Role";
 		Query query = entityManager.createQuery(qlString);
 		try {

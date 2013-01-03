@@ -1,9 +1,12 @@
 package com.symbio.sbtm.example;
 
+import org.springframework.stereotype.Repository;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.exceptions.SecurityBreachException;
 import com.symbio.sbtm.model.User;
 
+@Repository("ThrowException")
 public class ThrowException extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;

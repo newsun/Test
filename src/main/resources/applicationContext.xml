@@ -68,7 +68,6 @@
 		p:persistenceXmlLocation="classpath*:META-INF/persistence.xml"
 		p:persistenceUnitName="springJpaPersistenceUnit" />
 
-
 	<!-- bean post-processor for JPA annotations -->
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
@@ -81,8 +80,8 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- Example of SAF2 action instantiated by Spring -->
-	<bean id="hello" class="com.symbio.sbtm.example.hello" />
-	<bean id="throwException" class="com.symbio.sbtm.example.ThrowException" />
+	<!-- <bean id="hello" class="com.symbio.sbtm.example.hello" /> <bean id="throwException" 
+		class="com.symbio.sbtm.example.ThrowException" /> -->
 
 </beans>
 

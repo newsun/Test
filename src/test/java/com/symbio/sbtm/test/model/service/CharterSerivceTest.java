@@ -34,11 +34,11 @@ public class CharterSerivceTest extends AbstractTestNGSpringContextTests {
 	private Area area = null;
 	private Charter charter = null;
 
-	private String userId = "userId_CharterSerivceTest";
-	private String projectName = "projectName_CharterSerivceTest";
-	private String buildName = "buildName_CharterSerivceTest";
-	private String areaName = "areaName_CharterSerivceTest";
-	private String charterName = "charterName_CharterSerivceTest";
+	private String userId = "userId_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String projectName = "projectName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String buildName = "buildName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String areaName = "areaName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
+	private String charterName = "charterName_" + this.getClass().getSimpleName() + System.currentTimeMillis();
 
 	@BeforeClass
 	public void beforeClass() throws Exception {

@@ -20,10 +20,9 @@ public class UserDaoTest {
 	@Autowired
 	private IRoleDao roleDao;
 
-	private static final Logger logger = Logger.getLogger(RoleDaoTest.class
-			.getName());
+	private static final Logger logger = Logger.getLogger(RoleDaoTest.class.getName());
 
-	@Test
+	// @Test
 	public void testSearch() {
 		Role role = null;
 		try {

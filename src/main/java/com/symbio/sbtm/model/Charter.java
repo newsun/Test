@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,6 +28,7 @@ public class Charter implements Serializable {
 	@Column(name = "description", length = 255)
 	private String description;
 
+	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Charter_Area", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
 	private Set<Area> areas = new HashSet<Area>();

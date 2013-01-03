@@ -2,10 +2,13 @@ package com.symbio.sbtm.example;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.User;
 import com.symbio.sbtm.model.service.UserService;
 
+@Repository("hello")
 public class hello extends ActionSupport {
 
 	/**
@@ -41,7 +44,7 @@ public class hello extends ActionSupport {
 				e.printStackTrace();
 			}
 		}
-		return this.SUCCESS;
+		return SUCCESS;
 	}
 
 	public String throwSecurityException() throws Exception {

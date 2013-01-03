@@ -23,23 +23,23 @@ public class AreaDao implements IAreaDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(Area area) throws Exception {
+	public void save(Area area) {
 		entityManager.persist(area);
 	}
 
 	@Override
-	public void delete(Area area) throws Exception {
+	public void delete(Area area) {
 		Area deletearea = entityManager.merge(area);
 		entityManager.remove(deletearea);
 	}
 
 	@Override
-	public void update(Area area) throws Exception {
+	public void update(Area area) {
 		entityManager.merge(area);
 	}
 
 	@Override
-	public Area getAreaByName(Project project, String name) throws Exception {
+	public Area getAreaByName(Project project, String name) {
 		String qlString = "from " + Area.class.getSimpleName()
 		        + " as area where area.name=:name and area.project.id=:pid";
 
@@ -54,7 +54,7 @@ public class AreaDao implements IAreaDao {
 	}
 
 	@Override
-	public Area getAreaByName(Build build, String name) throws Exception {
+	public Area getAreaByName(Build build, String name) {
 		String qlString = "select a from " + Area.class.getSimpleName() + " a,Build b where b.id=:bid and a.name=:name";
 		Query query = entityManager.createQuery(qlString).setParameter("name", name).setParameter("bid", build.getId());
 		try {
@@ -66,7 +66,7 @@ public class AreaDao implements IAreaDao {
 	}
 
 	@Override
-	public Area getAreaById(Long id) throws Exception {
+	public Area getAreaById(Long id) {
 		String qlString = "from " + Area.class.getSimpleName() + " as area where area.id=:id";
 		Query query = entityManager.createQuery(qlString).setParameter("id", id);
 		try {
@@ -79,7 +79,7 @@ public class AreaDao implements IAreaDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Area> getAllAreaInProject(Project project) throws Exception {
+	public List<Area> getAllAreaInProject(Project project) {
 		String qlString = "from " + Area.class.getSimpleName() + " as area where area.project。id=:id";
 		Query query = entityManager.createQuery(qlString).setParameter("id", project.getId());
 		try {
@@ -92,7 +92,7 @@ public class AreaDao implements IAreaDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Area> getAllAreaInBuild(Build build) throws Exception {
+	public List<Area> getAllAreaInBuild(Build build) {
 		String qlString = "select a from " + Area.class.getSimpleName()
 		        + " a,Build b where b.id=:bid and a.builds.build.id=:bid";
 		Query query = entityManager.createQuery(qlString).setParameter("bid", build.getId());

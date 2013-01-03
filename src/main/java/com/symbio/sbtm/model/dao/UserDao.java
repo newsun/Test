@@ -23,23 +23,23 @@ public class UserDao implements IUserDao {
 	private EntityManager entityManager;
 
 	@Override
-	public void save(User user) throws Exception {
+	public void save(User user)  {
 		entityManager.persist(user);
 	}
 
 	@Override
-	public void delete(User user) throws Exception {
+	public void delete(User user)  {
 		User deleteUser = entityManager.merge(user);
 		entityManager.remove(deleteUser);
 	}
 
 	@Override
-	public void update(User user) throws Exception {
+	public void update(User user)  {
 		entityManager.merge(user);
 	}
 
 	@Override
-	public User getUserByUserId(String userId) throws Exception {
+	public User getUserByUserId(String userId)  {
 		User user = null;
 		// TypedQuery<User> query = entityManager.createQuery(
 		// "from " + User.class.getName() + " where id=" + userId,

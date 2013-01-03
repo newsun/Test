@@ -5,12 +5,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import junit.framework.Assert;
-
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import com.symbio.sbtm.factory.HSFactory;
@@ -23,30 +22,27 @@ public class UserModelTest {
 
 	@BeforeClass
 	public void beforeClass() {
-		session = HSFactory.getSessionFactory().openSession();
+		// session = HSFactory.getSessionFactory().openSession();
 	}
 
 	@DataProvider(name = "userData")
 	public static Object[][] usersDataProvider() {
-		return new Object[][] { new Object[] { "admin", "System Administrator",
-				"Administrator" },
-		 new Object[] { "pm", "Project Manager", "Project Manager" },
-		 new Object[] { "creator", "Component Creator", "Creator" },
-		 new Object[] { "tester", "Tester", "Tester" }
-		};
+		return new Object[][] { new Object[] { "admin", "System Administrator", "Administrator" },
+		        new Object[] { "pm", "Project Manager", "Project Manager" },
+		        new Object[] { "creator", "Component Creator", "Creator" },
+		        new Object[] { "tester", "Tester", "Tester" } };
 	}
 
 	@DataProvider(name = "roleData")
 	public static Object[][] rolesDataProvider() {
-		return new Object[][] { new Object[] { "Administrator",
-				"System Administrator" },
+		return new Object[][] { new Object[] { "Administrator", "System Administrator" },
 		// new Object[] { "Project Manager", "Project Manager" },
 		// new Object[] { "Creator", "Component Creator" },
 		// new Object[] { "Tester", "Tester" }
 		};
 	}
 
-	@Test(dataProvider = "roleData")
+	@Test(dataProvider = "roleData", enabled = false)
 	public void createRoles(String name, String description) {
 		Transaction tx = session.beginTransaction();
 		try {
@@ -72,7 +68,7 @@ public class UserModelTest {
 		}
 	}
 
-	@Test(dataProvider = "userData", dependsOnMethods = "createRoles")
+	@Test(dataProvider = "userData", dependsOnMethods = "createRoles", enabled = false)
 	public void createUsers(String name, String description, String role) {
 		Transaction tx = session.beginTransaction();
 		try {
@@ -82,9 +78,7 @@ public class UserModelTest {
 			session.save(up);
 			tx.commit();
 
-			List roles = session
-					.createQuery("from Role as role where role.name=:name")
-					.setString("name", role).list();
+			List roles = session.createQuery("from Role as role where role.name=:name").setString("name", role).list();
 			Role ro = null;
 			if (roles.size() > 0) {
 				tx = session.beginTransaction();
@@ -121,6 +115,6 @@ public class UserModelTest {
 
 	@AfterClass
 	public void afterClass() {
-		session.close();
+		// session.close();
 	}
 }

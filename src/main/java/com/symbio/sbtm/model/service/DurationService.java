@@ -17,29 +17,29 @@ public class DurationService implements IDurationService {
 
 	@Override
 	@Transactional
-	public void save(Duration duration) throws Exception {
+	public void save(Duration duration)  {
 		durationDao.save(duration);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Duration duration) throws Exception {
+	public void delete(Duration duration)  {
 		durationDao.delete(duration);
 	}
 
 	@Override
 	@Transactional
-	public void update(Duration duration) throws Exception {
+	public void update(Duration duration)  {
 		durationDao.update(duration);
 	}
 
 	@Override
-	public Duration getDurationByName(String name) throws Exception {
+	public Duration getDurationByName(String name)  {
 		return durationDao.getDurationByName(name);
 	}
 
 	@Override
-	public List<Duration> getAllDurations() throws Exception {
+	public List<Duration> getAllDurations()  {
 		return durationDao.getAllDurations();
 	}
 

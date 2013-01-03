@@ -16,29 +16,29 @@ public class StrategyService implements IStrategyService {
 
 	@Override
 	@Transactional
-	public void save(Strategy strategy) throws Exception {
+	public void save(Strategy strategy)  {
 		strategyDao.save(strategy);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Strategy strategy) throws Exception {
+	public void delete(Strategy strategy)  {
 		strategyDao.delete(strategy);
 	}
 
 	@Override
 	@Transactional
-	public void update(Strategy strategy) throws Exception {
+	public void update(Strategy strategy)  {
 		strategyDao.update(strategy);
 	}
 
 	@Override
-	public Strategy getStrategyByName(String name) throws Exception {
+	public Strategy getStrategyByName(String name)  {
 		return strategyDao.getStrategyByName(name);
 	}
 
 	@Override
-	public List<Strategy> getAllstrategy() throws Exception {
+	public List<Strategy> getAllstrategy()  {
 		return strategyDao.getAllstrategy();
 	}
 

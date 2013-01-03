@@ -5,18 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Charter: <s:property value="charter.name" /></title>
 <script type="text/javascript">
-function modify(data){
-	alert(data);
-}
+	function modify(data) {
+		alert(data);
+	}
+	function addbug() {
+		var id = document.getElementById("bugs").getElementsByTagName("table").length;
+		$("#addbug")
+				.before(
+						'<table id='+id+'><tbody>'
+								+ '<tr><td>Summary</td><td><s:textfield name="summary"></s:textfield></td></tr>'
+								+ '<tr><td>Description</td><td><s:textarea name="description"></s:textarea></td></tr>'
+								+ '<tr><td></td><td align="right"><button onclick="deleteBug(+'
+								+ id + ')">Delete Bug</button></td></tr>'
+								+ '</tbody></table>');
+	}
+	function deleteBug(id) {
+		$("table#" + id).remove();
+	}
+	function areaChanged() {
+		var div = $("#addareadiv");
+		var div2 = div.clone();
+		div.removeAttr("id", "");
+		div.after(div2);
+	}
 </script>
 </head>
 <body>
-<%--
-<s:include value="project.jsp"></s:include>
-<s:include value="area.jsp"></s:include>
---%>
 <s:div id="charter">
 	<h3>Charter: <s:property value="charter.name"></s:property></h3>
 	<hr />
@@ -45,10 +61,17 @@ function modify(data){
 		<tbody>
 			<s:iterator value="charter.areas" id="area" status="st">
 				<tr>
-					<td><s:textfield name="name" onchange="modify('%{#st.index}')"
-						id="nmArea_%{#st.index}" /></td>
+					<td><s:select list="areaList" headerValue="--Select Area--"
+						headerKey="--" listKey="id" listValue="name" value="id"></s:select></td>
+					<!-- <td><s:textfield name="name"
+								onchange="modify('%{#st.index}')" id="nmArea_%{#st.index}" /></td> -->
 				</tr>
 			</s:iterator>
+			<tr id="addareadiv">
+				<td><s:select list="areaList" headerValue="--Select Area--"
+					headerKey="--" listKey="id" listValue="name"
+					onchange="areaChanged()"></s:select></td>
+			</tr>
 		</tbody>
 	</table>
 </s:div>
@@ -109,16 +132,36 @@ function modify(data){
 <s:div id="bugs">
 	<h3>Bugs</h3>
 	<hr>
-	<table>
-		<tbody>
-			<s:iterator value="charter.bugs">
+	<s:iterator value="charter.bugs" id="bug" status="st">
+		<table id="bug<s:property value='#st.index' />">
+			<tbody>
 				<tr>
+					<td>Summary</td>
 					<td><s:textfield name="summary"></s:textfield></td>
 				</tr>
 				<tr>
-					<td><s:textarea name="charter.bugs"></s:textarea></td>
+					<td>Description</td>
+					<td><s:textarea name="description" label="Description"></s:textarea></td>
 				</tr>
-			</s:iterator>
+				<tr>
+					<td></td>
+					<td align="right">
+					<button
+						onclick="deleteBug(this.parentNode.parentNode.parentNode.parentNode.id)">Delete
+					Bug</button>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</s:iterator>
+	<table id="addbug">
+		<tbody>
+			<tr>
+				<td align="right">
+				<button onclick="addbug()">Add New Bug</button>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </s:div>

@@ -4,18 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Symbio SBTM</title>
+<title>Security Error.</title>
 </head>
 <body>
-	<h4>The application has malfunctioned.</h4>
-	<p>Please contact technical support with the following information:</p>
-	<h4>
-		Exception Name:
-		<s:property value="message" />
-	</h4>
-	<h4>
-		Exception Details:
-		<s:property value="exceptionStack" />
-	</h4>
+<h3>Security Error.</h3>
 </body>
 </html>
