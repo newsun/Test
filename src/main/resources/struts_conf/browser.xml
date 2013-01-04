@@ -14,17 +14,17 @@
 			<result name="input">/jsp/index.jsp</result>
 			<result>/jsp/index.jsp</result>
 		</action>
-		
-		<action name="project" class="project">
+
+		<action name="project" class="projectAction">
 			<result>/jsp/project.jsp</result>
 		</action>
-		<action name="build" class="build">
+		<action name="build" class="buildAction">
 			<result>/jsp/build.jsp</result>
 		</action>
-		<action name="area" class="area">
+		<action name="area" class="areaAction">
 			<result>/jsp/area</result>
 		</action>
-		<action name="charter" class="charter">
+		<action name="charter" class="charterAction">
 			<result>/jsp/charter.jsp</result>
 		</action>
 	</package>

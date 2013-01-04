@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.Build;
 import com.symbio.sbtm.model.Project;
@@ -15,7 +17,9 @@ public class AjaxBuilds extends ActionSupport {
      * 
      */
 	private static final long serialVersionUID = 1L;
+	@Autowired
 	private transient ProjectService projectService;
+	@Autowired
 	private transient BuildService buildService;
 	private Map<Integer, String> buildList;
 	private Project project;

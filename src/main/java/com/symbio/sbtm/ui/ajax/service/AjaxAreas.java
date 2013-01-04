@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.Area;
 import com.symbio.sbtm.model.Build;
@@ -16,6 +18,7 @@ public class AjaxAreas extends ActionSupport {
      */
 	private static final long serialVersionUID = 1L;
 
+	@Autowired
 	private transient AreaService areaService;
 
 	private Map<Integer, String> areaMap;

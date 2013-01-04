@@ -24,14 +24,14 @@ public class Build implements Serializable {
 	@Column(name = "name", length = 50)
 	private String name;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "projectId")
 	private Project project;
 
 	@Column(name = "description", length = 255)
 	private String description;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "Build_Area", joinColumns = @JoinColumn(name = "buildId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
 	private Set<Area> areas = new HashSet<Area>();
 

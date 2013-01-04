@@ -29,7 +29,7 @@ public class Charter implements Serializable {
 	private String description;
 
 	@NotNull
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "Charter_Area", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
 	private Set<Area> areas = new HashSet<Area>();
 

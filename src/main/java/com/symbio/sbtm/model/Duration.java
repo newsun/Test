@@ -29,7 +29,7 @@ public class Duration implements Serializable {
 	@Column(name = "description")
 	private String description;
 
-	@OneToMany(mappedBy = "duration", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "duration", fetch = FetchType.LAZY)
 	private Set<Charter> charters = new HashSet<Charter>();
 
 	public Duration() {

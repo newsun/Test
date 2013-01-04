@@ -30,14 +30,14 @@ public class Project implements Serializable {
 	@GeneratedValue
 	private Date date;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "creatorId")
 	private User creator;
 
-	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
 	private Set<Build> builds = new HashSet<Build>();
 
-	@OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
 	private Set<Area> areas = new HashSet<Area>();
 
 	public Project() {

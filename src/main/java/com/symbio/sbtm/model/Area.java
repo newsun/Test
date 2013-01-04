@@ -34,14 +34,14 @@ public class Area implements Serializable {
 	@Column(name = "description", length = 255)
 	private String description;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "projectId")
 	private Project project;
 
-	@ManyToMany(mappedBy = "areas", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
 	private Set<Build> builds = new HashSet<Build>();
 
-	@ManyToMany(mappedBy = "areas", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
 	private Set<Charter> charters = new HashSet<Charter>();
 
 	public Area() {

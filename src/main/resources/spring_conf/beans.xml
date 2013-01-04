@@ -21,13 +21,16 @@
 
 	<!-- struts_conf/browser.xml mydefault package -->
 	<bean id="index" class="com.symbio.sbtm.ui.action.IndexAction" />
-	<bean id="project" class="com.symbio.sbtm.ui.action.project.ProjectAction" />
-	<bean id="build" class="com.symbio.sbtm.ui.action.build.BuildAction" />
-	<bean id="area" class="com.symbio.sbtm.ui.action.area.AreaAction" />
-	<bean id="charter" class="com.symbio.sbtm.ui.action.charter.CharterAction" />
-	
-	<bean id="AjaxProjects" class="com.symbio.sbtm.ui.ajax.service.AjaxProjects" />
-	<bean id="AjaxBuilds" class="com.symbio.sbtm.ui.ajax.service.AjaxBuilds" />
-	<bean id="AjaxAreas" class="com.symbio.sbtm.ui.ajax.service.AjaxAreas" />
+	<bean id="projectAction" class="com.symbio.sbtm.ui.action.project.ProjectAction" />
+	<bean id="buildAction" class="com.symbio.sbtm.ui.action.build.BuildAction" />
+	<bean id="areaAction" class="com.symbio.sbtm.ui.action.area.AreaAction" />
+	<bean id="charterAction" class="com.symbio.sbtm.ui.action.charter.CharterAction" />
+
+	<bean id="AjaxProjects" class="com.symbio.sbtm.ui.ajax.service.AjaxProjects">
+	</bean>
+	<bean id="AjaxBuilds" class="com.symbio.sbtm.ui.ajax.service.AjaxBuilds">
+	</bean>
+	<bean id="AjaxAreas" class="com.symbio.sbtm.ui.ajax.service.AjaxAreas">
+	</bean>
 
 </beans>

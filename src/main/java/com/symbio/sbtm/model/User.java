@@ -39,14 +39,14 @@ public class User implements Serializable {
 	@Column(name = "description", length = 250)
 	private String description;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
 	private Set<Role> roles = new HashSet<Role>();
 
-	@OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
 	private Set<Project> createdProjects = new HashSet<Project>();
 
-	@OneToMany(mappedBy = "tester", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "tester", fetch = FetchType.LAZY)
 	private Set<Charter> charters = new HashSet<Charter>();
 
 	public User() {
