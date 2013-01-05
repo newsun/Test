@@ -65,20 +65,20 @@ insert into project(name,description,creatorId) values("ProjectC","ProjectC Desc
 /***************************************************************************
  *  step8: insert entries into build table
  ***************************************************************************/
-insert into build(name,description,projectId) values("1.2","test only",1);
-insert into build(name,description,projectId) values("1.3","test only",1);
-insert into build(name,description,projectId) values("1.4","test only",1);
-insert into build(name,description,projectId) values("1.5","test only",1);
+insert into build(name,description,projectId) values("v1.2","test only",1);
+insert into build(name,description,projectId) values("v1.3","test only",1);
+insert into build(name,description,projectId) values("v1.4","test only",1);
+insert into build(name,description,projectId) values("v1.5","test only",1);
 
-insert into build(name,description,projectId) values("1.2","test only",2);
-insert into build(name,description,projectId) values("1.3","test only",2);
-insert into build(name,description,projectId) values("1.4","test only",2);
-insert into build(name,description,projectId) values("1.5","test only",2);
+insert into build(name,description,projectId) values("build 1.2","test only",2);
+insert into build(name,description,projectId) values("build 1.3","test only",2);
+insert into build(name,description,projectId) values("build 1.4","test only",2);
+insert into build(name,description,projectId) values("build 1.5","test only",2);
 
-insert into build(name,description,projectId) values("1.2","test only",3);
-insert into build(name,description,projectId) values("1.3","test only",3);
-insert into build(name,description,projectId) values("1.4","test only",3);
-insert into build(name,description,projectId) values("1.5","test only",3);
+insert into build(name,description,projectId) values("build v1.2","test only",3);
+insert into build(name,description,projectId) values("build v1.3","test only",3);
+insert into build(name,description,projectId) values("build v1.4","test only",3);
+insert into build(name,description,projectId) values("build v1.5","test only",3);
 
 /***************************************************************************
  *  step9: insert entries into area table
@@ -102,10 +102,16 @@ insert into area(name,projectId) values("Installation 2",2);
 insert into area(name,projectId) values("Online Help 2",2);
 insert into area(name,projectId) values("Preferences 2",2);
 
+insert into area(name,projectId) values("DecideRight 3",3);
+insert into area(name,projectId) values("User Manual 3",3);
+insert into area(name,projectId) values("Installation 3",3);
+insert into area(name,projectId) values("Online Help 3",3);
+insert into area(name,projectId) values("Preferences 3",3);
+
 /***************************************************************************
 * step10: insert into build_area
 ***************************************************************************/
-insert into Build_Area(buildId,areaId) values(1,1);
+insert into Build_Area(buildId,areaId) values(1,1); /** project A                 */
 insert into Build_Area(buildId,areaId) values(1,2);
 insert into Build_Area(buildId,areaId) values(1,3);
 insert into Build_Area(buildId,areaId) values(1,4);
@@ -125,47 +131,64 @@ insert into Build_Area(buildId,areaId) values(4,2);
 insert into Build_Area(buildId,areaId) values(4,3);
 insert into Build_Area(buildId,areaId) values(4,4);
 insert into Build_Area(buildId,areaId) values(4,5);
-insert into Build_Area(buildId,areaId) values(5,1);
+
+
+insert into Build_Area(buildId,areaId) values(5,1); /** project B                 */
 insert into Build_Area(buildId,areaId) values(5,2);
 insert into Build_Area(buildId,areaId) values(5,3);
 insert into Build_Area(buildId,areaId) values(5,4);
 insert into Build_Area(buildId,areaId) values(5,5);
 
-insert into Build_Area(buildId,areaId) values(6,1);
-insert into Build_Area(buildId,areaId) values(6,2);
-insert into Build_Area(buildId,areaId) values(6,3);
-insert into Build_Area(buildId,areaId) values(6,4);
-insert into Build_Area(buildId,areaId) values(6,5);
-insert into Build_Area(buildId,areaId) values(7,1);
-insert into Build_Area(buildId,areaId) values(7,2);
-insert into Build_Area(buildId,areaId) values(7,3);
-insert into Build_Area(buildId,areaId) values(7,4);
-insert into Build_Area(buildId,areaId) values(7,5);
-insert into Build_Area(buildId,areaId) values(8,1);
-insert into Build_Area(buildId,areaId) values(8,2);
-insert into Build_Area(buildId,areaId) values(8,3);
-insert into Build_Area(buildId,areaId) values(8,4);
-insert into Build_Area(buildId,areaId) values(8,5);
-insert into Build_Area(buildId,areaId) values(9,1);
-insert into Build_Area(buildId,areaId) values(9,2);
-insert into Build_Area(buildId,areaId) values(9,3);
-insert into Build_Area(buildId,areaId) values(9,4);
-insert into Build_Area(buildId,areaId) values(9,5);
-insert into Build_Area(buildId,areaId) values(10,1);
-insert into Build_Area(buildId,areaId) values(10,2);
-insert into Build_Area(buildId,areaId) values(10,3);
-insert into Build_Area(buildId,areaId) values(10,4);
-insert into Build_Area(buildId,areaId) values(10,5);
-insert into Build_Area(buildId,areaId) values(11,1);
-insert into Build_Area(buildId,areaId) values(11,2);
-insert into Build_Area(buildId,areaId) values(11,3);
-insert into Build_Area(buildId,areaId) values(11,4);
-insert into Build_Area(buildId,areaId) values(11,5);
-insert into Build_Area(buildId,areaId) values(12,1);
-insert into Build_Area(buildId,areaId) values(12,2);
-insert into Build_Area(buildId,areaId) values(12,3);
-insert into Build_Area(buildId,areaId) values(12,4);
-insert into Build_Area(buildId,areaId) values(12,5);
+insert into Build_Area(buildId,areaId) values(6,7); 
+insert into Build_Area(buildId,areaId) values(6,8);
+insert into Build_Area(buildId,areaId) values(6,9);
+insert into Build_Area(buildId,areaId) values(6,10);
+insert into Build_Area(buildId,areaId) values(6,11);
+insert into Build_Area(buildId,areaId) values(6,12);
+insert into Build_Area(buildId,areaId) values(6,13);
+insert into Build_Area(buildId,areaId) values(6,14);
+insert into Build_Area(buildId,areaId) values(6,15);
+
+insert into Build_Area(buildId,areaId) values(7,7);
+insert into Build_Area(buildId,areaId) values(7,8);
+insert into Build_Area(buildId,areaId) values(7,9);
+insert into Build_Area(buildId,areaId) values(7,10);
+insert into Build_Area(buildId,areaId) values(7,11);
+
+insert into Build_Area(buildId,areaId) values(8,7); 
+insert into Build_Area(buildId,areaId) values(8,8);
+insert into Build_Area(buildId,areaId) values(8,9);
+insert into Build_Area(buildId,areaId) values(8,10);
+insert into Build_Area(buildId,areaId) values(8,11);
+insert into Build_Area(buildId,areaId) values(8,12);
+insert into Build_Area(buildId,areaId) values(8,13);
+insert into Build_Area(buildId,areaId) values(8,14);
+insert into Build_Area(buildId,areaId) values(8,15);
+insert into Build_Area(buildId,areaId) values(8,16);
+
+insert into Build_Area(buildId,areaId) values(9,17);  /** project C                 */
+insert into Build_Area(buildId,areaId) values(9,18);
+insert into Build_Area(buildId,areaId) values(9,19);
+insert into Build_Area(buildId,areaId) values(9,20);
+insert into Build_Area(buildId,areaId) values(9,21);
+
+insert into Build_Area(buildId,areaId) values(10,17);
+insert into Build_Area(buildId,areaId) values(10,18);
+insert into Build_Area(buildId,areaId) values(10,19);
+insert into Build_Area(buildId,areaId) values(10,20);
+insert into Build_Area(buildId,areaId) values(10,21);
+
+insert into Build_Area(buildId,areaId) values(11,17);
+insert into Build_Area(buildId,areaId) values(11,18);
+insert into Build_Area(buildId,areaId) values(11,19);
+insert into Build_Area(buildId,areaId) values(11,20);
+insert into Build_Area(buildId,areaId) values(11,21);
+
+insert into Build_Area(buildId,areaId) values(12,17);
+insert into Build_Area(buildId,areaId) values(12,18);
+insert into Build_Area(buildId,areaId) values(12,19);
+insert into Build_Area(buildId,areaId) values(12,20);
+insert into Build_Area(buildId,areaId) values(12,21);
 
 /***************************************************************************
  *  step11 insert entries into charter table

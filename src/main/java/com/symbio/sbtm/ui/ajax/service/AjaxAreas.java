@@ -26,22 +26,23 @@ public class AjaxAreas extends ActionSupport {
 	private Build build;
 
 	public String execute() {
-		if (areaMap == null)
-			try {
-				List<Area> areas = null;
-				if (project != null && project.getId() > 0) {
-					areas = areaService.getAllAreaInProject(project);
-				} else if (build != null && build.getId() > 0) {
-					areas = areaService.getAllAreaInBuild(build);
-				}
-				areaMap = new TreeMap<Integer, String>();
-				for (Area area : areas) {
-					areaMap.put(area.getId().intValue(), area.getName());
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return "Error";
+		try {
+			List<Area> areas = null;
+			if (build != null && build.getId() > 0) {
+				areas = areaService.getAllAreaInBuild(build);
+				build = null;
+			} else if (project != null && project.getId() > 0) {
+				areas = areaService.getAllAreaInProject(project);
+				project = null;
 			}
+			areaMap = new TreeMap<Integer, String>();
+			for (Area area : areas) {
+				areaMap.put(area.getId().intValue(), area.getName());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error";
+		}
 		return "success";
 	}
 

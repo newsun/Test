@@ -38,7 +38,7 @@ public class BuildDaoJpa implements BuildDao {
 	@Override
 	public Build getBuildByName(Project project, String name) {
 		String qlString = "from " + Build.class.getSimpleName()
-		        + " as build where build.name=:name and build.projectId=:pid";
+		        + " as b where b.name=:name and b.project.id=:pid";
 		Query query = entityManager.createQuery(qlString).setParameter("name", name)
 		        .setParameter("pid", project.getId());
 		try {
@@ -52,7 +52,7 @@ public class BuildDaoJpa implements BuildDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Build> getAllBuilds(Project project) {
-		String qlString = "from " + Build.class.getSimpleName() + " as build where build.projectId=:pid";
+		String qlString = "from " + Build.class.getSimpleName() + " as b where b.project.id=:pid";
 		return entityManager.createQuery(qlString).setParameter("pid", project.getId()).getResultList();
 	}
 

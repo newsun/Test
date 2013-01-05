@@ -17,7 +17,8 @@ import com.symbio.sbtm.model.Project;
 @Repository(value = "areaDao")
 public class AreaDaoJpa implements AreaDao {
 
-	private static final Logger logger = Logger.getLogger(AreaDaoJpa.class.getName());
+	private static final Logger logger = Logger.getLogger(AreaDaoJpa.class
+			.getName());
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -41,34 +42,41 @@ public class AreaDaoJpa implements AreaDao {
 	@Override
 	public Area getAreaByName(Project project, String name) {
 		String qlString = "from " + Area.class.getSimpleName()
-		        + " as area where area.name=:name and area.project.id=:pid";
+				+ " as area where area.name=:name and area.project.id=:pid";
 
-		Query query = entityManager.createQuery(qlString).setParameter("name", name)
-		        .setParameter("pid", project.getId());
+		Query query = entityManager.createQuery(qlString)
+				.setParameter("name", name)
+				.setParameter("pid", project.getId());
 		try {
 			return (Area) query.getSingleResult();
 		} catch (NoResultException e) {
-			logger.warn("No entity found for query area in (project: " + project.getId() + ", area: " + name);
+			logger.warn("No entity found for query area in (project: "
+					+ project.getId() + ", area: " + name);
 		}
 		return null;
 	}
 
 	@Override
 	public Area getAreaByName(Build build, String name) {
-		String qlString = "select a from " + Area.class.getSimpleName() + " a,Build b where b.id=:bid and a.name=:name";
-		Query query = entityManager.createQuery(qlString).setParameter("name", name).setParameter("bid", build.getId());
+		String qlString = "select a from " + Area.class.getSimpleName()
+				+ " a,Build b where b.id=:bid and a.name=:name";
+		Query query = entityManager.createQuery(qlString)
+				.setParameter("name", name).setParameter("bid", build.getId());
 		try {
 			return (Area) query.getSingleResult();
 		} catch (NoResultException e) {
-			logger.warn("No entity found for query area in (build: " + build.getId() + ", area: " + name);
+			logger.warn("No entity found for query area in (build: "
+					+ build.getId() + ", area: " + name);
 		}
 		return null;
 	}
 
 	@Override
 	public Area getAreaById(Long id) {
-		String qlString = "from " + Area.class.getSimpleName() + " as area where area.id=:id";
-		Query query = entityManager.createQuery(qlString).setParameter("id", id);
+		String qlString = "from " + Area.class.getSimpleName()
+				+ " as area where area.id=:id";
+		Query query = entityManager.createQuery(qlString)
+				.setParameter("id", id);
 		try {
 			return (Area) query.getSingleResult();
 		} catch (NoResultException e) {
@@ -80,12 +88,16 @@ public class AreaDaoJpa implements AreaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Area> getAllAreaInProject(Project project) {
-		String qlString = "from " + Area.class.getSimpleName() + " as area where area.project.id=:id";
-		Query query = entityManager.createQuery(qlString).setParameter("id", project.getId());
+		String qlString = "from " + Area.class.getSimpleName()
+				+ " as a where a.project.id=:pid";
+		Long pid = project.getId();
+		Query query = entityManager.createQuery(qlString).setParameter("pid",
+				pid);
 		try {
 			return query.getResultList();
 		} catch (NoResultException e) {
-			logger.warn("No entity found for query area in project: " + project.getId());
+			logger.warn("No entity found for query area in project: "
+					+ project.getId());
 		}
 		return null;
 	}
@@ -93,13 +105,15 @@ public class AreaDaoJpa implements AreaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Area> getAllAreaInBuild(Build build) {
-		String qlString = "from " + Area.class.getSimpleName()
-		        + " a,left join fetch a.builds b where b.id=:bid";
-		Query query = entityManager.createQuery(qlString).setParameter("bid", build.getId());
+		String qlString = "select a from " + Area.class.getSimpleName()
+				+ " a inner join fetch a.builds b where b.id=:bid";
+		Query query = entityManager.createQuery(qlString).setParameter("bid",
+				build.getId());
 		try {
 			return query.getResultList();
 		} catch (NoResultException e) {
-			logger.warn("No entity found for query area in build: " + build.getId());
+			logger.warn("No entity found for query area in build: "
+					+ build.getId());
 		}
 		return null;
 	}
