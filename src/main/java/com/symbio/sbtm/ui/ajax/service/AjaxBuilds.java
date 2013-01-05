@@ -53,14 +53,6 @@ public class AjaxBuilds extends ActionSupport {
 		return buildList;
 	}
 
-	public void setBuildList(Map<Integer, String> buildList) {
-		this.buildList = buildList;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
 	public void setProject(Project project) {
 		this.project = project;
 	}

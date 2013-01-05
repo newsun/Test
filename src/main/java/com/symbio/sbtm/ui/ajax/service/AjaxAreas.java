@@ -30,9 +30,9 @@ public class AjaxAreas extends ActionSupport {
 			try {
 				List<Area> areas = null;
 				if (project != null && project.getId() > 0) {
-					areas = areaService.getAllAreaInBuild(build);
-				} else if (build != null && build.getId() > 0) {
 					areas = areaService.getAllAreaInProject(project);
+				} else if (build != null && build.getId() > 0) {
+					areas = areaService.getAllAreaInBuild(build);
 				}
 				areaMap = new TreeMap<Integer, String>();
 				for (Area area : areas) {
@@ -49,20 +49,8 @@ public class AjaxAreas extends ActionSupport {
 		return areaMap;
 	}
 
-	public void setAreaMap(Map<Integer, String> areaMap) {
-		this.areaMap = areaMap;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
 	public void setProject(Project project) {
 		this.project = project;
-	}
-
-	public Build getBuild() {
-		return build;
 	}
 
 	public void setBuild(Build build) {

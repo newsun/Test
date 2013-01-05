@@ -80,7 +80,7 @@ public class AreaDaoJpa implements AreaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Area> getAllAreaInProject(Project project) {
-		String qlString = "from " + Area.class.getSimpleName() + " as area where area.project。id=:id";
+		String qlString = "from " + Area.class.getSimpleName() + " as area where area.project.id=:id";
 		Query query = entityManager.createQuery(qlString).setParameter("id", project.getId());
 		try {
 			return query.getResultList();
@@ -93,8 +93,8 @@ public class AreaDaoJpa implements AreaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Area> getAllAreaInBuild(Build build) {
-		String qlString = "select a from " + Area.class.getSimpleName()
-		        + " a,Build b where b.id=:bid and a.builds.build.id=:bid";
+		String qlString = "from " + Area.class.getSimpleName()
+		        + " a,left join fetch a.builds b where b.id=:bid";
 		Query query = entityManager.createQuery(qlString).setParameter("bid", build.getId());
 		try {
 			return query.getResultList();
