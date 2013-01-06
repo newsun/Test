@@ -21,7 +21,5 @@
 		<property name="hibernate.cache.provider_class"
 			value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" />
 			
-		<mapping class="com.symbio.sbtm.model.User" />
-		<mapping class="com.symbio.sbtm.model.Role" />
 	</session-factory>
 </hibernate-configuration>
