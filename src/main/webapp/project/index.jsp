@@ -2,7 +2,8 @@
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
-<<decorator:usePage id="main"></decorator:usePage>
+<
+<decorator:usePage id="main"></decorator:usePage>
 <html>
 <head>
 <link href="../style.css" rel="stylesheet" type="text/css" />
@@ -21,21 +22,20 @@
 </script>
 </head>
 <body>
+
 	<content tag="menu_nav">
 	<div class="menu_nav">
 		<ul>
-			<li><a href="/index.html">Home</a></li>
-			<li class="/active"><a href="project.html">Project</a></li>
-			<li><a href="/configure.html">Configuration</a></li>
-			<li><a href="/support.html">Support</a></li>
-			<li><a href="/about.html">About Us</a></li>
-			<li><a href="/blog.html">Blog</a></li>
-			<li><a href="/contact.html">Contact Us</a></li>
+			<li><a href="../index.html">Home</a></li>
+			<li class="../active"><a href="#">Project</a></li>
+			<li><a href="../configure.html">Configuration</a></li>
+			<li><a href="../support.html">Support</a></li>
+			<li><a href="../about.html">About Us</a></li>
+			<li><a href="../blog.html">Blog</a></li>
+			<li><a href="../contact.html">Contact Us</a></li>
 		</ul>
 	</div>
 	</content>
-
-
 	<div class="mainbar">
 		<div class="article">
 			<h2>Projects status</h2>
@@ -64,14 +64,10 @@
 				Vestibulum eget bibendum tellus. Nunc vel imperdiet tellus. Mauris
 				ornare aliquam urna, accumsan bibendum eros auctor ac.</p>
 			<ul class="sb_menu">
-				<li><a href="#"><strong>Project A</strong> </a>
-				</li>
-				<li><a href="#"><strong>Project B</strong> </a>
-				</li>
-				<li><a href="#"><strong>Project C</strong> </a>
-				</li>
-				<li><a href="#"><strong>Project D</strong> </a>
-				</li>
+				<li><a href="#"><strong>Project A</strong> </a></li>
+				<li><a href="#"><strong>Project B</strong> </a></li>
+				<li><a href="#"><strong>Project C</strong> </a></li>
+				<li><a href="#"><strong>Project D</strong> </a></li>
 			</ul>
 		</div>
 	</div>
