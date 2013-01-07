@@ -27,7 +27,7 @@
 	<div class="menu_nav">
 		<ul>
 			<li><a href="../index.html">Home</a></li>
-			<li class="../active"><a href="#">Project</a></li>
+			<li class="active"><a href="#">Project</a></li>
 			<li><a href="../configure.html">Configuration</a></li>
 			<li><a href="../support.html">Support</a></li>
 			<li><a href="../about.html">About Us</a></li>

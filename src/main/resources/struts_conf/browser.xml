@@ -16,16 +16,16 @@
 		</action>
 
 		<action name="project" class="projectAction">
-			<result>/jsp/project.jsp</result>
+			<result>/project/project.jsp</result>
 		</action>
 		<action name="build" class="buildAction">
-			<result>/jsp/build.jsp</result>
+			<result>/project/build.jsp</result>
 		</action>
 		<action name="area" class="areaAction">
-			<result>/jsp/area</result>
+			<result>/project/area</result>
 		</action>
 		<action name="charter" class="charterAction">
-			<result>/jsp/charter.jsp</result>
+			<result>/project/charter.jsp</result>
 		</action>
 	</package>
 	<package name="ajaxBrowser" extends="json-default">

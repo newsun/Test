@@ -13,14 +13,14 @@
 			<result name="success" type="chart">
 				<param name="chart">chart</param>
 				<param name="height">400</param>
-				<param name="width">700</param>
+				<param name="width">600</param>
 			</result>
 		</action>
 		<action name="ListAllFruit4Pie2" class="com.symbio.sbtm.ui.chart.Example2">
 			<result name="success" type="chart">
 				<param name="chart">chart</param>
 				<param name="height">400</param>
-				<param name="width">700</param>
+				<param name="width">600</param>
 			</result>
 		</action>
 		<action name="ListAllFruit4BarAndPie" class="">
