@@ -63,8 +63,8 @@
 				<tr>
 					<td><s:select list="areaList" headerValue="--Select Area--"
 						headerKey="--" listKey="id" listValue="name" value="id"></s:select></td>
-					<!-- <td><s:textfield name="name"
-								onchange="modify('%{#st.index}')" id="nmArea_%{#st.index}" /></td> -->
+					<td><s:textfield name="name"
+								onchange="modify('%{#st.index}')" id="nmArea_%{#st.index}" /></td>
 				</tr>
 			</s:iterator>
 			<tr id="addareadiv">
@@ -83,9 +83,10 @@
 		<tbody>
 			<tr>
 				<td>DURATION</td>
-				<td><s:select list="durationList"
+				<%--<td><s:select list="durationList"
 					headerValue="--Select Duration--" headerKey="--" listKey="name"
 					listValue="name" name="charter.duration.name"></s:select></td>
+					 --%>
 			</tr>
 			<tr>
 				<td>DESING AND EXECUTION</td>
@@ -141,7 +142,7 @@
 				</tr>
 				<tr>
 					<td>Description</td>
-					<td><s:textarea name="description" label="Description"></s:textarea></td>
+					<td><s:textarea name="description"></s:textarea></td>
 				</tr>
 				<tr>
 					<td></td>
