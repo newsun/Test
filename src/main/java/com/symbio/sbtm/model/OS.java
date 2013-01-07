@@ -1,8 +1,7 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,8 +24,8 @@ public class OS implements Serializable {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToMany(mappedBy = "oss", fetch = FetchType.EAGER)
-	private Set<Charter> charters = new HashSet<Charter>();
+	@ManyToMany(mappedBy = "oss", fetch = FetchType.LAZY)
+	private List<Charter> charters;
 
 	public OS() {
 	}
@@ -64,11 +63,11 @@ public class OS implements Serializable {
 		this.id = id;
 	}
 
-	public Set<Charter> getCharters() {
+	public List<Charter> getCharters() {
 		return charters;
 	}
 
-	public void setCharters(Set<Charter> charters) {
+	public void setCharters(List<Charter> charters) {
 		this.charters = charters;
 	}
 

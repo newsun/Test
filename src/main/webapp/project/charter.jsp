@@ -40,7 +40,7 @@
 		<tbody>
 			<tr>
 				<td>Description</td>
-				<td><s:textarea name="charter.description"></s:textarea></td>
+				<td><s:textarea name="charter.description" class="desciption"></s:textarea></td>
 			</tr>
 			<tr>
 				<td>Start Time</td>

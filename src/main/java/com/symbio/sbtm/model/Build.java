@@ -1,8 +1,7 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -33,7 +32,7 @@ public class Build implements Serializable {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "Build_Area", joinColumns = @JoinColumn(name = "buildId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
-	private Set<Area> areas = new HashSet<Area>();
+	private List<Area> areas;
 
 	public Build() {
 	}
@@ -75,11 +74,11 @@ public class Build implements Serializable {
 		this.project = project;
 	}
 
-	public Set<Area> getAreas() {
+	public List<Area> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(Set<Area> areas) {
+	public void setAreas(List<Area> areas) {
 		this.areas = areas;
 	}
 

@@ -1,8 +1,7 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -30,7 +29,7 @@ public class Duration implements Serializable {
 	private String description;
 
 	@OneToMany(mappedBy = "duration", fetch = FetchType.LAZY)
-	private Set<Charter> charters = new HashSet<Charter>();
+	private List<Charter> charters;
 
 	public Duration() {
 	}
@@ -72,11 +71,11 @@ public class Duration implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Charter> getCharters() {
+	public List<Charter> getCharters() {
 		return charters;
 	}
 
-	public void setCharters(Set<Charter> charters) {
+	public void setCharters(List<Charter> charters) {
 		this.charters = charters;
 	}
 

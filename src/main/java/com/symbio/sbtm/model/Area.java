@@ -1,14 +1,14 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "name", "projectId" }))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "name",
+		"projectId" }))
 public class Area implements Serializable {
 	/**
      * 
@@ -29,7 +29,7 @@ public class Area implements Serializable {
 	private Area parent;
 
 	@OneToMany(mappedBy = "parent")
-	private Set<Area> subAreas = new HashSet<Area>();
+	private List<Area> subAreas;
 
 	@Column(name = "description", length = 255)
 	private String description;
@@ -39,10 +39,10 @@ public class Area implements Serializable {
 	private Project project;
 
 	@ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
-	private Set<Build> builds = new HashSet<Build>();
+	private List<Build> builds;
 
 	@ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
-	private Set<Charter> charters = new HashSet<Charter>();
+	private List<Charter> charters;
 
 	public Area() {
 	}
@@ -52,12 +52,17 @@ public class Area implements Serializable {
 		this.project = project;
 	}
 
-	public Project getProject() {
-		return project;
+	public Area(String name, Build build) {
+		this.name = name;
+		this.builds.add(build);
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -68,8 +73,20 @@ public class Area implements Serializable {
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
+	public Area getParent() {
+		return parent;
+	}
+
+	public void setParent(Area parent) {
+		this.parent = parent;
+	}
+
+	public List<Area> getSubAreas() {
+		return subAreas;
+	}
+
+	public void setSubAreas(List<Area> subAreas) {
+		this.subAreas = subAreas;
 	}
 
 	public String getDescription() {
@@ -80,39 +97,27 @@ public class Area implements Serializable {
 		this.description = description;
 	}
 
-	public Set<Area> getSubAreas() {
-		return subAreas;
+	public Project getProject() {
+		return project;
 	}
 
-	public void setSubAreas(Set<Area> subAreas) {
-		this.subAreas = subAreas;
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
-	public Area getParent() {
-		return parent;
-	}
-
-	public void setParent(Area parent) {
-		this.parent = parent;
-	}
-
-	public Set<Build> getBuilds() {
+	public List<Build> getBuilds() {
 		return builds;
 	}
 
-	public void setBuilds(Set<Build> builds) {
+	public void setBuilds(List<Build> builds) {
 		this.builds = builds;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Set<Charter> getCharters() {
+	public List<Charter> getCharters() {
 		return charters;
 	}
 
-	public void setCharters(Set<Charter> charters) {
+	public void setCharters(List<Charter> charters) {
 		this.charters = charters;
 	}
 
@@ -127,7 +132,8 @@ public class Area implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		// result = prime * result + ((project == null) ? 0 : project.hashCode());
+		// result = prime * result + ((project == null) ? 0 :
+		// project.hashCode());
 		// result = prime * result + ((parent == null) ? 0 : parent.hashCode());
 		return result;
 	}

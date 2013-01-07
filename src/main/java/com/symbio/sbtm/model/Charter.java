@@ -1,13 +1,15 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Charter implements Serializable {
@@ -29,9 +31,10 @@ public class Charter implements Serializable {
 	private String description;
 
 	@NotNull
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinTable(name = "Charter_Area", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "areaId"))
-	private Set<Area> areas = new HashSet<Area>();
+	private List<Area> areas;
 
 	@Column(name = "starttime")
 	private Date starttime;
@@ -63,26 +66,31 @@ public class Charter implements Serializable {
 	private String note;
 
 	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinTable(name = "Charter_OS", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "osId"))
-	private Set<OS> oss = new HashSet<OS>();
+	private List<OS> oss;
 
 	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinTable(name = "Charter_Strategy", joinColumns = @JoinColumn(name = "charterId"), inverseJoinColumns = @JoinColumn(name = "strategyId"))
-	private Set<Strategy> strategies = new HashSet<Strategy>();
+	private List<Strategy> strategies;
 
 	@OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
-	private Set<Bug> bugs;
+	@Fetch(FetchMode.SUBSELECT)
+	private List<Bug> bugs;
 
 	@OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
-	private Set<Issue> issues;
+	@Fetch(FetchMode.SUBSELECT)
+	private List<Issue> issues;
 
 	@OneToMany(mappedBy = "charter", fetch = FetchType.EAGER)
-	private Set<DataFile> datafiles;
+	@Fetch(FetchMode.SUBSELECT)
+	private List<DataFile> datafiles;
 
 	public Charter() {
 	}
 
-	public Charter(String name, Set<Area> areas, User tester) {
+	public Charter(String name, List<Area> areas, User tester) {
 		this.name = name;
 		this.areas = areas;
 		this.tester = tester;
@@ -112,13 +120,6 @@ public class Charter implements Serializable {
 		this.description = description;
 	}
 
-	public Set<Area> getArea() {
-		return areas;
-	}
-
-	public void setArea(Set<Area> areas) {
-		this.areas = areas;
-	}
 
 	public Date getStarttime() {
 		return starttime;
@@ -192,48 +193,53 @@ public class Charter implements Serializable {
 		this.note = note;
 	}
 
-	public Set<OS> getOss() {
+
+	public List<Area> getAreas() {
+		return areas;
+	}
+
+	public void setAreas(List<Area> areas) {
+		this.areas = areas;
+	}
+
+	public List<OS> getOss() {
 		return oss;
 	}
 
-	public void setOss(Set<OS> oss) {
+	public void setOss(List<OS> oss) {
 		this.oss = oss;
 	}
 
-	public Set<Strategy> getStrategies() {
+	public List<Strategy> getStrategies() {
 		return strategies;
 	}
 
-	public void setStrategies(Set<Strategy> strategies) {
+	public void setStrategies(List<Strategy> strategies) {
 		this.strategies = strategies;
 	}
 
-	public Set<Bug> getBugs() {
+	public List<Bug> getBugs() {
 		return bugs;
 	}
 
-	public void setBugs(Set<Bug> bugs) {
+	public void setBugs(List<Bug> bugs) {
 		this.bugs = bugs;
 	}
 
-	public Set<Issue> getIssues() {
+	public List<Issue> getIssues() {
 		return issues;
 	}
 
-	public void setIssues(Set<Issue> issues) {
+	public void setIssues(List<Issue> issues) {
 		this.issues = issues;
 	}
 
-	public Set<DataFile> getDatafiles() {
+	public List<DataFile> getDatafiles() {
 		return datafiles;
 	}
 
-	public void setDatafiles(Set<DataFile> datafiles) {
+	public void setDatafiles(List<DataFile> datafiles) {
 		this.datafiles = datafiles;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override

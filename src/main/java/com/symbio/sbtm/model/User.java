@@ -1,8 +1,7 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 import javax.validation.constraints.Size;
@@ -41,13 +40,13 @@ public class User implements Serializable {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
-	private Set<Role> roles = new HashSet<Role>();
+	private List<Role> roles;
 
 	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
-	private Set<Project> createdProjects = new HashSet<Project>();
+	private List<Project> createdProjects;
 
 	@OneToMany(mappedBy = "tester", fetch = FetchType.LAZY)
-	private Set<Charter> charters = new HashSet<Charter>();
+	private List<Charter> charters;
 
 	public User() {
 	}
@@ -113,32 +112,32 @@ public class User implements Serializable {
 		this.description = description;
 	}
 
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
-	public Set<Project> getCreatedProjects() {
+	public List<Project> getCreatedProjects() {
 		return createdProjects;
 	}
 
-	public void setCreatedProjects(Set<Project> createdProjects) {
+	public void setCreatedProjects(List<Project> createdProjects) {
 		this.createdProjects = createdProjects;
+	}
+
+	public List<Charter> getCharters() {
+		return charters;
+	}
+
+	public void setCharters(List<Charter> charters) {
+		this.charters = charters;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Set<Charter> getCharters() {
-		return charters;
-	}
-
-	public void setCharters(Set<Charter> charters) {
-		this.charters = charters;
 	}
 
 	@Override

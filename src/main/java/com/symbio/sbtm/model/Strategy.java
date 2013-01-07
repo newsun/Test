@@ -1,8 +1,7 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -26,8 +25,8 @@ public class Strategy implements Serializable {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToMany(mappedBy = "strategies", fetch = FetchType.EAGER)
-	private Set<Charter> charters = new HashSet<Charter>();
+	@ManyToMany(mappedBy = "strategies", fetch = FetchType.LAZY)
+	private List<Charter> charters;
 
 	public Strategy() {
 	}
@@ -64,11 +63,11 @@ public class Strategy implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Set<Charter> getCharters() {
+	public List<Charter> getCharters() {
 		return charters;
 	}
 
-	public void setCharters(Set<Charter> charters) {
+	public void setCharters(List<Charter> charters) {
 		this.charters = charters;
 	}
 

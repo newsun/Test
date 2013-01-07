@@ -31,7 +31,7 @@ public class Issue implements Serializable {
 	@Column(name = "description", length = 5000)
 	private String description;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "charterId")
 	private Charter charter;
 

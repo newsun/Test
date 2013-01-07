@@ -1,8 +1,7 @@
 package com.symbio.sbtm.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -27,7 +26,7 @@ public class Role implements Serializable {
 	private String description;
 
 	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-	private Set<User> users = new HashSet<User>();
+	private List<User> users;
 
 	public Role() {
 	}
@@ -60,11 +59,11 @@ public class Role implements Serializable {
 		this.description = description;
 	}
 
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 

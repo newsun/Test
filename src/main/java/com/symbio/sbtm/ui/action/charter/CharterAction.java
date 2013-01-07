@@ -24,7 +24,7 @@ public class CharterAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Charter charter = null;
+	private Charter charter;
 	private List<Duration> durationList;
 	private List<String> areaList;
 
@@ -79,16 +79,18 @@ public class CharterAction extends ActionSupport {
 		return durationList;
 	}
 
+	public List<String> getAreaList() {
+		areaList = new ArrayList<String>();
+		for (Iterator it = charter.getAreas().iterator(); it.hasNext();)
+			areaList.add(it.next().toString());
+		return areaList;
+	}
+
 	public List<String> set2List(Set set) {
 		ArrayList<String> list = new ArrayList<String>();
 		for (Iterator it = set.iterator(); it.hasNext();) {
 			list.add(it.next().toString());
 		}
 		return list;
-	}
-
-	public List<String> getAreaList() {
-		areaList = set2List(charter.getArea());
-		return areaList;
 	}
 }

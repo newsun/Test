@@ -1,6 +1,8 @@
 package com.symbio.sbtm.test.model.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +59,7 @@ public class CharterSerivceTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testSave() throws Exception {
-		HashSet<Area> areas = new HashSet<Area>();
+		List<Area> areas = new ArrayList<Area>();
 		areas.add(area);
 		charter = new Charter(charterName, areas, user);
 		charterService.save(charter);

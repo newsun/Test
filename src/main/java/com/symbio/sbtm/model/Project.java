@@ -2,8 +2,7 @@ package com.symbio.sbtm.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -35,10 +34,10 @@ public class Project implements Serializable {
 	private User creator;
 
 	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-	private Set<Build> builds = new HashSet<Build>();
+	private List<Build> builds;
 
 	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-	private Set<Area> areas = new HashSet<Area>();
+	private List<Area> areas;
 
 	public Project() {
 	}
@@ -88,19 +87,19 @@ public class Project implements Serializable {
 		this.creator = creator;
 	}
 
-	public Set<Build> getBuilds() {
+	public List<Build> getBuilds() {
 		return builds;
 	}
 
-	public void setBuilds(Set<Build> builds) {
+	public void setBuilds(List<Build> builds) {
 		this.builds = builds;
 	}
 
-	public Set<Area> getAreas() {
+	public List<Area> getAreas() {
 		return areas;
 	}
 
-	public void setAreas(Set<Area> areas) {
+	public void setAreas(List<Area> areas) {
 		this.areas = areas;
 	}
 
