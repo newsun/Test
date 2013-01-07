@@ -17,8 +17,7 @@
 			<div class="header_resize">
 				<div class="logo">
 					<h1>
-						<a href="index.html">Symbio <span>SBTM </span><small>Session
-								Base Testing Management</small> </a>
+						<a href="index.html"><span>Session-Based Test Management</span><small>A method for measuring and managing exploratory testing</small> </a>
 					</h1>
 				</div>
 				<div class="search">

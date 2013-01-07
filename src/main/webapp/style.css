@@ -6,7 +6,7 @@ Released for free under a Creative Commons Attribution 3.0 License
 body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/1.8em Arial, Helvetica, sans-serif;}
 html, .main { padding:0; margin:0; background:#fbfbfb;}
 .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
-.logo { width:300px; float:left; padding:0 0 0 20px;}
+.logo { width:600px; float:left; padding:0 0 0 20px;}
 h1 { margin:0; padding:20px 0; color:#e1e9df; font:bold 40px/1.2em Arial, Helvetica, sans-serif; letter-spacing:-2px;}
 h1 a, h1 a:hover { color:#7b7a7a; text-decoration:none;}
 h1 span { color:#d76002;}
