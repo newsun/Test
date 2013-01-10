@@ -8,13 +8,13 @@
 <head>
 <title><decorator:title default="Symbio - SBTM" />
 </title>
-<link href="../style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="../js/cookie.js"></script>
-<script type="text/javascript" src="../js/json2.js"></script>
-<script type="text/javascript" src="../js/navigator.js"></script>
-<script type="text/javascript" src="../js/images.js"></script>
-<script type="text/javascript" src="../js/jquery.scrollLoading.js"></script>
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/js/cookie.js"></script>
+<script type="text/javascript" src="/js/json2.js"></script>
+<script type="text/javascript" src="/js/navigator.js"></script>
+<script type="text/javascript" src="/js/images.js"></script>
+<script type="text/javascript" src="/js/jquery.scrollLoading.js"></script>
 <script type="text/javascript">
 	document.onreadystatechange = function() {
 		if (document.readyState == "complete") {
@@ -25,28 +25,6 @@
 <decorator:head />
 </head>
 <body>
-
-	<content tag="menu_nav">
-	<div class="menu_nav">
-		<ul>
-			<li><a href="../index.html">Home</a>
-			</li>
-			<li class="active"><a href="#">Project</a>
-			</li>
-			<li><a href="../configure.html">Configuration</a>
-			</li>
-			<li><a href="../support.html">Support</a>
-			</li>
-			<li><a href="../about.html">About Us</a>
-			</li>
-			<li><a href="../blog.html">Blog</a>
-			</li>
-			<li><a href="../contact.html">Contact Us</a>
-			</li>
-		</ul>
-	</div>
-	</content>
-
 	<div class="mainbar">
 		<div class="article">
 			<decorator:body />

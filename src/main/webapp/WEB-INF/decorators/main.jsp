@@ -8,7 +8,26 @@
 <head>
 <title><decorator:title default="Symbio - SBTM" /></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.7.2.js"></script>
 <decorator:head />
+<script type="text/javascript">
+	$(function() {
+		$(".menu_nav li > a").each(function() {
+			if (location.pathname.indexOf("/project/") == 0 && $(this).attr("href").indexOf("/project/") == 0) {
+				$(this).parent().addClass("active");
+				console.log("1:"+location.href+" "+$(this).attr("href"));
+				return;
+			}
+			if (location.pathname.indexOf($(this).attr("href")) == 0) {
+				console.log("2:"+location.href+" "+$(this).attr("href"));
+				$(this).parent().addClass("active");
+				return;
+			}
+
+		});
+	});
+</script>
 </head>
 
 <body>
@@ -17,14 +36,17 @@
 			<div class="header_resize">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span>Session-Based Test Management</span><small>A method for measuring and managing exploratory testing</small> </a>
+						<a href="/index.html"><span>Session-Based Test
+								Management</span><small>A method for measuring and managing
+								exploratory testing</small> </a>
 					</h1>
 				</div>
 				<div class="search">
 					<form method="get" id="search" action="">
 						<span> <input type="text" value="Search..." name="s" id="s" />
-							<input name="searchsubmit" type="image" src="images/search.gif"
-							value="Go" id="searchsubmit" class="btn" /> </span>
+							<input name="searchsubmit" type="image" src="/images/search.gif"
+							value="Go" id="searchsubmit" class="btn" />
+						</span>
 					</form>
 					<!--/searchform -->
 				</div>
@@ -32,7 +54,17 @@
 			</div>
 			<div class="clr"></div>
 			<div class="menu_header">
-				<decorator:getProperty property="page.menu_nav" />
+				<div class="menu_nav">
+					<ul>
+						<li><a href="/index.html">Home</a></li>
+						<li><a href="/project/index.html">Project</a></li>
+						<li><a href="/configure.html">Configuration</a></li>
+						<li><a href="/support.html">Support</a></li>
+						<li><a href="/about.html">About Us</a></li>
+						<li><a href="/blog.html">Blog</a></li>
+						<li><a href="/contact.html">Contact Us</a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="clr"></div>
 		</div>
@@ -48,14 +80,14 @@
 					<h2>
 						<span>Image Gallery</span>
 					</h2>
-					<a href="#"><img src="images/pic_1.jpg" width="58" height="58"
-						alt="pix" /> </a> <a href="#"><img src="images/pic_2.jpg"
+					<a href="#"><img src="/images/pic_1.jpg" width="58" height="58"
+						alt="pix" /> </a> <a href="#"><img src="/images/pic_2.jpg"
 						width="58" height="58" alt="pix" /> </a> <a href="#"><img
-						src="images/pic_3.jpg" width="58" height="58" alt="pix" /> </a> <a
-						href="#"><img src="images/pic_4.jpg" width="58" height="58"
-						alt="pix" /> </a> <a href="#"><img src="images/pic_5.jpg"
+						src="/images/pic_3.jpg" width="58" height="58" alt="pix" /> </a> <a
+						href="#"><img src="/images/pic_4.jpg" width="58" height="58"
+						alt="pix" /> </a> <a href="#"><img src="/images/pic_5.jpg"
 						width="58" height="58" alt="pix" /> </a> <a href="#"><img
-						src="images/pic_6.jpg" width="58" height="58" alt="pix" /> </a>
+						src="/images/pic_6.jpg" width="58" height="58" alt="pix" /> </a>
 				</div>
 				<div class="col c2">
 					<h2>

@@ -51,8 +51,8 @@ ul.sb_menu, ul.ex_menu { margin:0; padding:0 0 0 10px; color:#959595;}
 ul.sb_menu li, ul.ex_menu li { margin:0;}
 ul.sb_menu li { padding:4px 0 4px 4px; width:220px;}
 ul.ex_menu li { padding:4px 0 8px 4px;}
-ul.sb_menu li a, ul.ex_menu li a { color:#5f5f5f; text-decoration:none; margin-left:-12px; padding-left:12px; background:url(images/menu_link.jpg) no-repeat left center; }
-ul.sb_menu li a:hover, ul.ex_menu li a:hover, ul.sb_menu li.active a, ul.ex_menu li.active a { color:#d76002; font-weight:bold; background:url(images/menu_hover.jpg) no-repeat left center;}
+ul.sb_menu li a, ul.ex_menu li a { color:#5f5f5f; text-decoration:none; margin-left:-12px; padding-left:12px; background:url(images/menu_line.gif) no-repeat left center; }
+ul.sb_menu li a:hover, ul.ex_menu li a:hover, ul.sb_menu li.active a, ul.ex_menu li.active a { color:#d76002; font-weight:bold; background:url(images/menu_hover.gif) no-repeat left center;}
 ul.sb_menu li a:hover { text-decoration:underline;}
 ul.ex_menu li a:hover { text-decoration:none;}
 

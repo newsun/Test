@@ -20,42 +20,37 @@
 		//$("img").attr("style",
 		//"background: url(images/loading2.gif) no-repeat center;");
 		//$("img").attr("class", "scrollLoading");
-		$("img").attr("src", "chart/ListAllFruit4Pie2.action");
+		$("img#bugSt").attr("src", "chart/ListAllFruit4Pie2.action");
 	}
 </script>
 </head>
 <body>
-	<div class="mainbar">
-		<div class="article">
-			<h1>Build Content: ${build.name}</h1>
-			<div>Build descriptionBuild descriptionBuild descriptionBuild
-				descriptionBuild descriptionBuild descriptionBuild descriptionBuild
-				descriptionBuild description</div>
-			<center>
-				<h2>Build Statistics</h2>
-			</center>
-			<br>
-			<!-- 
+	<h1>Build Content: ${build.name}</h1>
+	<div>Build descriptionBuild descriptionBuild descriptionBuild
+		descriptionBuild descriptionBuild descriptionBuild descriptionBuild
+		descriptionBuild description</div>
+	<center>
+		<h2>Build Statistics</h2>
+	</center>
+	<br>
+	<!-- 
 	<img class="scrollLoading" data-url="chart/ListAllFruit4Pie2.action"
 		src="images/pixel.gif" width="700" height="400"
 		style="background: url(images/loading2.gif) no-repeat center;" />
 		 -->
-			<table>
-				<tbody>
-					<tr>
-						<td>
-							<button onclick="alert('Create New Charter')">Create New
-								Charter</button></td>
-						<td>
-							<button onclick="showbuggraph()">Show Bug Statistics</button></td>
-					</tr>
-				</tbody>
-			</table>
-			<img src="images/pixel.gif" />
-			<div class="mainbar">
-				<div class="article"></div>
-			</div>
-		</div>
-	</div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<button onclick="alert('Create New Charter')">Create New
+						Charter</button>
+				</td>
+				<td>
+					<button onclick="showbuggraph()">Show Bug Statistics</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<img id="bugSt" />
 </body>
 </html>
