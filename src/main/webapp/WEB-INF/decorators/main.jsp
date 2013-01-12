@@ -14,13 +14,17 @@
 <script type="text/javascript">
 	$(function() {
 		$(".menu_nav li > a").each(function() {
-			if (location.pathname.indexOf("/project/") == 0 && $(this).attr("href").indexOf("/project/") == 0) {
+			var pathname=location.pathname;
+			var href=$(this).attr("href");
+			if(pathname=="/"&&href.indexOf("/index.html")==0){
 				$(this).parent().addClass("active");
-				console.log("1:"+location.href+" "+$(this).attr("href"));
 				return;
 			}
-			if (location.pathname.indexOf($(this).attr("href")) == 0) {
-				console.log("2:"+location.href+" "+$(this).attr("href"));
+			if (pathname.indexOf("/project/") == 0 && href.indexOf("/project/") == 0) {
+				$(this).parent().addClass("active");
+				return;
+			}
+			if (pathname.indexOf(href) == 0) {
 				$(this).parent().addClass("active");
 				return;
 			}
