@@ -16,7 +16,7 @@ function onload() {
 				"<option value ='--'>--Select Build--</option>");
 		/*
 		 * When onload, if no builds list cookied, the area list should not be
-		 * empty, but for project's area list， so will not return;
+		 * empty, but for project's area list锛�so will not return;
 		 */
 		// return;
 	}
@@ -100,12 +100,12 @@ function onProjectChanged(projectId) {
 	console.log("remove cookie: cookiedbuilds");
 	deleteCookie("cookiedAreas");
 	console.log("remove cookie: cookiedAreas");
+	
 	if (projectId == "--") {
 		console.log("page jumped");
-		window.location = "index.action";
+		window.location = "/project/index.html";
 		return;
 	}
-
 	console.log("Fetching builds from remote");
 	jQuery.post('AjaxBuilds.action', {
 		'project.id' : projectId

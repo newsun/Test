@@ -25,11 +25,7 @@
 <decorator:head />
 </head>
 <body>
-	<div class="mainbar">
-		<div class="article">
-			<decorator:body />
-		</div>
-	</div>
+	<decorator:body />
 	<div class="sidebar">
 		<div class="gadget">
 			<h2 class="star">
@@ -43,14 +39,17 @@
 							<td><select id="projectOption"
 								onchange="onProjectChanged(this.value);"></select>
 							</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td><select id="buildOption"
 								onchange="onBuildChanged(this.value);"></select>
 							</td>
+							<td></td>
 						</tr>
 						<tr>
-							<td><!-- Area list --></td>
+							<td>
+								<!-- Area list --></td>
 						</tr>
 						<tr>
 							<td>
