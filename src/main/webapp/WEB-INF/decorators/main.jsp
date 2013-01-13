@@ -6,33 +6,57 @@
 
 <html>
 <head>
-<title><decorator:title default="Symbio - SBTM" /></title>
+<title><decorator:title default="Symbio - SBTM" />
+</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery-1.7.2.js"></script>
 <decorator:head />
 <script type="text/javascript">
-	$(function() {
-		$(".menu_nav li > a").each(function() {
-			var pathname=location.pathname;
-			var href=$(this).attr("href");
-			if(pathname=="/"&&href.indexOf("/index.html")==0){
-				$(this).parent().addClass("active");
-				return;
-			}
-			if (pathname.indexOf("/project/") == 0 && href.indexOf("/project/") == 0) {
-				$(this).parent().addClass("active");
-				return;
-			}
-			if (pathname.indexOf(href) == 0) {
-				$(this).parent().addClass("active");
-				return;
-			}
+<%--$(function() {
+	$(".menu_nav li > a").each(function() {
+		var pathname=location.pathname;
+		var href=$(this).attr("href");
+		if(pathname=="/"&&href.indexOf("/index.html")==0){
+			$(this).parent().addClass("active");
+			return;
+		}
+		if (pathname.indexOf("/project/") == 0 && href.indexOf("/project/") == 0) {
+			$(this).parent().addClass("active");
+			return;
+		}
+		if (pathname.indexOf(href) == 0) {
+			$(this).parent().addClass("active");
+			return;
+		}
 
-		});
 	});
-	
-	
+});
+--%>
+	function xpath(query) {
+		return document.evaluate(
+				"//div[@class='menu_nav']//a[text()='" + query + "']/..",
+				document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null)
+				.snapshotItem(0);
+	}
+	$(function() {
+		var pathname = location.pathname;
+		if (pathname.indexOf("/project/") == 0)
+			li = xpath("Project");
+		else if (pathname.indexOf("/config") == 0)
+			li = xpath("Configuration");
+		else if (pathname.indexOf("/support") == 0)
+			li = xpath("Support");
+		else if (pathname.indexOf("/about") == 0)
+			li = xpath("About Us");
+		else if (pathname.indexOf("/blog") == 0)
+			li = xpath("Blog");
+		else if (pathname.indexOf("/contact") == 0)
+			li = xpath("Contact Us");
+		else
+			li = xpath("Home");
+		li.setAttribute("class", "active");
+	});
 </script>
 </head>
 
@@ -51,8 +75,7 @@
 					<form method="get" id="search" action="">
 						<span> <input type="text" value="Search..." name="s" id="s" />
 							<input name="searchsubmit" type="image" src="/images/search.gif"
-							value="Go" id="searchsubmit" class="btn" />
-						</span>
+							value="Go" id="searchsubmit" class="btn" /> </span>
 					</form>
 					<!--/searchform -->
 				</div>
@@ -62,13 +85,20 @@
 			<div class="menu_header">
 				<div class="menu_nav">
 					<ul>
-						<li><a href="/index.html">Home</a></li>
-						<li><a href="/project/index.html">Project</a></li>
-						<li><a href="/configure.html">Configuration</a></li>
-						<li><a href="/support.html">Support</a></li>
-						<li><a href="/about.html">About Us</a></li>
-						<li><a href="/blog.html">Blog</a></li>
-						<li><a href="/contact.html">Contact Us</a></li>
+						<li><a href="/index.html">Home</a>
+						</li>
+						<li><a href="/project/index.html">Project</a>
+						</li>
+						<li><a href="/configure.html">Configuration</a>
+						</li>
+						<li><a href="/support.html">Support</a>
+						</li>
+						<li><a href="/about.html">About Us</a>
+						</li>
+						<li><a href="/blog.html">Blog</a>
+						</li>
+						<li><a href="/contact.html">Contact Us</a>
+						</li>
 					</ul>
 				</div>
 			</div>
