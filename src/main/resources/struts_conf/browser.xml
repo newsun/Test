@@ -15,16 +15,17 @@
 			<result>/jsp/index.jsp</result>
 		</action>
 
-		<action name="project" class="projectAction">
+		<action name="*Project" class="projectAction" method="{1}">
 			<result>/project/project.jsp</result>
 		</action>
-		<action name="build" class="buildAction">
+		<action name="*Build" class="buildAction" method="{1}">
 			<result>/project/build.jsp</result>
 		</action>
-		<action name="area" class="areaAction">
+		<action name="*Area" class="areaAction" method="{1}">
 			<result>/project/area</result>
 		</action>
-		<action name="charter" class="charterAction">
+		<action name="*Charter" class="charterAction" method="{1}">
+			<result name="success">/project/project.jsp</result>
 			<result>/project/charter.jsp</result>
 		</action>
 	</package>

@@ -12,7 +12,7 @@
 		<!-- <interceptor-ref name="jsonValidationWorkflowStack" /> -->
 
 		<action name="hello" class="hello">
-			<result name="input">/test.jsp</result>
+			<result name="input">/example/test.jsp</result>
 			<result>/example/test.jsp</result>
 		</action>
 

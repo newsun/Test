@@ -28,7 +28,7 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://localhost:3306/sbtm?relaxAutoCommit=true&amp;zeroDateTimeBehavior=round" />
+				value="jdbc:mysql://localhost:3306/sbtm?relaxAutoCommit=true&amp;zeroDateTimeBehavior=convertToNull" />
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="test" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

@@ -3,7 +3,6 @@ package com.symbio.sbtm.ui.action.charter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +11,7 @@ import com.symbio.sbtm.model.Area;
 import com.symbio.sbtm.model.Bug;
 import com.symbio.sbtm.model.Build;
 import com.symbio.sbtm.model.Charter;
+import com.symbio.sbtm.model.DataFile;
 import com.symbio.sbtm.model.Duration;
 import com.symbio.sbtm.model.Issue;
 import com.symbio.sbtm.model.OS;
@@ -20,6 +20,7 @@ import com.symbio.sbtm.model.Strategy;
 import com.symbio.sbtm.model.User;
 import com.symbio.sbtm.model.service.AreaService;
 import com.symbio.sbtm.model.service.CharterService;
+import com.symbio.sbtm.model.service.DurationService;
 
 public class CharterAction extends ActionSupport {
 	/**
@@ -31,17 +32,25 @@ public class CharterAction extends ActionSupport {
 	private List<String> areaList;
 	private Project project;
 	private Build build;
-	private Area area;
+	private List<Area> areas;
+	private List<Bug> bugList;
+	private List<Issue> issueList;
+	private List<DataFile> fileList;
 
 	@Autowired
 	private CharterService charterService;
+	@Autowired
+	private DurationService durationService;
 
 	@Override
 	public String execute() throws Exception {
+		if (durationList == null)
+			durationList = durationService.getAllDurations();
 		if (charter != null)
 			charter = charterService.getCharter(charter.getId());
 		else
-			return this.INPUT;
+			return INPUT;
+		areas = charter.getAreas();
 		// if (null == charterArray || charterArray.size() == 0)
 		// return this.ERROR;
 		// for (int i = 0; i < charterArray.size(); i++) {
@@ -69,7 +78,25 @@ public class CharterAction extends ActionSupport {
 		// // TODO Auto-generated catch block
 		// e.printStackTrace();
 		// }
-		return this.SUCCESS;
+		return SUCCESS;
+	}
+
+	public String update() {
+		if (charter == null) {
+			return INPUT;
+		}
+		if (charter.getDuration() != null) {
+			Duration duration = durationService.getDurationByName(charter
+					.getDuration().getName());
+			charter.setDuration(duration);
+		}
+		if (areas == null) {
+			Charter c2 = charterService.getCharter(charter.getId());
+			areas = c2.getAreas();
+		}
+		charter.setAreas(areas);
+		charterService.update(charter);
+		return SUCCESS;
 	}
 
 	public Charter getCharter() {
@@ -86,17 +113,9 @@ public class CharterAction extends ActionSupport {
 
 	public List<String> getAreaList() {
 		areaList = new ArrayList<String>();
-		for (Iterator it = charter.getAreas().iterator(); it.hasNext();)
+		for (Iterator<Area> it = charter.getAreas().iterator(); it.hasNext();)
 			areaList.add(it.next().toString());
 		return areaList;
-	}
-
-	public List<String> set2List(Set set) {
-		ArrayList<String> list = new ArrayList<String>();
-		for (Iterator it = set.iterator(); it.hasNext();) {
-			list.add(it.next().toString());
-		}
-		return list;
 	}
 
 	public Project getProject() {
@@ -122,5 +141,40 @@ public class CharterAction extends ActionSupport {
 	public void setAreaList(List<String> areaList) {
 		this.areaList = areaList;
 	}
-	
+
+	public List<Area> getArea() {
+		return areas;
+	}
+
+	public void setArea(List<Area> area) {
+		this.areas = area;
+	}
+
+	public List<Bug> getBugList() {
+		return bugList;
+	}
+
+	public void setBugList(List<Bug> bugList) {
+		this.bugList = bugList;
+	}
+
+	public List<Issue> getIssueList() {
+		return issueList;
+	}
+
+	public void setIssueList(List<Issue> issueList) {
+		this.issueList = issueList;
+	}
+
+	public List<DataFile> getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(List<DataFile> fileList) {
+		this.fileList = fileList;
+	}
+
+	@Override
+	public void validate() {
+	}
 }

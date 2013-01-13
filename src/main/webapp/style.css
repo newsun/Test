@@ -180,6 +180,9 @@ a.rm,a.com {
 .chartContent textarea{
 	width:600px;
 }
+.chartContent input{
+	width:80%;
+}
 .maincontent{
 	width:700px;
 	float:right;
@@ -554,14 +557,14 @@ ul.item-details dl dt,ul.item-details dl dd {
 	display: block;
 	float: left;
 	overflow: hidden;
-	width: 81%;
+	width: 100%;
 }
 
 ul.item-details dl dt {
 	color: #666666;
 	margin-right: 1%;
 	position: relative;
-	width: 18%;
+	width: 100%;
 }
 
 ul.item-details dl dd img {

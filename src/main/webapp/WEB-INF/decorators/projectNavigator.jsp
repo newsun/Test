@@ -12,6 +12,7 @@
 <script type="text/javascript" src="/js/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="/js/cookie.js"></script>
 <script type="text/javascript" src="/js/json2.js"></script>
+<script type="text/javascript" src="/js/sbtm.js"></script>
 <script type="text/javascript" src="/js/navigator.js"></script>
 <script type="text/javascript" src="/js/images.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollLoading.js"></script>

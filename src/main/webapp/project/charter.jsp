@@ -5,203 +5,207 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Charter: <s:property value="charter.name" />
-</title>
-<script type="text/javascript">
-	function modify(data) {
-		alert(data);
-	}
-	function addbug() {
-		var id = document.getElementById("bugs").getElementsByTagName("table").length;
-		$("#addbug")
-				.before(
-						'<table id='+id+'><tbody>'
-								+ '<tr><td>Summary</td><td><s:textfield name="summary"></s:textfield></td></tr>'
-								+ '<tr><td>Description</td><td><s:textarea name="description"></s:textarea></td></tr>'
-								+ '<tr><td></td><td align="right"><button onclick="deleteBug(+'
-								+ id + ')">Delete Bug</button></td></tr>'
-								+ '</tbody></table>');
-	}
-	function deleteBug(id) {
-		$("table#" + id).remove();
-	}
-	function areaChanged() {
-		var div = $("#addareadiv");
-		var div2 = div.clone();
-		div.removeAttr("id", "");
-		div.after(div2);
-	}
-</script>
+<title>Charter: <s:property value="charter.name" /></title>
 </head>
 <body>
 	<div class="mainbar">
 		<div class="chartContent">
-			<s:div id="charter">
-				<h3>
-					Charter:
-					<s:property value="charter.name"></s:property>
-				</h3>
-				<hr />
-				<table>
-					<tbody>
-						<tr>
-							<td>Description</td>
-							<td><s:textarea name="charter.description"
-									class="desciption"></s:textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>Start Time</td>
-							<td><s:textfield name="charter.starttime"></s:textfield>
-							</td>
-						</tr>
-						<tr>
-							<td>Tester</td>
-							<td><s:textfield name="charter.tester.name"></s:textfield>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</s:div>
-			<hr />
-			<s:div id="areas">
-				<h3>Areas</h3>
-				<hr></hr>
-				<table>
-					<tbody>
-						<s:iterator value="charter.areas" id="area" status="st">
-							<tr>
-								<td><s:select list="areaList" headerValue="--Select Area--"
-										headerKey="--" listKey="id" listValue="name" value="id"></s:select>
-								</td>
-								<td><s:textfield name="name"
-										onchange="modify('%{#st.index}')" id="nmArea_%{#st.index}" />
-								</td>
-							</tr>
+			<h2>
+				Charter
+				<s:label name="charter.id" />:
+				<s:property value="charter.name"></s:property>
+			</h2>
+			<div class="module">
+				<div class="mod-header">
+					<h3>Summary</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
+						<li>
+							<dl>
+								<dt>Description</dt>
+								<dd>
+									<s:textarea name="charter.description" class="desciption"></s:textarea>
+								</dd>
+							</dl></li>
+						<li>
+							<dl>
+								<dt>Start Time</dt>
+								<dd>
+									<s:label name="charter.starttime"></s:label>
+								</dd>
+							</dl></li>
+						<li>
+							<dl>
+								<dt>Tester</dt>
+								<dd>
+									<s:label name="charter.tester.name"></s:label>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="module">
+				<div class="mod-header">
+					<h3>Areas</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
+						<li>
+							<dl>
+								<dt>
+									<s:iterator value="charter.areas" id="area" status="st">
+										<s:select list="areaList" headerValue="--Select Area--"
+											headerKey="--" listKey="id" listValue="name" value="id"></s:select>
+										<s:textfield name="name" onchange="modify('%{#st.index}')"
+											id="nmArea_%{#st.index}" />
+
+									</s:iterator>
+								</dt>
+								<dd>
+									<s:select list="areaList" headerValue="--Select Area--"
+										headerKey="--" listKey="id" listValue="name"
+										onchange="areaChanged()"></s:select>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="module">
+				<div class="mod-header">
+					<h3>Break Down</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
+						<li>
+							<dl>
+								<dt>DURATION</dt>
+								<dd>
+									<s:select list="durationList" headerValue="--Select Duration--"
+										headerKey="" listKey="name" listValue="name"
+										name="charter.duration.name"></s:select>
+									</td>
+								</dd>
+							</dl></li>
+						<li>
+							<dl>
+								<dt>DESING AND EXECUTION</dt>
+								<dd>
+									<s:textfield name="charter.designAndExectution"></s:textfield>
+								</dd>
+							</dl>
+							<dl>
+								<dt>BUG INVESTIGATION AND REPORTING</dt>
+								<dd>
+									<s:textfield name="charter.bugIvestigationAndReporting"></s:textfield>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt>SET UP</dt>
+								<dd>
+									<s:textfield name="charter.sesstionSetup"></s:textfield>
+								</dd>
+							</dl>
+
+							<dl>
+								<dt>CHARTER VS. OPP</dt>
+								<dd>
+									<s:textfield name="charter.chartervsopp"></s:textfield>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="module">
+				<div class="mod-header">
+					<h3>Data Files</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
+						<li><dl>
+								<s:iterator value="charter.datafiles">
+									<td><s:property></s:property>
+									<td><s:textfield name=""></s:textfield>
+								</s:iterator>
+							</dl></li>
+					</ul>
+				</div>
+			</div>
+			<div class="module">
+				<div class="mod-header">
+					<h3>Notes</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
+						<li><dl>
+								<dt></dt>
+								<dd>
+									<s:textarea name="charter.note"></s:textarea>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="module">
+				<div class="mod-header">
+					<h3>Bugs</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
+						<s:iterator value="charter.bugs" id="bug" status="st">
+							<li id="bug<s:property value='#st.index' />">
+								<dl>
+									<dt>Summary</dt>
+									<dd>
+										<s:textfield name="summary"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>Description</dt>
+									<dd>
+										<s:textarea name="description"></s:textarea>
+									</dd>
+								</dl>
+							</li>
 						</s:iterator>
-						<tr id="addareadiv">
-							<td><s:select list="areaList" headerValue="--Select Area--"
-									headerKey="--" listKey="id" listValue="name"
-									onchange="areaChanged()"></s:select>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</s:div>
-			<hr />
-			<s:div id="breakdown">
-				<h3>Break Down</h3>
-				<hr>
-				<table>
-					<tbody>
-						<tr>
-							<td>DURATION</td>
-							<%--<td><s:select list="durationList"
-					headerValue="--Select Duration--" headerKey="--" listKey="name"
-					listValue="name" name="charter.duration.name"></s:select></td>
-					 --%>
-						</tr>
-						<tr>
-							<td>DESING AND EXECUTION</td>
-							<td><s:textfield name="charter.designAndExectution"></s:textfield>
-							</td>
-						</tr>
-						<tr>
-							<td>BUG INVESTIGATION AND REPORTING</td>
-							<td><s:textfield name="charter.bugIvestigationAndReporting"></s:textfield>
-							</td>
-						</tr>
-						<tr>
-							<td>SET UP</td>
-							<td><s:textfield name="charter.sesstionSetup"></s:textfield>
-							</td>
-						</tr>
-
-						<tr>
-							<td>CHARTER VS. OPP</td>
-							<td><s:textfield name="charter.chartervsopp"></s:textfield>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</s:div>
-			<hr />
-			<s:div id="datafiles">
-				<h3>Data Files</h3>
-				<hr>
-				<table>
-					<tbody>
-						<s:iterator value="charter.datafiles">
-							<tr>
-								<td><s:property></s:property>
-								</td>
-								<td><s:textfield name=""></s:textfield>
-								</td>
-							</tr>
-						</s:iterator>
-					</tbody>
-				</table>
-			</s:div>
-			<s:div id="notes">
-				<h3>Notes</h3>
-				<s:textarea name="charter.notes"></s:textarea>
-			</s:div>
-			<hr />
-			<s:div id="bugs">
-				<h3>Bugs</h3>
-				<hr>
-				<s:iterator value="charter.bugs" id="bug" status="st">
-					<table id="bug<s:property value='#st.index' />">
-						<tbody>
-							<tr>
-								<td>Summary</td>
-								<td><s:textfield name="summary"></s:textfield>
-								</td>
-							</tr>
-							<tr>
-								<td>Description</td>
-								<td><s:textarea name="description"></s:textarea>
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td align="right">
-									<button
-										onclick="deleteBug(this.parentNode.parentNode.parentNode.parentNode.id)">Delete
-										Bug</button></td>
-							</tr>
-
-						</tbody>
-					</table>
-				</s:iterator>
-				<table id="addbug">
-					<tbody>
-						<tr>
-							<td align="right">
-								<button onclick="addbug()">Add New Bug</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</s:div>
-
-			<s:div id="issues">
-				<h3>Issues</h3>
-				<hr>
-				<table>
-					<tbody>
+					</ul>
+				</div>
+			</div>
+			<div class="module">
+				<div class="mod-header">
+					<h3>Issues</h3>
+				</div>
+				<div class="mod-content">
+					<ul class="item-details">
 						<s:iterator value="charter.issues">
-							<tr>
-								<td><s:textfield name="summary"></s:textfield>
-								</td>
-							</tr>
-							<tr>
-								<td><s:textarea name="charter.issues"></s:textarea>
-								</td>
-							</tr>
+							<li>
+								<dl>
+									<dt>Summary</dt>
+									<dd>
+										<s:textfield name="summary"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>Description</dt>
+									<dd>
+										<s:textarea name="charter.issues"></s:textarea>
+									</dd>
+								</dl></li>
 						</s:iterator>
-					</tbody>
-				</table>
-			</s:div>
+					</ul>
+				</div>
+			</div>
+			<hr>
+			<div>
+				<s:submit id="submit" value="Update"></s:submit>
+			</div>
 		</div>
 	</div>
 </body>

@@ -97,9 +97,9 @@ starttime timestamp,
 endtime timestamp,
 testerId bigint not null,
 durationId bigint,
-designAndExectution bigint,
-bugIvestigationAndReporting bigint,
-sesstionSetup bigint,
+designAndExectution bigint default 0,
+bugIvestigationAndReporting bigint default 0,
+sesstionSetup bigint default 0,
 chartervsopp varchar(50),
 note varchar(255),
 /*unique(areaId,name),*/
@@ -155,7 +155,7 @@ foreign key(charterId) references Charter(id) on delete cascade on update cascad
 foreign key(areaId) references Area(id) on delete cascade on update cascade
 );
 /*step18 Create data files list for charter,bug, issue*/
-create table datafiles(
+create table datafile(
 id bigint auto_increment primary key,
 charterId bigint,
 bugId bigint,

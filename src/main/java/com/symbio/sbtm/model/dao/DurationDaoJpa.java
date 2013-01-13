@@ -50,7 +50,7 @@ public class DurationDaoJpa implements DurationDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Duration> getAllDurations()  {
-		String qlString = "from " + OS.class.getSimpleName();
+		String qlString = "from " + Duration.class.getSimpleName();
 		return entityManager.createQuery(qlString).getResultList();
 	}
 

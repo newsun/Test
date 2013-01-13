@@ -5,7 +5,7 @@ function onload() {
 		onload_project(JSON.parse(cookiedprojects));
 	} else {
 		console.log("Fetch projects from remote");
-		jQuery.post('AjaxProjects.action', {}, onload_project, 'json');
+		jQuery.post('AjaxProjects', {}, onload_project, 'json');
 	}
 	var cookiedbuilds = getCookie("cookiedbuilds");
 	if (cookiedbuilds) {
@@ -77,7 +77,7 @@ function onload_Area(areas) {
 	}
 	$.each(areas.areaMap, function(id, name) {
 		$("ul#arealist").append(
-				"<li><a href='charter.action?charter.id=" + id + pb + "'>"
+				"<li><a href='Charter?charter.id=" + id + pb + "'>"
 						+ name + "</a></li>");
 		// $("ul#arealist").append("<li><a href='#'>" + name + "</a></li>");
 			// $("ul#arealist li:last").click(function() {
@@ -107,7 +107,7 @@ function onProjectChanged(projectId) {
 		return;
 	}
 	console.log("Fetching builds from remote");
-	jQuery.post('AjaxBuilds.action', {
+	jQuery.post('AjaxBuilds', {
 		'project.id' : projectId
 	}, onProjectChanged_callback_build, 'json');
 
@@ -127,7 +127,7 @@ function onProjectChanged_callback_build(builds) {
 	var cookiedselectedProjectId = getCookie("cookiedselectedProjectId");
 	if (cookiedselectedProjectId) {
 		console.log("Fetching area list from remote");
-		jQuery.post('AjaxAreas.action', {
+		jQuery.post('AjaxAreas', {
 			'project.id' : cookiedselectedProjectId
 		}, onProjectChanged_callback_Area, 'json');
 	} else
@@ -151,14 +151,14 @@ function onProjectChanged_callback_Area(areas) {
 
 	$.each(areas.areaMap, function(id, name) {
 		$("ul#arealist").append(
-				"<li><a href='charter.action?charter.id=" + id + pb + "'>"
+				"<li><a href='Charter?charter.id=" + id + pb + "'>"
 						+ name + "</a></li>");
 	});
 
 	var cookiedselectedProjectId = getCookie("cookiedselectedProjectId");
 	if (cookiedselectedProjectId) {
 		console.log("page jumped");
-		window.location = "project.action?project.id="
+		window.location = "Project?project.id="
 				+ cookiedselectedProjectId;
 	} else
 		alert("Emypt cookiedselectedProjectId when project id changed and set area list");
@@ -175,7 +175,7 @@ function onBuildChanged(buildId) {
 		var cookiedselectedProjectId = getCookie("cookiedselectedProjectId");
 		if (cookiedselectedProjectId) {
 			console.log("Fetching area list from remote for project");
-			jQuery.post('AjaxAreas.action', {
+			jQuery.post('AjaxAreas', {
 				'project.id' : cookiedselectedProjectId
 			}, onBuildChangedtoEmpty_callback, 'json');
 		} else
@@ -184,7 +184,7 @@ function onBuildChanged(buildId) {
 	}
 
 	console.log("Fetching area list from remote for build");
-	jQuery.post('AjaxAreas.action', {
+	jQuery.post('AjaxAreas', {
 		'build.id' : buildId
 	}, onBuildChanged_callback, 'json');
 }
@@ -210,7 +210,7 @@ function onBuildChanged_callback(areas) {
 
 	$.each(areas.areaMap, function(id, name) {
 		$("ul#arealist").append(
-				"<li><a href='charter.action?charter.id=" + id + pb + "'>"
+				"<li><a href='Charter?charter.id=" + id + pb + "'>"
 						+ name + "</a></li>");
 		// $("ul#arealist li:last").click(function() {
 			// fetchCharter(id, name);
@@ -219,7 +219,7 @@ function onBuildChanged_callback(areas) {
 	var cookiedSelectedBuildId = getCookie("cookiedSelectedBuildId");
 	if (cookiedSelectedBuildId) {
 		console.log("page jumped");
-		window.location = "build.action?build.id=" + cookiedSelectedBuildId;
+		window.location = "Build?build.id=" + cookiedSelectedBuildId;
 	} else
 		alert("Emypt cookiedSelectedBuildId when was changed build to empty")
 }
@@ -231,7 +231,7 @@ function onBuildChangedtoEmpty_callback(areas) {
 
 	$.each(areas.areaMap, function(id, name) {
 		$("ul#arealist").append(
-				"<li><a href='charter.action?charter.id=" + id + "'>" + name
+				"<li><a href='Charter?charter.id=" + id + "'>" + name
 						+ "</a></li>");
 		// $("ul#arealist li:last").click(function() {
 			// fetchCharter(id, name);
@@ -241,14 +241,14 @@ function onBuildChangedtoEmpty_callback(areas) {
 	var cookiedselectedProjectId = getCookie("cookiedselectedProjectId");
 	if (cookiedselectedProjectId) {
 		console.log("page jumped");
-		window.location = "project.action?project.id="
+		window.location = "Project?project.id="
 				+ cookiedselectedProjectId;
 	} else
 		alert("Emypt cookiedselectedProjectId when was changed build to empty");
 }
 function fetchCharter(id, name) {
 	alert("charter id=" + id + " " + name);
-	$.get("charter.action?charter.id=" + id, function(result) {
+	$.get("Charter?charter.id=" + id, function(result) {
 		$("#main").html(result);
 	});
 }
