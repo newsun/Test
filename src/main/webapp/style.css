@@ -168,23 +168,27 @@ a.rm,a.com {
 .content_resize {
 	margin: 0 auto;
 	padding: 40px 0 0;
-	width: 930px;
+	width: 1000px;
 }
 
 .entrybar {
-	position: absolute;
-	left: 116px;
-	top: 200px;
+	float:left;
 	margin: 0 auto;
 	padding: 16px 0 0 0;
-	width: 131px;
+	width: 70px;
 }
-
+.chartContent textarea{
+	width:600px;
+}
+.maincontent{
+	width:700px;
+	float:right;
+}
 .mainbar {
 	margin: 0;
 	padding: 0;
 	float: left;
-	width: 690px;
+	width: 770px;
 }
 
 .mainbar img {
@@ -199,7 +203,7 @@ a.rm,a.com {
 
 .mainbar .article {
 	margin: 0;
-	padding: 16px 24px 24px 0px;
+	padding: 16px 0px 24px 0px;
 }
 
 .mainbar .post-data a {
@@ -219,7 +223,7 @@ a.rm,a.com {
 .sidebar {
 	padding: 0;
 	float: right;
-	width: 240px;
+	width: 230px;
 	padding: 0;
 }
 
@@ -306,7 +310,7 @@ ul.vertical {
 	float: left;
 	margin-right: -1px;
 	position: relative;
-	width: 11em;
+	width: 71px;
 }
 
 ul.vertical li {
@@ -527,7 +531,9 @@ ul.ex_menu li a:hover {
 .vevent img {
 	border: 0;
 }
-
+ul li{
+	list-style:none;
+}
 ul.item-details {
 	display: inline-block;
 	list-style-type: none;
@@ -753,4 +759,9 @@ ol li .send {
 
 .pagenavi .pages {
 	float: left;
+}
+
+/* charter */
+.charter textarea  {
+	width: 100%;
 }

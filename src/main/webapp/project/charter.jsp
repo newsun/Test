@@ -35,7 +35,7 @@
 </head>
 <body>
 	<div class="mainbar">
-		<div id="main-content">
+		<div class="chartContent">
 			<s:div id="charter">
 				<h3>
 					Charter:

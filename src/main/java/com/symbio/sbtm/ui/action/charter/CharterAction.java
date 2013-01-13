@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.symbio.sbtm.model.Area;
 import com.symbio.sbtm.model.Bug;
+import com.symbio.sbtm.model.Build;
 import com.symbio.sbtm.model.Charter;
 import com.symbio.sbtm.model.Duration;
 import com.symbio.sbtm.model.Issue;
 import com.symbio.sbtm.model.OS;
+import com.symbio.sbtm.model.Project;
 import com.symbio.sbtm.model.Strategy;
 import com.symbio.sbtm.model.User;
 import com.symbio.sbtm.model.service.AreaService;
@@ -27,6 +29,9 @@ public class CharterAction extends ActionSupport {
 	private Charter charter;
 	private List<Duration> durationList;
 	private List<String> areaList;
+	private Project project;
+	private Build build;
+	private Area area;
 
 	@Autowired
 	private CharterService charterService;
@@ -93,4 +98,29 @@ public class CharterAction extends ActionSupport {
 		}
 		return list;
 	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Build getBuild() {
+		return build;
+	}
+
+	public void setBuild(Build build) {
+		this.build = build;
+	}
+
+	public void setDurationList(List<Duration> durationList) {
+		this.durationList = durationList;
+	}
+
+	public void setAreaList(List<String> areaList) {
+		this.areaList = areaList;
+	}
+	
 }
