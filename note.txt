@@ -18,6 +18,5 @@
 3.About configuration
 	hibernate.properties is the first priority, persistence.xml is the second priority.
 	
-4.  
-
+4.
 5.
