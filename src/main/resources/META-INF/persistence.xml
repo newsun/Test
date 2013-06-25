@@ -7,7 +7,8 @@
 	<!-- this persistence unit is for testing -->
 	<persistence-unit name="springJpaPersistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.symbio.sbtm.model.Role</class>
 		<class>com.symbio.sbtm.model.User</class>
 		<class>com.symbio.sbtm.model.OS</class>
