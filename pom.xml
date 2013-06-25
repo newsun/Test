@@ -16,8 +16,8 @@
 		<struts2.version>2.3.8</struts2.version>
 		<java.version>1.6</java.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
-		<hibernate.version>4.2.0-SNAPSHOT</hibernate.version>
-		<hibernate.validator.version>5.0.0-SNAPSHOT</hibernate.validator.version>
+		<hibernate.version>4.2.2.Final</hibernate.version>
+		<hibernate.validator.version>5.0.1.Final</hibernate.validator.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -86,6 +86,7 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -138,7 +139,7 @@
 			<version>1.8.0.10</version> </dependency> -->
 
 
-		<!-- hibernate 3.5.1 -->
+		<!-- hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
